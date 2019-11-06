@@ -14,6 +14,6 @@ For further information and a manual on how to use our Editor, please visit our 
 ## Getting started
 You can clone the application while running this command on your console/shell:
 ```
-git clone https://github.com/GoogleCloudPlatform/REPO_NAME.git
+git clone https://github.zhaw.ch/pm1-it19azh-ehri-fame-muon/gruppe102-einhoerner-projekt2-editor.git
 ```
 Congratulations! You can now use the Editor on your computer.
