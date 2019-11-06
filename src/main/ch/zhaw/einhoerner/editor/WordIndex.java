@@ -37,4 +37,10 @@ public class WordIndex {
             }
         }
     }
+    public void printWordIndex() {
+        for (Map.Entry<String, List<String>> wortHaeufigkeit : woerterHaeufigkeit.entrySet()) {
+            System.out.println("Wort:         "+ wortHaeufigkeit.getKey());
+            System.out.println("Paragraph/en: "+wortHaeufigkeit.getValue());
+        }
+    }
 }
