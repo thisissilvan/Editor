@@ -17,7 +17,7 @@ public class Editor {
 
             boolean quit = false;
             while (!quit) {
-               //todo do something
+               //todo do something and condition for finishing the loop
             }
             System.out.println("Thank you for using the Einhoerner Editor.");
         }
