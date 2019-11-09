@@ -8,7 +8,7 @@ public class Parser {
      * falls kein gültiger Befehl gefunden werden konnte
      */
     public Command parseInput(String input) {
-        if (input.isEmpty()){
+        if (input == null || input.isEmpty()){
             return Command.UNKNOWN;
         }
 
