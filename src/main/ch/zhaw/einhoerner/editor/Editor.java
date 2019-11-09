@@ -8,10 +8,28 @@ package ch.zhaw.einhoerner.editor;
  * @version 2019_11_09
  */
 public class Editor {
+    private String userInput;
+
     public static void main(String[] args) {
-        {
-            Processor processor = new Processor();
-            processor.startEditor();
+        Editor editor = new Editor();
+        Scanner in = new Scanner(System.in);
+        Processor processor = new Processor();
+
+        processor.startEditor();
+        System.out.print("> ");
+        editor.userInput = in.nextLine();
+
+        while (!editor.userInput.equals(Command.QUIT.name())) {
+            editor.run(in);
         }
+    }
+
+    public void run(Scanner in) {
+
+        // TODO if not empty input, fill input
+
+        System.out.print("> ");
+        userInput = in.nextLine();
+
     }
 }
