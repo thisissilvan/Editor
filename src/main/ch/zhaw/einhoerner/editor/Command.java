@@ -31,4 +31,16 @@ public class Command {
         this.secondWord = secondWord;
     }
 
+    /**
+     * ...
+     * ...
+     *
+     * @return
+     */
+    public EnumCommand getCommand()
+    {
+        return enumCommand;
+    }
+
+
 }
