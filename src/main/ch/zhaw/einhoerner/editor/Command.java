@@ -41,6 +41,17 @@ public class Command {
     {
         return enumCommand;
     }
+    /**
+     * ...
+     * ...
+     * ...
+     * @return
+     */
+    public String getSecondWord()
+    {
+        return secondWord;
+    }
 
+   
 
 }
