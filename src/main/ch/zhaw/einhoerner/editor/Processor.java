@@ -10,6 +10,8 @@ package ch.zhaw.einhoerner.editor;
  */
 public class Processor {
 
+    private ExampleText exampleText = new ExampleText();
+
     /**
      * Constructor of the class Processor.
      */
@@ -61,7 +63,6 @@ public class Processor {
         System.out.print("For a manual in detail, please use the Wiki in the Github repository.");
         System.out.println();
     }
-
 
 }
 
