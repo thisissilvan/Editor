@@ -1,9 +1,17 @@
 package ch.zhaw.einhoerner.editor;
 
 /**
- * Representation of all valid commands with a given String.
+ * The class Command is part of the Editor application.
  *
- * @author Silvan Luethy
+ * Objects in this class holding the information of the given commands which a user types in the console.
+ * A valid command consists of two parts: A command and a String (for example: the command "add 4" consists
+ * of the command "add" and the String "4")
+ *
+ * Commands are getting verified from the program. If an invalid command is given, the command is <null>.
+ *
+ * If the command only exists one word, the second word is <null>.
+ *
+ * @author  Silvan Luethy
  * @version 2019_11_09
  */
 public enum Command {
