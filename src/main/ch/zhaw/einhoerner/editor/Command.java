@@ -1,63 +1,35 @@
 package ch.zhaw.einhoerner.editor;
 
 /**
- * The class Command is part of the Editor application.
+ * Representation of all valid commands with a given String.
  *
- * Objects in this class holding the information of the given commands which a user types in the console.
- * A valid command consists of two parts: A command and a String (for example: the command "add 4" consists
- * of the command "add" and the String "4")
- *
- * Commands are getting verified from the program. If an invalid command is given, the command is <null>.
- *
- * If the command only exists one word, the second word is <null>.
- *
- * @author  Ala Hadi, Silvan Luethy
+ * @author Silvan Luethy
  * @version 2019_11_09
  */
+public enum Command {
+    ADD_EXAMPLETEXT("add exampletext"), ADD("add"), PRINT("print"),
+    SEARCH_AND_REPLACE("search and replace"), PRINT_WIDTH("print width"),
+    HELP("help"), QUIT("quit"), UNKNOWN("?");
 
-public class Command {
-    private EnumCommand enumCommand;
-    private String secondWord;
+
+    private String command;
 
     /**
-     * @param enumCommand
-     * @param secondWord can be <null>
+     * Initialise constructor with a given command.
+     *
+     * @param command The command as String value
      */
-    public Command(EnumCommand enumCommand, String secondWord)
-    {
-        this.enumCommand = enumCommand;
-        this.secondWord = secondWord;
+    Command(String command) {
+        this.command = command;
     }
 
     /**
-     * @return
+     * Gives back the command.
+     *
+     * @return The command as String value.
      */
-    public EnumCommand getCommand()
-    {
-        return enumCommand;
-    }
-    /**
-     * @return
-     */
-    public String getSecondWord()
-    {
-        return secondWord;
-    }
-
-    /**
-     * @return
-     */
-    public boolean isUnknown()
-    {
-        return (enumCommand == EnumCommand.UNKNOWN);
-    }
-
-    /**
-     * @return
-     */
-    public boolean hasASecondWord()
-    {
-        return (secondWord != null);
+    public String getCommand() {
+        return command;
     }
 
 }
