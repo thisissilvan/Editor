@@ -2,6 +2,7 @@ package ch.zhaw.einhoerner.editor;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * The class Paragraph stores the text which is given in by the user.
@@ -38,5 +39,11 @@ public class Paragraphs {
             paragraphs.put(word, paragraphs.getOrDefault(word, 0) + 1);
         }
         return paragraphs;
+    }
+
+    // TODO just an example to use in other classes
+    public List<String> getParagraphs() {
+        ArrayList<String>example = new ArrayList<>();
+        return example;
     }
 }
