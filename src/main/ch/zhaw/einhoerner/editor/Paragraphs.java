@@ -30,5 +30,13 @@ public class Paragraphs {
         text.replaceAll(wordToReplace, newWord);
     }
 
-   
+    public HashMap<String, Integer> getWords()
+    {
+        String[] wordsArray = text.split(" ");
+
+        for(String word : wordsArray) {
+            paragraphs.put(word, paragraphs.getOrDefault(word, 0) + 1);
+        }
+        return paragraphs;
+    }
 }
