@@ -60,6 +60,18 @@ public class TextOutput {
         return singleParagraph;
     }
 
-   
+    public Paragraphs[] splitToParagraphs(String text){
+
+        String[] foundParagraphs = {};
+
+        if(text.length() > 0) {
+            foundParagraphs = text.split(lineSeparator());
+        }
+        Paragraphs[] splittedParagraph = new Paragraphs[foundParagraphs.length];
+        for (int i = 0; i < foundParagraphs.length; i++) {
+            splittedParagraph[i] = new Paragraphs(foundParagraphs[i]);
+        }
+        return splittedParagraph;
+    }
 
 }
