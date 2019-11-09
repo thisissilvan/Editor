@@ -54,4 +54,32 @@ class ParserTest {
         assertThat("expected command was UNKNOWN", actual, is(expected));
 
     }
+
+    @Test
+    void testExtractionPrint() {
+        String input = "print something something example";
+        String actual = new Parser().extractText(input);
+        String expected = "something something example";
+
+        assertThat("unexpected input", actual, is(expected));
+    }
+
+    @Test
+    void testExtractionAdd() {
+        String input = "add something something example";
+        String actual = new Parser().extractText(input);
+        String expected = "something something example";
+
+        assertThat("unexpected input", actual, is(expected));
+    }
+
+
+    @Test
+    void testExtractionEmptyInput() {
+        String input = "";
+        String actual = new Parser().extractText(input);
+        String expected = "";
+
+        assertThat("unexpected input", actual, is(expected));
+    }
 }

@@ -20,4 +20,13 @@ public class Parser {
 
         return Command.UNKNOWN;
     }
+
+    public String extractText(String input) {
+        Command command = parseInput(input);
+        if (Command.UNKNOWN.equals(command)) {
+            return "";
+        }
+
+        return input.substring(command.getCommand().length() + 1);
+    }
 }
