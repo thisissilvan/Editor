@@ -9,7 +9,7 @@ package ch.zhaw.einhoerner.editor;
 public enum EnumCommand
 {
     ADD_EXAMPLETEXT("add exampletext"), ADD("add"), PRINT("print"),
-    SEARCH_AND_REPLACE("search and replace"), PRINT_WIDTH("print width"), QUIT("quit");
+    SEARCH_AND_REPLACE("search and replace"), PRINT_WIDTH("print width"), HELP("help"), QUIT("quit");
 
     private String command;
 

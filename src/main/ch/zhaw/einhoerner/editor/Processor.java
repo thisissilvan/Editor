@@ -1,5 +1,10 @@
 package ch.zhaw.einhoerner.editor;
 
+/**
+ * The class Processor.
+ *
+ * //todo
+ */
 public class Processor {
 
     public Processor()
