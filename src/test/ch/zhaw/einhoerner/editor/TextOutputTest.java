@@ -1,7 +1,24 @@
 package ch.zhaw.einhoerner.editor;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class TextOutputTest {
 
+    @Test
+    void printUnformatted()
+    {
+
+    }
+
+    @Test
+    void printFormatted()
+    {
+
+    }
+
+    @Test
+    void splitToParagraphs()
+    {
+
+    }
 }

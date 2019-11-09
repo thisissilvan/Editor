@@ -67,9 +67,10 @@ public class Processor {
      */
     public void printHelpText() {
         System.out.println();
-        System.out.println("You can choose from the following commands:");
-        System.out.println("add (with or without paragraph number), print, quit, help, searchAndReplace (followed by the old and the new word");
-        System.out.print("For a manual in detail, please use the Wiki in the Github repository.");
+        System.out.print("You can choose from the following commands:" +
+        "add (with or without paragraph number), print, quit, help, searchAndReplace (followed by the old and the new word");
+        System.out.println();
+        System.out.println("For a manual in detail, please use the Wiki in the Github repository.");
         System.out.println();
     }
 }
