@@ -8,7 +8,7 @@ import java.util.List;
  * The class Paragraph stores the text which is given in by the user.
  * All the paragraphs are stored in a "HashMap<String, Integer> paragraphs"
  *
- * @author
+ * @author Silvan,
  * @version 2019_11_09
  */
 public class Paragraphs {

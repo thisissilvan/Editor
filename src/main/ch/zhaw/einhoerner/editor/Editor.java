@@ -4,7 +4,7 @@ package ch.zhaw.einhoerner.editor;
  * to quit the editor in a while loop.
  * For a manual in detail, please consult the wiki page in the Github repository.
  *
- * @author Silvan Luethy
+ * @author Silvan,
  * @version 2019_11_09
  */
 public class Editor {
@@ -24,6 +24,10 @@ public class Editor {
         }
     }
 
+    /**
+     * If the user input is not empty, the run method shows an '>' and reads the next line of the user input.
+     * @param in the given user input
+     */
     public void run(Scanner in) {
 
         // TODO if not empty input, fill input

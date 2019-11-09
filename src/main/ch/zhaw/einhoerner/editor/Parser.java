@@ -3,7 +3,7 @@ package ch.zhaw.einhoerner.editor;
 /**
  * The Parser class is responsible for parsing user input into Commands and text components
  *
- * @author Ala Hadi
+ * @author Ala
  * @version 2019-11-09
  */
 public class Parser {

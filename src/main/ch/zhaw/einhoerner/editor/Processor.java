@@ -24,12 +24,18 @@ public class Processor {
         //todo Empty yet
     }
 
-
+    /**
+     * Public method used by the main method to start the editor.
+     */
     public void startEditor()
     {
         startApplication();
     }
 
+    /**
+     * The private method startApplication prints out a welcome Text. While the user is not typing in the command
+     * quit, it is not stopping running.
+     */
     private void startApplication()
     {
         printWelcomeText();
@@ -44,7 +50,7 @@ public class Processor {
     }
 
     /**
-     * Prints out a welcome messeage to the console.
+     * Creates a welcome message which is used from the method startApplication.
      */
     public void printWelcomeText() {
         System.out.println();
@@ -56,7 +62,8 @@ public class Processor {
     }
 
     /**
-     * Prints out a help messeage to the console.
+     * Creates a help message to give the user some advice to use the application.
+     * Further information and a manual on how to use the application is on the Wiki-Page of the Github repository
      */
     public void printHelpText() {
         System.out.println();
