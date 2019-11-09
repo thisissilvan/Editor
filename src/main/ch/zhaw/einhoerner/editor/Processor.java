@@ -7,7 +7,9 @@ public class Processor {
         //todo maybe do something here
     }
 
-
+    /**
+     * Prints out a welcome messeage to the console.
+     */
     public void printWelcomeText()
     {
         System.out.println();
@@ -18,6 +20,9 @@ public class Processor {
         printHelpText();
     }
 
+    /**
+     * Prints out a help messeage to the console.
+     */
     public void printHelpText()
     {
         System.out.println();
