@@ -8,11 +8,11 @@ public class Parser {
      * falls kein gültiger Befehl gefunden werden konnte
      */
     public Command parseInput(String input) {
-        if (input == null || input.isEmpty()){
+        if (input == null || input.isEmpty()) {
             return Command.UNKNOWN;
         }
 
-        for(Command command : Command.values()) {
+        for (Command command : Command.values()) {
             if (input.startsWith(command.getCommand())) {
                 return command;
             }
@@ -21,6 +21,13 @@ public class Parser {
         return Command.UNKNOWN;
     }
 
+    /**
+     * Extracts the text content without the command
+     *
+     * @param input User input with command and text
+     * @return String Only the text without command will be returned, if no command can  be found,
+     * empty String will be returned
+     */
     public String extractText(String input) {
         Command command = parseInput(input);
         if (Command.UNKNOWN.equals(command)) {
