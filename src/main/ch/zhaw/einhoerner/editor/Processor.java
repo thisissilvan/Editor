@@ -3,13 +3,38 @@ package ch.zhaw.einhoerner.editor;
 /**
  * The class Processor.
  *
- * //todo
+ *
+ * //todo Javadoc
+ *
+ *
  */
 public class Processor {
 
+    /**
+     * Constructor of the class Processor.
+     */
     public Processor()
     {
-        //todo maybe do something here
+        //todo
+    }
+
+
+    public void startEditor()
+    {
+        startApplication();
+
+    }
+
+    private void startApplication()
+    {
+        printWelcomeText();
+
+        boolean quit = false;
+        while (!quit) {
+            //todo do something and condition for finishing the loop,
+            // can be implemented as soon as the commandClass is ready
+        }
+        System.out.println("Thank you for using the Einhoerner Editor.");
     }
 
     /**
