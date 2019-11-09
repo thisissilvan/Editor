@@ -20,4 +20,15 @@ public class Paragraphs {
         this.text = text;
     }
 
+    public String getText()
+    {
+        return text;
+    }
+
+    public void searchAndReplace(String wordToReplace, String newWord)
+    {
+        text.replaceAll(wordToReplace, newWord);
+    }
+
+   
 }
