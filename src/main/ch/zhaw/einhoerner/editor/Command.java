@@ -20,8 +20,6 @@ public class Command {
     private String secondWord;
 
     /**
-     * ...
-     * ...
      * @param enumCommand
      * @param secondWord can be <null>
      */
@@ -32,9 +30,6 @@ public class Command {
     }
 
     /**
-     * ...
-     * ...
-     *
      * @return
      */
     public EnumCommand getCommand()
@@ -42,9 +37,6 @@ public class Command {
         return enumCommand;
     }
     /**
-     * ...
-     * ...
-     * ...
      * @return
      */
     public String getSecondWord()
@@ -52,6 +44,20 @@ public class Command {
         return secondWord;
     }
 
-   
+    /**
+     * @return
+     */
+    public boolean isUnknown()
+    {
+        return (enumCommand == EnumCommand.UNKNOWN);
+    }
+
+    /**
+     * @return
+     */
+    public boolean hasASecondWord()
+    {
+        return (secondWord != null);
+    }
 
 }
