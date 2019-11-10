@@ -19,6 +19,9 @@ public class Parser {
     public ParsedInput parseInput(String input) {
         // extract command
         Command command = extractCommand(input);
+        if(Command.UNKNOWN.equals(command)) {
+            return new ParsedInput(input, command, new ArrayList<>());
+        }
 
         // extract parameter
         List<String> parameters = extractParameter(input, command);
@@ -53,7 +56,7 @@ public class Parser {
                 return command;
             }
         }
-        return null;
+        return Command.UNKNOWN;
     }
 
     /**

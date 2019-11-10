@@ -48,4 +48,8 @@ public class ParsedInput {
     {
         return parameters;
     }
+
+    public String getText() {
+        return text;
+    }
 }
