@@ -23,6 +23,11 @@ public class Parser {
             return new ParsedInput(input, command, new ArrayList<>());
         }
 
+        // if the input consists only of the command, don't parse parameters
+        if( input.length() == command.getCommand().length()) {
+            return new ParsedInput(input, command, new ArrayList<>());
+        }
+
         // extract parameter
         List<String> parameters = extractParameter(input, command);
 
