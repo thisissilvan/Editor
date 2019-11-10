@@ -2,6 +2,11 @@ package ch.zhaw.einhoerner.editor;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -83,5 +88,30 @@ class ParserTest {
         assertThat("unexpected input", actual, is(expected));
     }
 
-    // TODO add tests for parameter extraction
+    @Test
+    void testCommandWithoutParameter() {
+        String input = "help";
+        List<String> actual = new Parser().parseInput(input).getParameters();
+        List<String> expected = new ArrayList<>();
+
+        assertThat("unexpected input", actual, is(expected));
+    }
+
+    @Test
+    void testCommandWithTwoParameters() {
+        String input = "search and replace kartoffel tomate restlicher text dummy change";
+        List<String> actual = new Parser().parseInput(input).getParameters();
+        List<String> expected = Arrays.asList("kartoffel", "tomate");
+
+        assertThat("unexpected input", actual, is(expected));
+    }
+
+    @Test
+    void testCommandWithOneParameter() {
+        String input = "add 1 beispiel text";
+        List<String> actual = new Parser().parseInput(input).getParameters();
+        List<String> expected = Arrays.asList("1");
+
+        assertThat("unexpected input", actual, is(expected));
+    }
 }
