@@ -15,20 +15,27 @@ package ch.zhaw.einhoerner.editor;
  * @version 2019_11_09
  */
 public enum Command {
-    ADD_EXAMPLETEXT("add exampletext"), ADD("add"), PRINT("print"),
-    SEARCH_AND_REPLACE("search and replace"), PRINT_WIDTH("print width"),
-    HELP("help"), QUIT("quit"), UNKNOWN("?");
+    ADD_EXAMPLETEXT("add exampletext", 0),
+    ADD("add", 1),
+    PRINT("print", 0),
+    SEARCH_AND_REPLACE("search and replace", 2),
+    PRINT_WIDTH("print width", 1),
+    HELP("help", 0),
+    QUIT("quit", 0),
+    UNKNOWN("?", 0);
 
 
     private String command;
+    private int parameterCount;
 
     /**
      * Initialise constructor with a given command.
      *
      * @param command The command as String value
      */
-    Command(String command) {
+    Command(String command, int parameterCount) {
         this.command = command;
+        this.parameterCount = parameterCount;
     }
 
     /**
@@ -40,4 +47,7 @@ public enum Command {
         return command;
     }
 
+    public int getParameterCount() {
+        return parameterCount;
+    }
 }

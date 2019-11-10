@@ -1,14 +1,13 @@
 package ch.zhaw.einhoerner.editor;
 
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * The class Processor.
- *
- *
+ * <p>
+ * <p>
  * //todo Javadoc
- *
- *
  */
 public class Processor {
 
@@ -16,37 +15,58 @@ public class Processor {
     private Paragraphs paragraphs;
     private List<Paragraphs> allParagraphs;
 
+    private Parser parser = new Parser();
+
     /**
      * Constructor of the class Processor.
      */
-    public Processor()
-    {
+    public Processor() {
         //todo Empty yet
     }
 
     /**
      * Public method used by the main method to start the editor.
      */
-    public void startEditor()
-    {
-        startApplication();
-    }
-
-    /**
-     * The private method startApplication prints out a welcome Text. While the user is not typing in the command
-     * quit, it is not stopping running.
-     */
-    private void startApplication()
-    {
+    public void startApplication() {
         printWelcomeText();
         System.out.print("> ");
 
-        boolean quit = false;
-        while (!quit) {
-            //todo do something and condition for finishing the loop,
-            // can be implemented as soon as the commandClass is ready
+        String nextCommand = "";
+        while (!Command.QUIT.getCommand().equals(nextCommand)) {
+
+            // retrieve next user input
+            String userInput = getUserInput();
+
+            // parse user input
+            ParsedInput parsedInput = parser.parseInput(userInput);
+            nextCommand = parsedInput.getCommand().getCommand();
+            System.out.println("Detected command: " + nextCommand);
+
+            // execute command
+            switch (parsedInput.getCommand()) {
+                case ADD_EXAMPLETEXT:
+                    String generated = addExampleText();
+                    // TODO this text has to be saved somehow somewhere
+                    break;
+                default:
+                    break;
+            }
         }
+
+
         System.out.println("Thank you for using the Einhoerner Editor.");
+    }
+
+    private String addExampleText() {
+        String text = ExampleText.EXAMPLE_TEXT;
+        System.out.println(text);
+        return text;
+    }
+
+    private String getUserInput() {
+        Scanner s = new Scanner(System.in);
+        String input = s.nextLine();
+        return input;
     }
 
     /**
@@ -68,7 +88,7 @@ public class Processor {
     public void printHelpText() {
         System.out.println();
         System.out.print("You can choose from the following commands:" +
-        "add (with or without paragraph number), print, quit, help, searchAndReplace (followed by the old and the new word");
+                "add (with or without paragraph number), print, quit, help, searchAndReplace (followed by the old and the new word");
         System.out.println();
         System.out.println("For a manual in detail, please use the Wiki in the Github repository.");
         System.out.println();
