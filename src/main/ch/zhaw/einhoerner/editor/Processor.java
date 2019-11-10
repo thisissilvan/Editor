@@ -1,5 +1,7 @@
 package ch.zhaw.einhoerner.editor;
 
+import java.util.List;
+
 /**
  * The class Processor.
  *
@@ -10,24 +12,34 @@ package ch.zhaw.einhoerner.editor;
  */
 public class Processor {
 
+    private TextOutput textOutput = new TextOutput();
+    private Paragraphs paragraphs;
+    private List<Paragraphs> allParagraphs;
+
     /**
      * Constructor of the class Processor.
      */
     public Processor()
     {
-        //todo
+        //todo Empty yet
     }
 
-
+    /**
+     * Public method used by the main method to start the editor.
+     */
     public void startEditor()
     {
         startApplication();
-
     }
 
+    /**
+     * The private method startApplication prints out a welcome Text. While the user is not typing in the command
+     * quit, it is not stopping running.
+     */
     private void startApplication()
     {
         printWelcomeText();
+        System.out.print("> ");
 
         boolean quit = false;
         while (!quit) {
@@ -38,10 +50,9 @@ public class Processor {
     }
 
     /**
-     * Prints out a welcome messeage to the console.
+     * Creates a welcome message which is used from the method startApplication.
      */
-    public void printWelcomeText()
-    {
+    public void printWelcomeText() {
         System.out.println();
         System.out.println("Welcome to the Editor Application from the team Einhoerner");
         System.out.println("Type in " + Command.HELP + " at any time for a short manual.");
@@ -51,17 +62,16 @@ public class Processor {
     }
 
     /**
-     * Prints out a help messeage to the console.
+     * Creates a help message to give the user some advice to use the application.
+     * Further information and a manual on how to use the application is on the Wiki-Page of the Github repository
      */
-    public void printHelpText()
-    {
+    public void printHelpText() {
         System.out.println();
-        System.out.println("You can choose from the following commands:");
-        System.out.println("add (with or without paragraph number), print, quit, help, searchAndReplace (followed by the old and the new word");
-        System.out.print("For a manual in detail, please use the Wiki in the Github repository.");
+        System.out.print("You can choose from the following commands:" +
+        "add (with or without paragraph number), print, quit, help, searchAndReplace (followed by the old and the new word");
+        System.out.println();
+        System.out.println("For a manual in detail, please use the Wiki in the Github repository.");
         System.out.println();
     }
-
-
 }
 

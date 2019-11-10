@@ -11,7 +11,7 @@ package ch.zhaw.einhoerner.editor;
  *
  * If the command only exists one word, the second word is <null>.
  *
- * @author  Silvan Luethy
+ * @author  Silvan,
  * @version 2019_11_09
  */
 public enum Command {
