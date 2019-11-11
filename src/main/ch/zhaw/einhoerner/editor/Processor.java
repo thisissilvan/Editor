@@ -103,10 +103,10 @@ public class Processor {
     }
 
     private void add(int index, String text) {
-        if(index >= 0 && index < paragraphs.size())
-            paragraphs.add(index, text);
-        else
+        if(illegalIndex(index))
             throw new IllegalArgumentException ("No text to create a wordindex. Please add text.");
+        else
+            paragraphs.add(index, text);
         printWholeText();
     }
     private void add(String text) {
@@ -119,6 +119,15 @@ public class Processor {
             throw new IllegalArgumentException ("No text to create a wordindex. Please add text.");
         else
             paragraphs.remove(index);
+        printWholeText();
+    }
+    private void searchAndReplace(int index, String wordToReplace, String replacement) {
+        if(illegalIndex(index))
+            throw new IllegalArgumentException ("No text to create a wordindex. Please add text.");
+        else {
+            String searchedParagraph = paragraphs.get(index);
+            searchedParagraph = searchedParagraph.replace(wordToReplace, replacement);
+        }
         printWholeText();
     }
 
