@@ -1,10 +1,7 @@
 package ch.zhaw.einhoerner.editor;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-import static java.lang.System.lineSeparator;
 
 /**
  * The class Processor.
@@ -27,8 +24,8 @@ public class Processor {
      * Public method used by the main method to start the editor.
      */
     public void startApplication() {
-        printText(makeWelcomeText());
-        printText(makeHelpText());
+        printText(makeWelcomeMesseage());
+        printText(makeHelpMesseage());
         System.out.print("> ");
 
         String nextCommand = "";
@@ -53,8 +50,7 @@ public class Processor {
             }
         }
 
-
-        System.out.println("Thank you for using the Einhoerner Editor.");
+        System.out.println(makeQuitMesseage());
     }
 
     private String addExampleText() {
@@ -69,16 +65,20 @@ public class Processor {
         return input;
     }
 
-    public void printText(String comand)
+    /**
+     * Prints out a text to the console.
+     * @param text A text as String value
+     */
+    public void printText(String text)
     {
-        System.out.println(comand);
+        System.out.println(text);
     }
 
     /**
      * Creates a welcome message which is used from the method startApplication.
      */
 
-    public String makeWelcomeText() {
+    public String makeWelcomeMesseage() {
         return "Welcome to the Editor Application from the team Einhoerner, please use one of the " +
                 "following comands to proceed:";
     }
@@ -94,13 +94,18 @@ public class Processor {
      * Creates a help message to give the user some advice to use the application.
      * Further information and a manual on how to use the application is on the Wiki-Page of the Github repository
      */
-    public String makeHelpText()
+    public String makeHelpMesseage()
     {
         return "Type in " + Command.HELP + " at any time for a short manual.\n\n " +
                 "You can choose from the following commands:\n" +
                 "add (with or without paragraph number), print, quit, help, searchAndReplace" +
                 "(followed by the old and the new word \n\n" +
                 "For a manual in detail, please use the Wiki in the Github repository.";
+    }
+
+    public String makeQuitMesseage()
+    {
+        return "Thank you for using the Einhoerner Editor.";
     }
 
     /**

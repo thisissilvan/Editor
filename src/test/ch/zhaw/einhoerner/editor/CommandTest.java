@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CommandTest {
 
 
+
     @BeforeEach
     void setUp()
     {
@@ -17,6 +18,7 @@ class CommandTest {
     void tearDown()
     {
     }
+
 
     @Test
     public void testHelp()
