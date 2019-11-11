@@ -127,21 +127,13 @@ public class Processor {
         else {
             String searchedParagraph = paragraphs.get(index);
             searchedParagraph = searchedParagraph.replace(wordToReplace, replacement);
+            paragraphs.set(index, searchedParagraph);
         }
         printWholeText();
     }
 
     private Boolean illegalIndex(int index){
-        boolean illegal = true;
-        if(index <= 0  || index < paragraphs.size())
-            illegal = false;
-        else
-            illegal = true;
-        return illegal;
+        return (index < 0  || index >= paragraphs.size());
     }
-
-
-
-
 }
 
