@@ -101,6 +101,10 @@ public class Processor {
     public void add(String text) {
         //add text in the end of paragraph list
     }
+    public void delete(int index) {
+        //in list index deleten
+        //print();
+    }
 
 }
 
