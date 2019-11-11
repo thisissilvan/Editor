@@ -94,23 +94,23 @@ public class Processor {
         System.out.println();
     }
 
-    public void add(String text, int index) {
+    private void add(String text, int index) {
         //in map text an stelle index einfügen
         //print();
     }
-    public void add(String text) {
+    private void add(String text) {
         //add text in the end of paragraph list
     }
-    public void delete(int index) {
+    private void delete(int index) {
         //in list index deleten
         //print();
     }
     //we could need this method for other methods as counting and replacing
-    public void search(String word) {
+    private void search(String word) {
         //iterate through map until you find the searched word
 
     }
-    public void replace(String wordToReplace, String replacement) {
+    private void replace(String wordToReplace, String replacement) {
         //search(wordToReplace) in map and do
         //string.replace("wordToReplace", "replacement");
         //print();
