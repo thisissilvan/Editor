@@ -132,7 +132,23 @@ public class Processor {
      * @param width position at which a line break is added
      */
     public void formatParagraphWidth (int width){
-
+        for(int paragraphIndex = 0;paragraphIndex<paragraphs.size();paragraphIndex++) {
+            String text = paragraphs.get(paragraphIndex);
+            int anzahlZeilen = text.length() / width;
+            String platzhalter = "";
+            int seperatorPlace = width;
+            int beginningPlace = 0;
+            for (int zeilenIndex = 0; zeilenIndex < anzahlZeilen; zeilenIndex++) {
+                if (Character.isWhitespace(text.charAt(seperatorPlace))) {
+                    platzhalter = platzhalter + text.substring(beginningPlace, seperatorPlace) + System.lineSeparator();
+                    seperatorPlace += width + 1;
+                    beginningPlace += width + 1;
+                    System.out.println(platzhalter);
+                }
+            }
+            paragraphs.set(paragraphIndex, platzhalter);
+            System.out.println(text);
+        }
     }
 }
 
