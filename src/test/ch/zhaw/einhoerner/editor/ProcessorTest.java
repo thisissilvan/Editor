@@ -6,16 +6,17 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+import static java.lang.System.lineSeparator;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
 
 class ProcessorTest {
 
-    private String helpMesseage = "Type in " + Command.HELP + " at any time for a short manual.\n\n " +
-            "You can choose from the following commands:\n" +
+    private String helpMesseage = "Type in " + Command.HELP + " at any time for a short manual. " +
+            lineSeparator() + lineSeparator() + "You can choose from the following commands:" + lineSeparator() +
             "add (with or without paragraph number), print, quit, help, searchAndReplace" +
-            "(followed by the old and the new word \n\n" +
+            "(followed by the old and the new word" + lineSeparator() + lineSeparator() +
             "For a manual in detail, please use the Wiki in the Github repository.";
 
     private String welcomeMesseage = "Welcome to the Editor Application from the team Einhoerner, please use one of the " +
@@ -41,32 +42,32 @@ class ProcessorTest {
     public void printHelpMesseage()
     {
         processor.printText(helpMesseage);
-        assertNotEquals(wrongText + "\n", this.consoleContent.toString());
-        assertEquals(helpMesseage + "\n", this.consoleContent.toString());
+        assertNotEquals(wrongText + lineSeparator(), this.consoleContent.toString());
+        assertEquals(helpMesseage + lineSeparator(), this.consoleContent.toString());
     }
 
     @Test
     public void printWelcomeMesseage()
     {
         processor.printText(welcomeMesseage);
-        assertNotEquals(wrongText + "\n", this.consoleContent.toString());
-        assertEquals(welcomeMesseage + "\n", this.consoleContent.toString());
+        assertNotEquals(wrongText + lineSeparator(), this.consoleContent.toString());
+        assertEquals(welcomeMesseage + lineSeparator(), this.consoleContent.toString());
     }
 
     @Test
     public void printQuitMesseage()
     {
         processor.printText(quitMesseage);
-        assertNotEquals(wrongText + "\n", this.consoleContent.toString());
-        assertEquals(quitMesseage + "\n", this.consoleContent.toString());
+        assertNotEquals(wrongText + lineSeparator(), this.consoleContent.toString());
+        assertEquals(quitMesseage + lineSeparator(), this.consoleContent.toString());
     }
 
     @Test
     public void printNothing()
     {
         processor.printText(null);
-        assertNotEquals(wrongText + "\n", this.consoleContent.toString());
-        assertEquals(null + "\n", this.consoleContent.toString());
+        assertNotEquals(wrongText + lineSeparator(), this.consoleContent.toString());
+        assertEquals(null + lineSeparator(), this.consoleContent.toString());
     }
 
     @Test
