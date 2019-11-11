@@ -78,18 +78,18 @@ public class Processor {
      * Creates a welcome message which is used from the method startApplication.
      */
 
-    public String makeWelcomeText()
-    {
+    public String makeWelcomeText() {
         return "Welcome to the Editor Application from the team Einhoerner, please use one of the " +
                 "following comands to proceed:";
-      
+    }
+    /*
     private void printWholeText() {
         for(int i=0;i<paragraphs.size(); i++){
             System.out.println(i+"\t "+paragraphs.get(i));
             System.out.println();
         }
     }
-
+*/
     /**
      * Creates a help message to give the user some advice to use the application.
      * Further information and a manual on how to use the application is on the Wiki-Page of the Github repository
@@ -122,7 +122,7 @@ public class Processor {
         // TODO List<String> paragraphs;
         // TODO Dekyi
     }
-
+/*
     /**
      * With the "lineSeparator()", a new line can be detected on every System
      * (e.g. in Windows it would be \r\n, in MacOS \n)
@@ -133,6 +133,7 @@ public class Processor {
      * @param width position at which a line break is added
      * @return singleParagraph formatted paragraph
      */
+/*
     private String formatParagraphWidth (String paragraph, int width){
         List<String> paragraphList = new ArrayList<String>();
         paragraphList.addAll(Arrays.asList(paragraph.split("")));
@@ -149,5 +150,6 @@ public class Processor {
 
         return singleParagraph;
     }
+    */
 }
 

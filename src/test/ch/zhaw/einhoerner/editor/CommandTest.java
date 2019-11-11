@@ -46,7 +46,20 @@ class CommandTest {
         assertEquals(1, parameterCountAdd);
     }
 
-    
+    @Test
+    public void testExampletextCommand()
+    {
+        Command command = Command.ADD_EXAMPLETEXT;
+        String addExampletextCommand = command.ADD_EXAMPLETEXT.getCommand();
+        int parameterCountAddExampletext = Command.ADD_EXAMPLETEXT.getParameterCount();
 
+        assertNotNull(command);
+        assertNotEquals(Command.valueOf("UNKNOWN"), command);
+        assertEquals(Command.valueOf("ADD_EXAMPLETEXT"), command);
+        assertEquals("add exampletext", addExampletextCommand);
+        assertEquals(0, parameterCountAddExampletext);
+    }
+
+    
 
 }
