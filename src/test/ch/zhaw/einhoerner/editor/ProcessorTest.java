@@ -53,5 +53,13 @@ class ProcessorTest {
         assertEquals(welcomeMesseage + "\n", this.consoleContent.toString());
     }
 
+    @Test
+    public void printQuitMesseage()
+    {
+        processor.printText(quitMesseage);
+        assertNotEquals(wrongText + "\n", this.consoleContent.toString());
+        assertEquals(quitMesseage + "\n", this.consoleContent.toString());
+    }
+
     
 }
