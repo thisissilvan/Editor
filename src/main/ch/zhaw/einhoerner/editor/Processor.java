@@ -47,6 +47,12 @@ public class Processor {
                     String generated = addExampleText();
                     // TODO this text has to be saved somehow somewhere
                     break;
+                case PRINT:
+                    printUnformatted();
+                    break;
+                case PRINT_WIDTH:
+                    printFormatted(Integer.parseInt(parsedInput.getText()));
+                    break;
                 default:
                     break;
             }
@@ -81,7 +87,7 @@ public class Processor {
                 "following comands to proceed:";
     }
 
-    private void printWholeText() {
+    private void printWholeParagraphs() {
         for (int i = 0; i < paragraphs.size(); i++) {
             System.out.println(paragraphs.get(i));
             System.out.println();
@@ -102,12 +108,9 @@ public class Processor {
 
     /**
      * Print out an unformatted version of all the paragraphs
-     *
-     * @param paragraphs a List of all Paragraphs stored at the time of ececution
      */
-    public void printUnformatted(List<String> paragraphs) {
-        printWholeText();
-
+    public void printUnformatted() {
+        printWholeParagraphs();
     }
 
     /**
@@ -118,7 +121,7 @@ public class Processor {
 
     public void printFormatted(int width) {
         formatParagraphWidth(width);
-        printWholeText();
+        printWholeParagraphs();
     }
 
     /**
