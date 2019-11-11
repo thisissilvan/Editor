@@ -116,8 +116,18 @@ class CommandTest {
         assertEquals(0, parameterCountQuit);
     }
 
-    
+    @Test
+    public void testUnknown()
+    {
+        Command command = Command.UNKNOWN;
+        String unknownCommand = command.UNKNOWN.getCommand();
+        int parameterCountUnknown = command.UNKNOWN.getParameterCount();
 
-
+        assertNotNull(command);
+        assertNotEquals(Command.valueOf("ADD"), command);
+        assertEquals(Command.valueOf("UNKNOWN"), command);
+        assertEquals("?", unknownCommand);
+        assertEquals(0, parameterCountUnknown);
+    }
 
 }
