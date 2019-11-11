@@ -63,6 +63,15 @@ public class Parser {
         return result;
     }
 
+    /**
+     * This method scans the user's input for a command. The algorithm expects
+     * the input to start with a valid command. If no such command can be found,
+     * Command.UNKNOWN will be returned instead.
+     *
+     * @param input The user's input in which the command is to be found
+     * @return Command  The Command which was found in the user's input
+     *  or Command.UNKNOWN if no command could be found
+     */
     private Command extractCommand(String input) {
         if (input == null || input.isEmpty()) {
             return Command.UNKNOWN;
