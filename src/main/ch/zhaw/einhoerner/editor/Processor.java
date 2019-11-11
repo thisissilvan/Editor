@@ -93,5 +93,11 @@ public class Processor {
         System.out.println("For a manual in detail, please use the Wiki in the Github repository.");
         System.out.println();
     }
+
+    public void add(String text, int index) {
+        //in map text an stelle index einfügen
+        //print();
+    }
+
 }
 
