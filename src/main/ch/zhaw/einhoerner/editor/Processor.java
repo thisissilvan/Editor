@@ -3,6 +3,8 @@ package ch.zhaw.einhoerner.editor;
 import java.util.List;
 import java.util.Scanner;
 
+import static java.lang.System.lineSeparator;
+
 /**
  * The class Processor.
  * <p>
@@ -96,10 +98,10 @@ public class Processor {
      */
     public String makeHelpMesseage()
     {
-        return "Type in " + Command.HELP + " at any time for a short manual.\n\n " +
-                "You can choose from the following commands:\n" +
+        return "Type in " + Command.HELP + " at any time for a short manual. " +
+                lineSeparator() + lineSeparator() + "You can choose from the following commands:" + lineSeparator() +
                 "add (with or without paragraph number), print, quit, help, searchAndReplace" +
-                "(followed by the old and the new word \n\n" +
+                "(followed by the old and the new word" + lineSeparator() + lineSeparator() +
                 "For a manual in detail, please use the Wiki in the Github repository.";
     }
 
