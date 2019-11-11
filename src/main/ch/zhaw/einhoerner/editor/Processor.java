@@ -71,6 +71,15 @@ public class Processor {
     /**
      * Creates a welcome message which is used from the method startApplication.
      */
+    private void printWholeText() {
+        for(int i=0;i<paragraphs.size(); i++){
+            System.out.println(i+"\t "+paragraphs.get(i));
+            System.out.println();
+        }
+    }
+    /**
+     * Creates a welcome message which is used from the method startApplication.
+     */
     public void printWelcomeText() {
         System.out.println();
         System.out.println("Welcome to the Editor Application from the team Einhoerner");
