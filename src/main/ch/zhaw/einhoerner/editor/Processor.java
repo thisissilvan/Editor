@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class Processor {
 
     private TextOutput textOutput = new TextOutput();
-    private List<String> paragraphs= new ArrayList<>();
+    private List<String> paragraphs = new ArrayList<>();
     private Parser parser = new Parser();
 
     /**
@@ -102,27 +102,18 @@ public class Processor {
         System.out.println();
     }
 
-    private void add(String text, int index) {
-        //in map text an stelle index einfügen
-        //print();
+    private void add(int index, String text) {
+        if(index >= 0 && index < paragraphs.size())
+            paragraphs.add(index, text);
+        else
+            throw new IllegalArgumentException ("No text to create a wordindex. Please add text.");
+        printWholeText();
     }
     private void add(String text) {
         //add text in the end of paragraph list
+        paragraphs.add(text);
     }
-    private void delete(int index) {
-        //in list index deleten
-        //print();
-    }
-    //we could need this method for other methods as counting and replacing
-    private void search(String word) {
-        //iterate through map until you find the searched word
 
-    }
-    private void replace(String wordToReplace, String replacement) {
-        //search(wordToReplace) in map and do
-        //string.replace("wordToReplace", "replacement");
-        //print();
-    }
 
 }
 
