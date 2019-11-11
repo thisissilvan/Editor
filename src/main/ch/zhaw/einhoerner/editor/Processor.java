@@ -98,6 +98,9 @@ public class Processor {
         //in map text an stelle index einfügen
         //print();
     }
+    public void add(String text) {
+        //add text in the end of paragraph list
+    }
 
 }
 
