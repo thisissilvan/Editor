@@ -143,24 +143,20 @@ public class Processor {
                     platzhalter = platzhalter + text.substring(beginningPlace, seperatorPlace) + System.lineSeparator();
                     seperatorPlace += width + 1;
                     beginningPlace += width + 1;
-                    System.out.println(platzhalter);
                 } else if (!Character.isWhitespace(text.charAt(seperatorPlace - 1))) {
                     platzhalter = platzhalter + text.substring(beginningPlace, seperatorPlace) + "-" + System.lineSeparator();
                     seperatorPlace += width;
                     beginningPlace += width;
-                    System.out.println(platzhalter);
                 }else {
                     platzhalter = platzhalter + text.substring(beginningPlace, seperatorPlace) + System.lineSeparator();
                     seperatorPlace += width;
                     beginningPlace += width;
-                    System.out.println(platzhalter);
                 }
             }
             if (!(text.length() % width == 0)) {
                 platzhalter += text.substring(beginningPlace);
             }
             paragraphs.set(paragraphIndex, platzhalter);
-            System.out.println(text);
         }
     }
 }
