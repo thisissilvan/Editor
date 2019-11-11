@@ -51,7 +51,7 @@ public class Processor {
                     printUnformatted();
                     break;
                 case PRINT_WIDTH:
-                    printFormatted(Integer.parseInt(parsedInput.getText()));
+                    printFormatted(Integer.parseInt(parsedInput.getParameters().get(0)));
                     break;
                 default:
                     break;
