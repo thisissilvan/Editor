@@ -70,6 +70,32 @@ public class Processor {
         return input;
     }
 
+    public void printText(String comand)
+    {
+        System.out.println(comand);
+    }
+
+    /**
+     * Creates a welcome message which is used from the method startApplication.
+     */
+    public String makeWelcomeText()
+    {
+        return "Welcome to the Editor Application from the team Einhoerner, please use one of the " +
+                "following comands to proceed:";
+    }
+
+    /**
+     * Creates a help message to give the user some advice to use the application.
+     * Further information and a manual on how to use the application is on the Wiki-Page of the Github repository
+     */
+    public String makeHelpText()
+    {
+        return "Type in " + Command.HELP + " at any time for a short manual.\n\n " +
+                "You can choose from the following commands:\n" +
+                "add (with or without paragraph number), print, quit, help, searchAndReplace" +
+                "(followed by the old and the new word \n\n" +
+                "For a manual in detail, please use the Wiki in the Github repository.";
+    }
 
     /**
      * Print out an unformatted version of all the paragraphs
