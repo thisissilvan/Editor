@@ -105,6 +105,11 @@ public class Processor {
         //in list index deleten
         //print();
     }
+    //we could need this method for other methods as counting and replacing
+    public void search(String word) {
+        //iterate through map until you find the searched word
+
+    }
 
 }
 
