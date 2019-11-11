@@ -1,7 +1,6 @@
 package ch.zhaw.einhoerner.editor;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -78,10 +77,17 @@ public class Processor {
     /**
      * Creates a welcome message which is used from the method startApplication.
      */
+
     public String makeWelcomeText()
     {
         return "Welcome to the Editor Application from the team Einhoerner, please use one of the " +
                 "following comands to proceed:";
+      
+    private void printWholeText() {
+        for(int i=0;i<paragraphs.size(); i++){
+            System.out.println(i+"\t "+paragraphs.get(i));
+            System.out.println();
+        }
     }
 
     /**
