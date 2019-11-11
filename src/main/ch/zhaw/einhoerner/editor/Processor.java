@@ -1,5 +1,6 @@
 package ch.zhaw.einhoerner.editor;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,9 +13,7 @@ import java.util.Scanner;
 public class Processor {
 
     private TextOutput textOutput = new TextOutput();
-    private Paragraphs paragraphs;
-    private List<Paragraphs> allParagraphs;
-
+    private List<String> paragraphs= new ArrayList<>();
     private Parser parser = new Parser();
 
     /**
@@ -69,6 +68,15 @@ public class Processor {
         return input;
     }
 
+    /**
+     * Creates a welcome message which is used from the method startApplication.
+     */
+    private void printWholeText() {
+        for(int i=0;i<paragraphs.size(); i++){
+            System.out.println(i+"\t "+paragraphs.get(i));
+            System.out.println();
+        }
+    }
     /**
      * Creates a welcome message which is used from the method startApplication.
      */
