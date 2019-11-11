@@ -115,11 +115,20 @@ public class Processor {
     }
     private void delete(int index) {
         //in list index deleten
-        if(index <= 0 && index < paragraphs.size())
-            paragraphs.delete(index);
-        else
+        if(illegalIndex(index))
             throw new IllegalArgumentException ("No text to create a wordindex. Please add text.");
+        else
+            paragraphs.remove(index);
         printWholeText();
+    }
+
+    private Boolean illegalIndex(int index){
+        boolean illegal = true;
+        if(index <= 0  || index < paragraphs.size())
+            illegal = false;
+        else
+            illegal = true;
+        return illegal;
     }
 
 
