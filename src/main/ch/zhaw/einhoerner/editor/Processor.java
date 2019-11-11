@@ -15,7 +15,7 @@ import static java.lang.System.lineSeparator;
 public class Processor {
 
     private Parser parser = new Parser();
-
+    private List<String> paragraphs = new ArrayList<>();
     /**
      * Constructor of the class Processor.
      */
@@ -78,14 +78,14 @@ public class Processor {
      * Creates a welcome message which is used from the method startApplication.
      */
 
-    public String makeWelcomeText()
-    {
+    public String makeWelcomeText() {
         return "Welcome to the Editor Application from the team Einhoerner, please use one of the " +
                 "following comands to proceed:";
-      
+    }
+
     private void printWholeText() {
         for(int i=0;i<paragraphs.size(); i++){
-            System.out.println(i+"\t "+paragraphs.get(i));
+            System.out.println(paragraphs.get(i));
             System.out.println();
         }
     }
@@ -109,7 +109,7 @@ public class Processor {
      */
     public void printUnformatted(List<String> paragraphs)
     {
-        // get list TODO
+        printWholeText();
 
     }
 
@@ -119,8 +119,8 @@ public class Processor {
      */
 
     public void printFormatted(int width) {
-        // TODO List<String> paragraphs;
-        // TODO Dekyi
+        formatParagraphWidth(width);
+        printWholeText();
     }
 
     /**
@@ -129,25 +129,23 @@ public class Processor {
      *
      * This method returns a single paragraph with a line break (lineSeparator()) at the given width.
      *
-     * @param paragraph paragraph to be formatted
      * @param width position at which a line break is added
-     * @return singleParagraph formatted paragraph
      */
-    private String formatParagraphWidth (String paragraph, int width){
-        List<String> paragraphList = new ArrayList<String>();
-        paragraphList.addAll(Arrays.asList(paragraph.split("")));
+    private void formatParagraphWidth (int width){
+        for(String text : paragraphs){
+            int anzahlZeilen= text.length()/width;
+            String platzhalter="";
+            int seperatorPlace=width+1;
+            for(int index = 0; index<=anzahlZeilen; index++){
+                platzhalter = platzhalter + text.substring(index*width, seperatorPlace) + System.lineSeparator();
+                seperatorPlace+=width;
 
-        String singleParagraph = "";
-        width++;
-
-        for (int i = 0; i < paragraphList.size(); i++) {
-            if (i % width == 0) {
-                paragraphList.add(i, lineSeparator());
             }
-            singleParagraph += paragraphList.get(i);
+            if(!(text.length()%width==0)){
+                platzhalter+=text.substring(anzahlZeilen);
+            }
+            text=platzhalter;
         }
-
-        return singleParagraph;
     }
 }
 
