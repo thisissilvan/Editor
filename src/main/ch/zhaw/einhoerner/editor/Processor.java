@@ -113,6 +113,15 @@ public class Processor {
         //add text in the end of paragraph list
         paragraphs.add(text);
     }
+    private void delete(int index) {
+        //in list index deleten
+        if(index <= 0 && index < paragraphs.size())
+            paragraphs.delete(index);
+        else
+            throw new IllegalArgumentException ("No text to create a wordindex. Please add text.");
+        printWholeText();
+    }
+
 
 
 
