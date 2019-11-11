@@ -60,6 +60,19 @@ class CommandTest {
         assertEquals(0, parameterCountAddExampletext);
     }
 
-    
+    @Test
+    public void testPrintCommand()
+    {
+        Command command = Command.PRINT;
+        String printCommand = command.PRINT.getCommand();
+        int parameterCountPrint = command.PRINT.getParameterCount();
 
+        assertNotNull(command);
+        assertNotEquals(Command.valueOf("UNKNOWN"), command);
+        assertEquals(Command.valueOf("PRINT"), command);
+        assertEquals("print", printCommand);
+        assertEquals(0, parameterCountPrint);
+    }
+
+    
 }
