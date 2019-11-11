@@ -110,6 +110,11 @@ public class Processor {
         //iterate through map until you find the searched word
 
     }
+    public void replace(String wordToReplace, String replacement) {
+        //search(wordToReplace) in map and do
+        //string.replace("wordToReplace", "replacement");
+        //print();
+    }
 
 }
 
