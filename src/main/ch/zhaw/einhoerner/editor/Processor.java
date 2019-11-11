@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static java.lang.System.lineSeparator;
-
 /**
  * The class Processor.
  * <p>
@@ -16,6 +14,7 @@ public class Processor {
 
     private Parser parser = new Parser();
     private List<String> paragraphs = new ArrayList<>();
+
     /**
      * Constructor of the class Processor.
      */
@@ -69,8 +68,7 @@ public class Processor {
         return input;
     }
 
-    public void printText(String comand)
-    {
+    public void printText(String comand) {
         System.out.println(comand);
     }
 
@@ -84,7 +82,7 @@ public class Processor {
     }
 
     private void printWholeText() {
-        for(int i=0;i<paragraphs.size(); i++){
+        for (int i = 0; i < paragraphs.size(); i++) {
             System.out.println(paragraphs.get(i));
             System.out.println();
         }
@@ -94,8 +92,7 @@ public class Processor {
      * Creates a help message to give the user some advice to use the application.
      * Further information and a manual on how to use the application is on the Wiki-Page of the Github repository
      */
-    public String makeHelpText()
-    {
+    public String makeHelpText() {
         return "Type in " + Command.HELP + " at any time for a short manual.\n\n " +
                 "You can choose from the following commands:\n" +
                 "add (with or without paragraph number), print, quit, help, searchAndReplace" +
@@ -105,16 +102,17 @@ public class Processor {
 
     /**
      * Print out an unformatted version of all the paragraphs
+     *
      * @param paragraphs a List of all Paragraphs stored at the time of ececution
      */
-    public void printUnformatted(List<String> paragraphs)
-    {
+    public void printUnformatted(List<String> paragraphs) {
         printWholeText();
 
     }
 
     /**
      * Print out a formatted version of all the paragraphs
+     *
      * @param width - The maximum width of these paragraphs
      */
 
@@ -126,13 +124,13 @@ public class Processor {
     /**
      * With the "lineSeparator()", a new line can be detected on every System
      * (e.g. in Windows it would be \r\n, in MacOS \n)
-     *
+     * <p>
      * This method returns a single paragraph with a line break (lineSeparator()) at the given width.
      *
      * @param width position at which a line break is added
      */
-    public void formatParagraphWidth (int width){
-        for(int paragraphIndex = 0;paragraphIndex<paragraphs.size();paragraphIndex++) {
+    public void formatParagraphWidth(int width) {
+        for (int paragraphIndex = 0; paragraphIndex < paragraphs.size(); paragraphIndex++) {
             String text = paragraphs.get(paragraphIndex);
             int anzahlZeilen = text.length() / width;
             String platzhalter = "";
@@ -147,7 +145,7 @@ public class Processor {
                     platzhalter = platzhalter + text.substring(beginningPlace, seperatorPlace) + "-" + System.lineSeparator();
                     seperatorPlace += width;
                     beginningPlace += width;
-                }else {
+                } else {
                     platzhalter = platzhalter + text.substring(beginningPlace, seperatorPlace) + System.lineSeparator();
                     seperatorPlace += width;
                     beginningPlace += width;
