@@ -144,6 +144,11 @@ public class Processor {
                     seperatorPlace += width + 1;
                     beginningPlace += width + 1;
                     System.out.println(platzhalter);
+                } else if (!Character.isWhitespace(text.charAt(seperatorPlace - 1))) {
+                    platzhalter = platzhalter + text.substring(beginningPlace, seperatorPlace) + "-" + System.lineSeparator();
+                    seperatorPlace += width;
+                    beginningPlace += width;
+                    System.out.println(platzhalter);
                 }else {
                     platzhalter = platzhalter + text.substring(beginningPlace, seperatorPlace) + System.lineSeparator();
                     seperatorPlace += width;
