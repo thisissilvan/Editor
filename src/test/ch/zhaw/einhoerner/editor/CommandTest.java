@@ -74,5 +74,20 @@ class CommandTest {
         assertEquals(0, parameterCountPrint);
     }
 
-    
+    @Test
+    public void testSearchAndReplaceCommand()
+    {
+        Command command = Command.SEARCH_AND_REPLACE;
+        String searchAndReplaceCommand = command.SEARCH_AND_REPLACE.getCommand();
+        int parameterCountSearchAndReplace = command.SEARCH_AND_REPLACE.getParameterCount();
+
+        assertNotNull(command);
+        assertNotEquals(Command.valueOf("UNKNOWN"), command);
+        assertEquals(Command.valueOf("SEARCH_AND_REPLACE"), command);
+        assertEquals("search and replace", searchAndReplaceCommand);
+        assertEquals(2, parameterCountSearchAndReplace);
+    }
+
+   
+
 }
