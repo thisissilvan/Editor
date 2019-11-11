@@ -129,32 +129,30 @@ public class Processor {
      *
      * @param width position at which a line break is added
      */
-    public void formatParagraphWidth(int width) {
+    public void formatParagraphWidth (int width){
         for (int paragraphIndex = 0; paragraphIndex < paragraphs.size(); paragraphIndex++) {
             String text = paragraphs.get(paragraphIndex);
             int anzahlZeilen = text.length() / width;
-            String platzhalter = "";
+            StringBuilder platzhalter = new StringBuilder();
             int seperatorPlace = width;
             int beginningPlace = 0;
             for (int zeilenIndex = 0; zeilenIndex < anzahlZeilen; zeilenIndex++) {
                 if (Character.isWhitespace(text.charAt(seperatorPlace))) {
-                    platzhalter = platzhalter + text.substring(beginningPlace, seperatorPlace) + System.lineSeparator();
+                    platzhalter.append(text.substring(beginningPlace, seperatorPlace)).append(System.lineSeparator());
                     seperatorPlace += width + 1;
                     beginningPlace += width + 1;
                 } else if (!Character.isWhitespace(text.charAt(seperatorPlace - 1))) {
-                    platzhalter = platzhalter + text.substring(beginningPlace, seperatorPlace) + "-" + System.lineSeparator();
+                    platzhalter.append(text.substring(beginningPlace, seperatorPlace)).append("-").append(System.lineSeparator());
                     seperatorPlace += width;
                     beginningPlace += width;
                 } else {
-                    platzhalter = platzhalter + text.substring(beginningPlace, seperatorPlace) + System.lineSeparator();
+                    platzhalter.append(text.substring(beginningPlace, seperatorPlace)).append(System.lineSeparator());
                     seperatorPlace += width;
                     beginningPlace += width;
                 }
             }
-            if (!(text.length() % width == 0)) {
-                platzhalter += text.substring(beginningPlace);
-            }
-            paragraphs.set(paragraphIndex, platzhalter);
+            if (!(text.length() % width == 0)) platzhalter.append(text.substring(beginningPlace));
+            paragraphs.set(paragraphIndex, platzhalter.toString());
         }
     }
 }
