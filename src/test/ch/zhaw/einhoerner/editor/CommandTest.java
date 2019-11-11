@@ -19,7 +19,7 @@ class CommandTest {
     }
 
     @Test
-    public void testHelpCommand()
+    public void testHelp()
     {
         Command command = Command.HELP;
         String helpCommand = command.HELP.getCommand();
@@ -33,7 +33,7 @@ class CommandTest {
     }
 
     @Test
-    public void testAddCommand()
+    public void testAdd()
     {
         Command command = Command.ADD;
         String addCommand = command.ADD.getCommand();
@@ -47,7 +47,7 @@ class CommandTest {
     }
 
     @Test
-    public void testExampletextCommand()
+    public void testExampletext()
     {
         Command command = Command.ADD_EXAMPLETEXT;
         String addExampletextCommand = command.ADD_EXAMPLETEXT.getCommand();
@@ -61,7 +61,7 @@ class CommandTest {
     }
 
     @Test
-    public void testPrintCommand()
+    public void testPrint()
     {
         Command command = Command.PRINT;
         String printCommand = command.PRINT.getCommand();
@@ -75,7 +75,7 @@ class CommandTest {
     }
 
     @Test
-    public void testSearchAndReplaceCommand()
+    public void testSearchAndReplace()
     {
         Command command = Command.SEARCH_AND_REPLACE;
         String searchAndReplaceCommand = command.SEARCH_AND_REPLACE.getCommand();
@@ -88,6 +88,36 @@ class CommandTest {
         assertEquals(2, parameterCountSearchAndReplace);
     }
 
-   
+    @Test
+    public void testPrintWidth()
+    {
+        Command command = Command.PRINT_WIDTH;
+        String printWidthCommand = command.PRINT_WIDTH.getCommand();
+        int parameterCountPrintWidth = command.PRINT_WIDTH.getParameterCount();
+
+        assertNotNull(command);
+        assertNotEquals(Command.valueOf("UNKNOWN"), command);
+        assertEquals(Command.valueOf("PRINT_WIDTH"), command);
+        assertEquals("print width", printWidthCommand);
+        assertEquals(1, parameterCountPrintWidth);
+    }
+
+    @Test
+    public void testQuit()
+    {
+        Command command = Command.QUIT;
+        String quitCommand = command.QUIT.getCommand();
+        int parameterCountQuit = command.QUIT.getParameterCount();
+
+        assertNotNull(command);
+        assertNotEquals(Command.valueOf("UNKNOWN"), command);
+        assertEquals(Command.valueOf("QUIT"), command);
+        assertEquals("quit", quitCommand);
+        assertEquals(0, parameterCountQuit);
+    }
+
+    
+
+
 
 }
