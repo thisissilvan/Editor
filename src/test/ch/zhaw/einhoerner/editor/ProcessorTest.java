@@ -69,5 +69,30 @@ class ProcessorTest {
         assertEquals(null + "\n", this.consoleContent.toString());
     }
 
-   
+    @Test
+    public void makeWelcomeMesseage()
+    {
+        String welcomeText = processor.makeWelcomeMesseage();
+
+        assertEquals(welcomeMesseage, welcomeText);
+        assertNotEquals(welcomeMesseage, wrongText);
+    }
+
+    @Test
+    public void makeHelpMesseage()
+    {
+        String helpText = processor.makeHelpMesseage();
+
+        assertEquals(helpMesseage, helpText);
+        assertNotEquals(helpMesseage, wrongText);
+    }
+
+    @Test
+    public void makeQuitMesseage()
+    {
+        String quitText = processor.makeQuitMesseage();
+
+        assertEquals(quitMesseage, quitText);
+        assertNotEquals(quitMesseage, wrongText);
+    }
 }
