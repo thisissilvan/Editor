@@ -156,6 +156,9 @@ public class Processor {
                     System.out.println(platzhalter);
                 }
             }
+            if (!(text.length() % width == 0)) {
+                platzhalter += text.substring(beginningPlace);
+            }
             paragraphs.set(paragraphIndex, platzhalter);
             System.out.println(text);
         }
