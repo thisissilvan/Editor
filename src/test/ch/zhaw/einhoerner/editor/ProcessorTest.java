@@ -10,12 +10,5 @@ import java.util.List;
 
 class ProcessorTest {
 
-    @Test
-    public void testPrintCommand() {
-        String input = "print something something example";
-        Command actual = new Parser().parseInput(input).getCommand();
-        Command expected = Command.PRINT;
 
-        assertThat("expected command was print", actual, is(expected));
-    }
 }
