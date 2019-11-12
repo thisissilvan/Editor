@@ -1,5 +1,7 @@
+
 package ch.zhaw.einhoerner.editor;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -14,7 +16,7 @@ import static java.lang.System.lineSeparator;
 public class Processor {
 
     private Parser parser = new Parser();
-
+    private List<String> paragraphs = new ArrayList<>();
     /**
      * Constructor of the class Processor.
      */
@@ -46,6 +48,12 @@ public class Processor {
                 case ADD_EXAMPLETEXT:
                     String generated = addExampleText();
                     // TODO this text has to be saved somehow somewhere
+                    break;
+                case PRINT:
+                    printUnformatted();
+                    break;
+                case PRINT_WIDTH:
+                    printFormatted(Integer.parseInt(parsedInput.getParameters().get(0)));
                     break;
                 default:
                     break;
@@ -84,14 +92,14 @@ public class Processor {
         return "Welcome to the Editor Application from the team Einhoerner, please use one of the " +
                 "following comands to proceed:";
     }
-    /*
-    private void printWholeText() {
-        for(int i=0;i<paragraphs.size(); i++){
-            System.out.println(i+"\t "+paragraphs.get(i));
+
+    private void printWholeParagraphs() {
+        for (int i = 0; i < paragraphs.size(); i++) {
+            System.out.println(paragraphs.get(i));
             System.out.println();
         }
     }
-*/
+
     /**
      * Creates a help message to give the user some advice to use the application.
      * Further information and a manual on how to use the application is on the Wiki-Page of the Github repository
@@ -112,13 +120,11 @@ public class Processor {
 
     /**
      * Print out an unformatted version of all the paragraphs
-     * @param paragraphs a List of all Paragraphs stored at the time of ececution
      */
-    public void printUnformatted(List<String> paragraphs)
-    {
-        // get list TODO
-
+    public void printUnformatted() {
+        printWholeParagraphs();
     }
+
 
     /**
      * Print out a formatted version of all the paragraphs
@@ -126,37 +132,50 @@ public class Processor {
      */
 
     public void printFormatted(int width) {
-        // TODO List<String> paragraphs;
-        // TODO Dekyi
+        formatParagraphWidth(width);
+        printWholeParagraphs();
     }
-/*
+
     /**
      * With the "lineSeparator()", a new line can be detected on every System
      * (e.g. in Windows it would be \r\n, in MacOS \n)
-     *
+     * <p>
      * This method returns a single paragraph with a line break (lineSeparator()) at the given width.
      *
-     * @param paragraph paragraph to be formatted
      * @param width position at which a line break is added
-     * @return singleParagraph formatted paragraph
      */
-/*
-    private String formatParagraphWidth (String paragraph, int width){
-        List<String> paragraphList = new ArrayList<String>();
-        paragraphList.addAll(Arrays.asList(paragraph.split("")));
-
-        String singleParagraph = "";
-        width++;
-
-        for (int i = 0; i < paragraphList.size(); i++) {
-            if (i % width == 0) {
-                paragraphList.add(i, lineSeparator());
+    public void formatParagraphWidth (int width)throws IllegalArgumentException{
+        if (width <=0) {
+            throw new IllegalArgumentException ("Please enter a positive number.");
+        }else{
+            for (int paragraphIndex = 0; paragraphIndex < paragraphs.size(); paragraphIndex++) {
+                String text = paragraphs.get(paragraphIndex);
+                if (width>=text.length()) {
+                    throw new IllegalArgumentException ("Please enter a number lower than "+text.length()+".");}
+                {
+                    int anzahlZeilen = text.length() / width;
+                    StringBuilder platzhalter = new StringBuilder();
+                    int seperatorPlace = width;
+                    int beginningPlace = 0;
+                    for (int zeilenIndex = 0; zeilenIndex < anzahlZeilen; zeilenIndex++) {
+                        if (Character.isWhitespace(text.charAt(seperatorPlace))) {
+                            platzhalter.append(text.substring(beginningPlace, seperatorPlace)).append(System.lineSeparator());
+                            seperatorPlace += width + 1;
+                            beginningPlace += width + 1;
+                        } else if (!Character.isWhitespace(text.charAt(seperatorPlace - 1))) {
+                            platzhalter.append(text.substring(beginningPlace, seperatorPlace)).append("-").append(System.lineSeparator());
+                            seperatorPlace += width;
+                            beginningPlace += width;
+                        } else {
+                            platzhalter.append(text.substring(beginningPlace, seperatorPlace)).append(System.lineSeparator());
+                            seperatorPlace += width;
+                            beginningPlace += width;
+                        }
+                    }
+                    if (!(text.length() % width == 0)) platzhalter.append(text.substring(beginningPlace));
+                    paragraphs.set(paragraphIndex, platzhalter.toString());
+                }
             }
-            singleParagraph += paragraphList.get(i);
         }
-
-        return singleParagraph;
     }
-    */
 }
-
