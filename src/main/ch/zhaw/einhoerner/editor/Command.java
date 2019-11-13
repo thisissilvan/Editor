@@ -16,6 +16,12 @@ package ch.zhaw.einhoerner.editor;
  */
 public enum Command {
     ADD_EXAMPLETEXT("add exampletext", 0),
+    ADD_INDEX("add index", 2),
+    ADD("add", 1),
+    DELETE("delete", 1),
+    PRINT_WIDTH("print width", 1),
+    PRINT("print", 0),
+    SEARCH_AND_REPLACE("search and replace", 3),
     ADD_INDEX("add at index", 2),
     ADD("add", 1),
     PRINT_WIDTH("print width", 1),

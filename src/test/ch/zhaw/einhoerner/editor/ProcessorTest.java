@@ -32,8 +32,7 @@ class ProcessorTest {
      * this.
      */
     @BeforeEach
-    public void setUp()
-    {
+    public void setUp() {
         processor = new Processor();
         System.setOut(new PrintStream(this.consoleContent));
     }
@@ -42,8 +41,7 @@ class ProcessorTest {
      * Print the help messeage to the cosole and test the actual outcome.
      */
     @Test
-    public void printHelpMesseage()
-    {
+    public void printHelpMesseage() {
         processor.printText(helpMesseage);
         assertNotEquals(wrongText + lineSeparator(), this.consoleContent.toString());
         assertEquals(helpMesseage + lineSeparator(), this.consoleContent.toString());
@@ -53,8 +51,7 @@ class ProcessorTest {
      * Print the welcome messeage to the cosole and test the actual outcome.
      */
     @Test
-    public void printWelcomeMesseage()
-    {
+    public void printWelcomeMesseage() {
         processor.printText(welcomeMesseage);
         assertNotEquals(wrongText + lineSeparator(), this.consoleContent.toString());
         assertEquals(welcomeMesseage + lineSeparator(), this.consoleContent.toString());
@@ -64,8 +61,7 @@ class ProcessorTest {
      * Print the quit messeage to the cosole and test the actual outcome.
      */
     @Test
-    public void printQuitMesseage()
-    {
+    public void printQuitMesseage() {
         processor.printText(quitMesseage);
         assertNotEquals(wrongText + lineSeparator(), this.consoleContent.toString());
         assertEquals(quitMesseage + lineSeparator(), this.consoleContent.toString());
@@ -75,18 +71,20 @@ class ProcessorTest {
      * Prints an empty String to the cosole and test the actual outcome.
      */
     @Test
+
     public void printNothing()
     {
         processor.printText("");
+
         assertNotEquals(wrongText + lineSeparator(), this.consoleContent.toString());
         assertEquals("" + lineSeparator(), this.consoleContent.toString());
     }
 
     @Test
+
     public void makeWelcomeMesseage()
     {
         String welcomeText = processor.getWelcomeMesseage();
-
         assertEquals(welcomeMesseage, welcomeText);
         assertNotEquals(welcomeMesseage, wrongText);
     }
@@ -95,7 +93,6 @@ class ProcessorTest {
     public void makeHelpMesseage()
     {
         String helpText = processor.getHelpMesseage();
-
         assertEquals(helpMesseage, helpText);
         assertNotEquals(helpMesseage, wrongText);
     }
@@ -104,8 +101,13 @@ class ProcessorTest {
     public void makeQuitMesseage()
     {
         String quitText = processor.getQuitMesseage();
-
         assertEquals(quitMesseage, quitText);
         assertNotEquals(quitMesseage, wrongText);
+    }
+
+    @Test
+    void addTextWithIndex() {
+       // ParsedInput parsedInput = new ParsedInput("Hallo Tomate", "add", "2");
+
     }
 }
