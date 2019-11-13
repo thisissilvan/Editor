@@ -72,7 +72,7 @@ class ParserTest {
     void testExtractionAdd() {
         String input = "add 1 something something example";
         String actual = new Parser().parseInput(input).getText();
-        String expected = "something something example";
+        String expected = "1 something something example";
 
         assertThat("unexpected input", actual, is(expected));
     }

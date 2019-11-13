@@ -58,7 +58,7 @@ class CommandTest {
         assertNotNull(command);
         assertNotEquals(Command.valueOf("UNKNOWN"), command);
         assertEquals(Command.valueOf("ADD_EXAMPLETEXT"), command);
-        assertEquals("add_exampletext", addExampletextCommand);
+        assertEquals("add exampletext", addExampletextCommand);
         assertEquals(0, parameterCountAddExampletext);
     }
 
@@ -86,8 +86,8 @@ class CommandTest {
         assertNotNull(command);
         assertNotEquals(Command.valueOf("UNKNOWN"), command);
         assertEquals(Command.valueOf("SEARCH_AND_REPLACE"), command);
-        assertEquals("search_and_replace", searchAndReplaceCommand);
-        assertEquals(2, parameterCountSearchAndReplace);
+        assertEquals("search and replace", searchAndReplaceCommand);
+        assertEquals(3, parameterCountSearchAndReplace);
     }
 
     @Test
@@ -100,7 +100,7 @@ class CommandTest {
         assertNotNull(command);
         assertNotEquals(Command.valueOf("UNKNOWN"), command);
         assertEquals(Command.valueOf("PRINT_WIDTH"), command);
-        assertEquals("print_width", printWidthCommand);
+        assertEquals("print width", printWidthCommand);
         assertEquals(1, parameterCountPrintWidth);
     }
 
