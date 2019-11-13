@@ -71,7 +71,7 @@ public class Processor {
                 case QUIT:
                     getQuitMesseage();
                     break;
-                case UNKNOWN;
+                case UNKNOWN:
                     break;
                 default:
                     break;
@@ -87,8 +87,7 @@ public class Processor {
     }
 
     private void addExampleText() {
-        ExampleText exampletext = new ExampleText();
-        List<String> text = detectNewParagraphs(exampletext.getExampleText());
+        List<String> text = detectNewParagraphs(ExampleText.EXAMPLE_TEXT);
         for (String line : text)
             add(line);
     }
@@ -202,14 +201,14 @@ public class Processor {
      * @return
      */
     public List<String> detectNewParagraphs(String text) {
-        List<String> absatz = new ArrayList<>();
+        List<String> paragraph = new ArrayList<>();
         String[] lines = text.split(System.lineSeparator());
         for (String line : lines) {
             if (!line.isEmpty()) {
-                absatz.add(line);
+                paragraph.add(line);
             }
 
-        } return absatz;
+        } return paragraph;
     }
 
 
