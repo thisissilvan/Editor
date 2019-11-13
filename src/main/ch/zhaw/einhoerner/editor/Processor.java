@@ -50,7 +50,7 @@ public class Processor {
                 case ADD_INDEX:
                     add(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getParameters().get(1));
                 case ADD:
-                    add(parsedInput.getParameters().get(1));
+                    add(parsedInput.getParameters().get(0));
                     break;
                 case DELETE:
                     delete(Integer.parseInt(parsedInput.getParameters().get(0)));
@@ -75,8 +75,6 @@ public class Processor {
                     break;
                 default:
                     break;
-                case ADD:
-                    add(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getParameters().get(1));
             }
         }
 
