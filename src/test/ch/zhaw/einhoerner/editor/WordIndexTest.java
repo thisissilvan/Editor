@@ -36,4 +36,13 @@ class WordIndexTest {    private List<String> paragraphs = new ArrayList<>();
         assertEquals("0", wordIndex.getPlace("die"));
     }
 
+    @Test
+    public void occurrenceOfThreeDifferentParagraphs() {
+        paragraphs.add("die");
+        paragraphs.add("die");
+        paragraphs.add("die");
+        WordIndex wordIndex = new WordIndex(paragraphs);
+        assertEquals("3", wordIndex.getAmount("die"));
+        assertEquals("0, 1, 2", wordIndex.getPlace("die"));
+    }
 }
