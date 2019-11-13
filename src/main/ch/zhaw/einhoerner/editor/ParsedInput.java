@@ -19,7 +19,7 @@ import java.util.List;
  *          - an empty String for the text body
  *
  *
- * @author  Ala Hadi, Silvan Luethy
+ * @author  Ala, Silvan
  * @version 2019_11_09
  */
 
@@ -41,20 +41,27 @@ public class ParsedInput {
     }
 
     /**
-     * @return
+     * Returns the command.
+     * @return The command from the enum class command.
      */
     public Command getCommand()
     {
         return command;
     }
+
     /**
-     * @return
+     * Returns the parameters saved in the command.
+     * @return the parameters saved in the given command.
      */
     public List<String> getParameters()
     {
         return parameters;
     }
 
+    /**
+     * Returns the text saved in the given command.
+     * @return the text from the given command
+     */
     public String getText() {
         return text;
     }
