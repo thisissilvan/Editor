@@ -71,8 +71,7 @@ public class Processor {
                 case QUIT:
                     getQuitMesseage();
                     break;
-                case UNKNOWN:
-                    //todo
+                case UNKNOWN;
                     break;
                 default:
                     break;
@@ -148,23 +147,23 @@ public class Processor {
         return "Thank you for using the Einhoerner Editor.";
     }
 
-    void add(int index, String text) {
+    private void add(int index, String text) {
         if(illegalIndex(index))
             System.out.println("Invalid Index.");
         else
             paragraphs.add(index, text);
     }
-    void add(String text) {
+    private void add(String text) {
         //add text in the end of paragraph list
         paragraphs.add(text);
     }
-    void delete(int index) {
+    private void delete(int index) {
         if(illegalIndex(index))
             System.out.println("Invalid Index.");
         else
             paragraphs.remove(index);
     }
-    void searchAndReplace(int index, String wordToReplace, String replacement) {
+    private void searchAndReplace(int index, String wordToReplace, String replacement) {
         if(illegalIndex(index))
             System.out.println("Invalid Index.");
         else {
