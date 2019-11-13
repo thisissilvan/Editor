@@ -8,6 +8,8 @@ import java.io.PrintStream;
 
 import static java.lang.System.lineSeparator;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 
 
@@ -94,5 +96,16 @@ class ProcessorTest {
 
         assertEquals(quitMesseage, quitText);
         assertNotEquals(quitMesseage, wrongText);
+    }
+
+    @Test
+    void testExampleText() {
+        Processor p = new Processor();
+        String input = "add_exampletext";
+
+        ParsedInput parsedInput = new Parser().parseInput(input);
+        assertThat("Processor should not have any paragraphs", 0, is(p.getParagraphs().size()));
+        p.executeCommand(parsedInput);
+        assertThat("Processor should not have any paragraphs", 5, is(p.getParagraphs().size()));
     }
 }

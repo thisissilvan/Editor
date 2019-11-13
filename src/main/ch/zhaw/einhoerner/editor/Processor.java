@@ -42,42 +42,49 @@ public class Processor {
             System.out.println("Detected command: " + nextCommand);
 
             // execute command
-            switch (parsedInput.getCommand()) {
-                case ADD_EXAMPLETEXT:
-                    addExampleText();
-                    // TODO this text has to be saved somehow somewhere
-                    break;
-                case ADD_INDEX:
-                    add(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getText());
-                    break;
-                case ADD:
-                    add(parsedInput.getText());
-                    break;
-                case DELETE:
-                    delete(Integer.parseInt(parsedInput.getParameters().get(0)));
-                    break;
-                case PRINT:
-                    printUnformatted();
-                    break;
-                case SEARCH_AND_REPLACE:
-                    searchAndReplace(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getText(), parsedInput.getText());
-                    break;
-                case PRINT_WIDTH:
-                    printFormatted(Integer.parseInt(parsedInput.getParameters().get(0)));
-                    break;
-                case HELP:
-                    getHelpMesseage();
-                    break;
-                case QUIT:
-                    getQuitMesseage();
-                    break;
-                case UNKNOWN:
-                    break;
-                default:
-                    break;
-            }
+            executeCommand(parsedInput);
         }
         System.out.println(getQuitMesseage());
+    }
+
+    void executeCommand(ParsedInput parsedInput) {
+        switch (parsedInput.getCommand()) {
+            case ADD_EXAMPLETEXT:
+                addExampleText();
+                break;
+            case ADD_INDEX:
+                add(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getText());
+                break;
+            case ADD:
+                add(parsedInput.getText());
+                break;
+            case DELETE:
+                delete(Integer.parseInt(parsedInput.getParameters().get(0)));
+                break;
+            case PRINT:
+                printUnformatted();
+                break;
+            case SEARCH_AND_REPLACE:
+                searchAndReplace(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getText(), parsedInput.getText());
+                break;
+            case PRINT_WIDTH:
+                printFormatted(Integer.parseInt(parsedInput.getParameters().get(0)));
+                break;
+            case HELP:
+                getHelpMesseage();
+                break;
+            case QUIT:
+                getQuitMesseage();
+                break;
+            case UNKNOWN:
+                break;
+            default:
+                break;
+        }
+    }
+
+    List<String> getParagraphs() {
+        return this.paragraphs;
     }
 
     private String getUserInput() {
