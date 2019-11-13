@@ -106,6 +106,7 @@ class ProcessorTest {
         ParsedInput parsedInput = new Parser().parseInput(input);
         assertThat("Processor should not have any paragraphs", 0, is(p.getParagraphs().size()));
         p.executeCommand(parsedInput);
-        assertThat("Processor should not have any paragraphs", 5, is(p.getParagraphs().size()));
+        assertThat("Processor should have 5 paragraphs after adding the example text.", 5, is(p.getParagraphs().size()));
     }
+
 }
