@@ -122,7 +122,13 @@ class ProcessorTest {
         processor.add("joking1");
         assertEquals("joking1", processor.get(1));
     }
-
+    @Test
+    public void deleteTest(){
+        processor.add("0");
+        processor.add("1");
+        processor.delete(0);
+        assertEquals("1", processor.get(0));
+    }
 
 
 
