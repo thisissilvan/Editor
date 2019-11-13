@@ -145,7 +145,7 @@ public class Processor {
             paragraphs.remove(index);
         printUnformatted();
     }
-    private void searchAndReplace(int index, String wordToReplace, String replacement) {
+    public void searchAndReplace(int index, String wordToReplace, String replacement) {
         if(illegalIndex(index))
             throw new IllegalArgumentException ("No text to create a wordindex. Please add text.");
         else {
