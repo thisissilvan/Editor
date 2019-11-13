@@ -81,7 +81,7 @@ public class WordIndex {
 
     public String getAmount(String key) {
         String amount;
-        if (!woerterHaeufigkeit.containsKey(key))
+        if (!woerterHaeufigkeit.containsKey(key.toLowerCase()))
             amount = "";
         else {
             amount = woerterHaeufigkeit.get(key.toLowerCase()).get(AMOUNT);
@@ -91,7 +91,7 @@ public class WordIndex {
 
     public String getPlace(String key) {
         String place;
-        if (!woerterHaeufigkeit.containsKey(key))
+        if (!woerterHaeufigkeit.containsKey(key.toLowerCase()))
             place = "";
         else
             place = woerterHaeufigkeit.get(key.toLowerCase()).get(PLACE);
