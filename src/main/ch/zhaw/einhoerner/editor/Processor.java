@@ -125,26 +125,27 @@ public class Processor {
     {
         return "Thank you for using the Einhoerner Editor.";
     }
-    private void add(int index, String text) {
+    public void add(int index, String text) {
         if(illegalIndex(index))
             throw new IllegalArgumentException ("No text to create a wordindex. Please add text.");
         else
             paragraphs.add(index, text);
-        printWholeText();
+        printUnformatted();
     }
-    private void add(String text) {
+    public void add(String text) {
         //add text in the end of paragraph list
         paragraphs.add(text);
+        printUnformatted();
     }
-    private void delete(int index) {
+    public void delete(int index) {
         //in list index deleten
         if(illegalIndex(index))
             throw new IllegalArgumentException ("No text to create a wordindex. Please add text.");
         else
             paragraphs.remove(index);
-        printWholeText();
+        printUnformatted();
     }
-    private void searchAndReplace(int index, String wordToReplace, String replacement) {
+    public void searchAndReplace(int index, String wordToReplace, String replacement) {
         if(illegalIndex(index))
             throw new IllegalArgumentException ("No text to create a wordindex. Please add text.");
         else {
@@ -152,13 +153,13 @@ public class Processor {
             searchedParagraph = searchedParagraph.replace(wordToReplace, replacement);
             paragraphs.set(index, searchedParagraph);
         }
-        printWholeText();
+        printUnformatted();
     }
 
     private Boolean illegalIndex(int index){
         return (index < 0  || index >= paragraphs.size());
     }
-}
+
 
 
     /**
