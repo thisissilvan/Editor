@@ -157,11 +157,11 @@ public class Processor {
         if(illegalIndex(index))
             System.out.println("Invalid Index.");
         else
-            paragraphs.add(index, text);
+            paragraphs.addAll(index, detectNewParagraphs(text));
     }
     public void add(String text) {
         //add text in the end of paragraph list
-        paragraphs.add(text);
+        paragraphs.addAll(detectNewParagraphs(text));
     }
     public void delete(int index) {
         if(illegalIndex(index))
