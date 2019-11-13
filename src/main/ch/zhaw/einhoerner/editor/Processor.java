@@ -49,6 +49,9 @@ public class Processor {
                     break;
                 case ADD_INDEX:
                     add(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getParameters().get(1));
+                case ADD:
+                    add(parsedInput.getParameters().get(1));
+                    break;
                 case PRINT:
                     printUnformatted();
                     break;
@@ -69,6 +72,18 @@ public class Processor {
                     break;
                 default:
                     break;
+
+
+                    //ADD_EXAMPLETEXT("add_exampletext", 0),
+                //    ADD_INDEX("add_index", 2),
+                //    ADD("add", 1),
+                //    DELETE("delete", 1),
+                //    PRINT("print", 0),
+                //    SEARCH_AND_REPLACE("search_and_replace", 3),
+                //    PRINT_WIDTH("print_width", 1),
+                //    HELP("help", 0),
+                //    QUIT("quit", 0),
+                //    UNKNOWN("?", 0);
             }
         }
 
