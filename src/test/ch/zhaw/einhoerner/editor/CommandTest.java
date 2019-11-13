@@ -8,18 +8,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class CommandTest {
 
 
-
-    @BeforeEach
-    void setUp()
-    {
-    }
-
-    @AfterEach
-    void tearDown()
-    {
-    }
-
-
     @Test
     public void testHelp()
     {
@@ -87,7 +75,7 @@ class CommandTest {
         assertNotEquals(Command.valueOf("UNKNOWN"), command);
         assertEquals(Command.valueOf("SEARCH_AND_REPLACE"), command);
         assertEquals("search and replace", searchAndReplaceCommand);
-        assertEquals(2, parameterCountSearchAndReplace);
+        assertEquals(3, parameterCountSearchAndReplace);
     }
 
     @Test

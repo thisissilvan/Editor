@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertThat;
 
 class ParserTest {
 
@@ -72,7 +72,7 @@ class ParserTest {
     void testExtractionAdd() {
         String input = "add 1 something something example";
         String actual = new Parser().parseInput(input).getText();
-        String expected = "something something example";
+        String expected = "1 something something example";
 
         assertThat("unexpected input", actual, is(expected));
     }
@@ -98,9 +98,9 @@ class ParserTest {
 
     @Test
     void testCommandWithTwoParameters() {
-        String input = "search and replace kartoffel tomate restlicher text dummy change";
+        String input = "search_and_replace 1 kartoffel tomate";
         List<String> actual = new Parser().parseInput(input).getParameters();
-        List<String> expected = Arrays.asList("kartoffel", "tomate");
+        List<String> expected = Arrays.asList("1", "kartoffel", "tomate");
 
         assertThat("unexpected input", actual, is(expected));
     }

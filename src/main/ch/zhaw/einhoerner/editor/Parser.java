@@ -56,7 +56,7 @@ public class Parser {
         List<String> result = new ArrayList<>();
         String text = input.substring(command.getCommand().length() + 1);
         int count = command.getParameterCount();
-        for (int i = 0; i < count; i++) {
+        for (int i = 1; i < count; i++) {
             int nextSpace = text.indexOf(" ");
             result.add(text.substring(0, nextSpace));
             text = text.substring(nextSpace + 1);
