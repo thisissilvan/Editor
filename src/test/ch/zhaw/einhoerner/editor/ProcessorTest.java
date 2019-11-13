@@ -107,6 +107,14 @@ class ProcessorTest {
         assertNotEquals(quitMesseage, wrongText);
     }
 
+    @Test
+    public void addTextWithIndex() {
+        processor.add("0");
+        processor.add("1");
+        processor.add(1, "hallo");
+        assertEquals("hallo", processor.get(1));
+        assertEquals("1", processor.get(2));
+    }
 
 
 
