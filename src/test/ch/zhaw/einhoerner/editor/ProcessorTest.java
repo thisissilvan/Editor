@@ -7,9 +7,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static java.lang.System.lineSeparator;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
 
 
 
