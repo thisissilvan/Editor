@@ -17,4 +17,15 @@ class WordIndexTest {    private List<String> paragraphs = new ArrayList<>();
         assertEquals("", wordIndex.getAmount(""));
         assertEquals("", wordIndex.getAmount(""));
     }
+
+    @Test
+    public void occurrenceOfTwo() {
+        paragraphs.add("die,die");
+        WordIndex wordIndex = new WordIndex(paragraphs);
+        assertNotEquals("2", wordIndex.getAmount("die"));
+        assertNotEquals("0", wordIndex.getPlace("die"));
+        assertEquals("", wordIndex.getAmount("die"));
+        assertEquals("", wordIndex.getAmount("die"));
+    }
+
 }
