@@ -125,6 +125,41 @@ public class Processor {
     {
         return "Thank you for using the Einhoerner Editor.";
     }
+    private void add(int index, String text) {
+        if(illegalIndex(index))
+            throw new IllegalArgumentException ("No text to create a wordindex. Please add text.");
+        else
+            paragraphs.add(index, text);
+        printWholeText();
+    }
+    private void add(String text) {
+        //add text in the end of paragraph list
+        paragraphs.add(text);
+    }
+    private void delete(int index) {
+        //in list index deleten
+        if(illegalIndex(index))
+            throw new IllegalArgumentException ("No text to create a wordindex. Please add text.");
+        else
+            paragraphs.remove(index);
+        printWholeText();
+    }
+    private void searchAndReplace(int index, String wordToReplace, String replacement) {
+        if(illegalIndex(index))
+            throw new IllegalArgumentException ("No text to create a wordindex. Please add text.");
+        else {
+            String searchedParagraph = paragraphs.get(index);
+            searchedParagraph = searchedParagraph.replace(wordToReplace, replacement);
+            paragraphs.set(index, searchedParagraph);
+        }
+        printWholeText();
+    }
+
+    private Boolean illegalIndex(int index){
+        return (index < 0  || index >= paragraphs.size());
+    }
+}
+
 
     /**
      * Print out an unformatted version of all the paragraphs
