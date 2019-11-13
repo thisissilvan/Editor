@@ -3,17 +3,23 @@ package ch.zhaw.einhoerner.editor;
 import java.util.List;
 
 /**
- * The class ParsedInput is part of the Editor application.
+ *  This class holds all information that was parsed from a user input. It consists of
+ *  - a command that has been detected from the user input
+ *  - the command's parameter list (can be empty)
+ *  - an (optional) text which follows the last parameter
  *
- * Objects in this class holding the information of the given commands which a user types in the console.
- * A valid command consists of two parts: A command and an optional String (for example: the command "add 4" consists
- * of the command "add" and the String "4")
+ * Examples:
+ *  - add 1 Hello world one two three   will be parsed into
+ *          - the command "add"
+ *          - a list of parameters containing one parameter "1"
+ *          - the text "Hello world one two three"
+ *  - help                              will be parsed into
+ *          - the command "help"
+ *          - an empty list of parameters
+ *          - an empty String for the text body
  *
- * Commands are getting verified from the program. If an invalid command is given, the command is <null>.
  *
- * If the command does not need a parameter, it can be empty.
- *
- * @author  Ala Hadi, Silvan Luethy
+ * @author  Ala, Silvan
  * @version 2019_11_09
  */
 
@@ -35,20 +41,27 @@ public class ParsedInput {
     }
 
     /**
-     * @return
+     * Returns the command.
+     * @return The command from the enum class command.
      */
     public Command getCommand()
     {
         return command;
     }
+
     /**
-     * @return
+     * Returns the parameters saved in the command.
+     * @return the parameters saved in the given command.
      */
     public List<String> getParameters()
     {
         return parameters;
     }
 
+    /**
+     * Returns the text saved in the given command.
+     * @return the text from the given command
+     */
     public String getText() {
         return text;
     }

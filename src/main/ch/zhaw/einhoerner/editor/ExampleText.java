@@ -1,5 +1,12 @@
 package ch.zhaw.einhoerner.editor;
 
+/**
+ * This class contains an example text taken from https://www.lipsum.com/. This example text will be used whenever
+ * the user types the command "add exampletext" into the console.
+ *
+ * @author Ala
+ * @version 2019-11-11
+ */
 public class ExampleText {
     public static final String EXAMPLE_TEXT = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean odio enim, viverra eget hendrerit fermentum, vulputate et odio. Aenean accumsan, ligula in ullamcorper dictum, odio turpis tempor ligula, a finibus turpis enim vehicula elit. Sed pharetra eros ac mi blandit iaculis. Sed id purus vitae felis suscipit efficitur. Fusce quis volutpat quam, vel placerat quam. Aenean faucibus ipsum imperdiet consectetur pulvinar. Proin vel lorem malesuada, elementum neque vel, finibus purus. Curabitur blandit euismod purus vel maximus. In sollicitudin magna nisl, eget tempor arcu sollicitudin sit amet. Praesent bibendum venenatis sem quis ornare. Donec sodales tellus ac dolor finibus porta.\n" +
             "\n" +
