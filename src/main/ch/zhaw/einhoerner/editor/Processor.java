@@ -47,11 +47,25 @@ public class Processor {
                     String generated = addExampleText();
                     // TODO this text has to be saved somehow somewhere
                     break;
+                case ADD_INDEX:
+                    add(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getParameters().get(1));
                 case PRINT:
                     printUnformatted();
                     break;
+                case SEARCH_AND_REPLACE:
+                    searchAndReplace(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getParameters().get(1), parsedInput.getParameters().get(2));
+                    break;
                 case PRINT_WIDTH:
                     printFormatted(Integer.parseInt(parsedInput.getParameters().get(0)));
+                    break;
+                case HELP:
+                    //todo
+                    break;
+                case QUIT:
+                    //todo
+                    break;
+                case UNKNOWN:
+                    //todo
                     break;
                 default:
                     break;
@@ -125,19 +139,19 @@ public class Processor {
     {
         return "Thank you for using the Einhoerner Editor.";
     }
-    public void add(int index, String text) {
+    void add(int index, String text) {
         if(illegalIndex(index))
             System.out.println("Invalid Index.");
         else
             paragraphs.add(index, text);
         printUnformatted();
     }
-    public void add(String text) {
+    void add(String text) {
         //add text in the end of paragraph list
         paragraphs.add(text);
         printUnformatted();
     }
-    public void delete(int index) {
+    void delete(int index) {
         //in list index deleten
         if(illegalIndex(index))
             System.out.println("Invalid Index.");
@@ -145,7 +159,7 @@ public class Processor {
             paragraphs.remove(index);
         printUnformatted();
     }
-    public void searchAndReplace(int index, String wordToReplace, String replacement) {
+    void searchAndReplace(int index, String wordToReplace, String replacement) {
         if(illegalIndex(index))
             System.out.println("Invalid Index.");
         else {

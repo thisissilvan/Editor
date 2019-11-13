@@ -31,48 +31,42 @@ class ProcessorTest {
 
 
     @BeforeEach
-    public void setUp()
-    {
+    public void setUp() {
         processor = new Processor();
         System.setOut(new PrintStream(this.consoleContent));
     }
 
 
     @Test
-    public void printHelpMesseage()
-    {
+    public void printHelpMesseage() {
         processor.printText(helpMesseage);
         assertNotEquals(wrongText + lineSeparator(), this.consoleContent.toString());
         assertEquals(helpMesseage + lineSeparator(), this.consoleContent.toString());
     }
 
     @Test
-    public void printWelcomeMesseage()
-    {
+    public void printWelcomeMesseage() {
         processor.printText(welcomeMesseage);
         assertNotEquals(wrongText + lineSeparator(), this.consoleContent.toString());
         assertEquals(welcomeMesseage + lineSeparator(), this.consoleContent.toString());
     }
 
     @Test
-    public void printQuitMesseage()
-    {
+    public void printQuitMesseage() {
         processor.printText(quitMesseage);
         assertNotEquals(wrongText + lineSeparator(), this.consoleContent.toString());
         assertEquals(quitMesseage + lineSeparator(), this.consoleContent.toString());
     }
 
     @Test
-    public void printNothing()
-    {
+    public void printNothing() {
         processor.printText(null);
         assertNotEquals(wrongText + lineSeparator(), this.consoleContent.toString());
         assertEquals(null + lineSeparator(), this.consoleContent.toString());
     }
 
     @Test
-    public void makeWelcomeMesseage()
-    {
+    public void makeWelcomeMesseage() {
         String welcomeText = processor.makeWelcomeMesseage();
 
         assertEquals(welcomeMesseage, welcomeText);
@@ -80,8 +74,7 @@ class ProcessorTest {
     }
 
     @Test
-    public void makeHelpMesseage()
-    {
+    public void makeHelpMesseage() {
         String helpText = processor.makeHelpMesseage();
 
         assertEquals(helpMesseage, helpText);
@@ -89,11 +82,16 @@ class ProcessorTest {
     }
 
     @Test
-    public void makeQuitMesseage()
-    {
+    public void makeQuitMesseage() {
         String quitText = processor.makeQuitMesseage();
 
         assertEquals(quitMesseage, quitText);
         assertNotEquals(quitMesseage, wrongText);
+    }
+
+    @Test
+    void addTextWithIndex() {
+        ParsedInput parsedInput = new ParsedInput("Hallo Tomate", "add", "2");
+
     }
 }

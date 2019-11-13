@@ -98,9 +98,9 @@ class ParserTest {
 
     @Test
     void testCommandWithTwoParameters() {
-        String input = "search and replace kartoffel tomate restlicher text dummy change";
+        String input = "search_and_replace 1 kartoffel tomate";
         List<String> actual = new Parser().parseInput(input).getParameters();
-        List<String> expected = Arrays.asList("kartoffel", "tomate");
+        List<String> expected = Arrays.asList("1", "kartoffel", "tomate");
 
         assertThat("unexpected input", actual, is(expected));
     }
