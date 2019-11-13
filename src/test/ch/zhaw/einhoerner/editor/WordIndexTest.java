@@ -28,4 +28,12 @@ class WordIndexTest {    private List<String> paragraphs = new ArrayList<>();
         assertEquals("", wordIndex.getAmount("die"));
     }
 
+    @Test
+    public void occurrenceOfThreeSameParagraph() {
+        paragraphs.add("die,die,die");
+        WordIndex wordIndex = new WordIndex(paragraphs);
+        assertEquals("3", wordIndex.getAmount("die"));
+        assertEquals("0", wordIndex.getPlace("die"));
+    }
+
 }
