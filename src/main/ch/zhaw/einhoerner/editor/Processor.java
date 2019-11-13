@@ -159,12 +159,10 @@ public class Processor {
             System.out.println("Invalid Index.");
         else
             paragraphs.add(index, text);
-        printUnformatted();
     }
     void add(String text) {
         //add text in the end of paragraph list
         paragraphs.add(text);
-        printUnformatted();
     }
     void delete(int index) {
         //in list index deleten
@@ -172,7 +170,6 @@ public class Processor {
             System.out.println("Invalid Index.");
         else
             paragraphs.remove(index);
-        printUnformatted();
     }
     void searchAndReplace(int index, String wordToReplace, String replacement) {
         if(illegalIndex(index))
@@ -182,7 +179,6 @@ public class Processor {
             searchedParagraph = searchedParagraph.replace(wordToReplace, replacement);
             paragraphs.set(index, searchedParagraph);
         }
-        printUnformatted();
     }
 
     private Boolean illegalIndex(int index){
