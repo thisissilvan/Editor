@@ -49,6 +49,7 @@ public class Processor {
                     break;
                 case ADD_INDEX:
                     add(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getParameters().get(1));
+                    break;
                 case ADD:
                     add(parsedInput.getParameters().get(0));
                     break;
