@@ -26,8 +26,8 @@ public class Processor {
      * Public method used by the main method to start the editor.
      */
     public void startApplication() {
-        printText(makeWelcomeMesseage());
-        printText(makeHelpMesseage());
+        printText(getWelcomeMesseage());
+        printText(getHelpMesseage());
         System.out.print("> ");
 
         String nextCommand = "";
@@ -44,7 +44,7 @@ public class Processor {
             // execute command
             switch (parsedInput.getCommand()) {
                 case ADD_EXAMPLETEXT:
-                    String generated = addExampleText();
+                    addExampleText();
                     // TODO this text has to be saved somehow somewhere
                     break;
                 case PRINT:
@@ -55,16 +55,20 @@ public class Processor {
                     break;
                 default:
                     break;
+                case ADD:
+                    add(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getParameters().get(1));
             }
         }
 
-        System.out.println(makeQuitMesseage());
+        System.out.println(getQuitMesseage());
     }
 
-    private String addExampleText() {
-        String text = ExampleText.EXAMPLE_TEXT;
-        System.out.println(text);
-        return text;
+    private void addExampleText() {
+        ExampleText exampletext = new ExampleText();
+        List<String> text = detectNewParagraphs(exampletext.getExampleText());
+        for (String line : text){
+            add(line);
+        }
     }
 
     private String getUserInput() {
@@ -83,21 +87,22 @@ public class Processor {
         System.out.println(text);
     }
 
+    private void printWholeParagraphs() {
+        for (int i = 0; i < paragraphs.size(); i++) {
+            System.out.println(i);
+            System.out.println(paragraphs.get(i));
+            System.out.println();
+        }
+    }
+
     /**
      * Creates a welcome message which is used from the method startApplication.
      * <p>
      * @return the welcome messeage which is getting printed out to the user.
      */
-    public String makeWelcomeMesseage() {
+    public String getWelcomeMesseage() {
         return "Welcome to the Editor Application from the team Einhoerner, please use one of the " +
                 "following comands to proceed:";
-    }
-
-    private void printWholeParagraphs() {
-        for (int i = 0; i < paragraphs.size(); i++) {
-            System.out.println(paragraphs.get(i));
-            System.out.println();
-        }
     }
 
     /**
@@ -107,7 +112,7 @@ public class Processor {
      * <p>
      * @return a short manual-text on how to use the editor
      */
-    public String makeHelpMesseage()
+    public String getHelpMesseage()
     {
         return "Type in " + Command.HELP + " at any time for a short manual. " +
                 lineSeparator() + lineSeparator() + "You can choose from the following commands:" + lineSeparator() +
@@ -121,30 +126,53 @@ public class Processor {
      * <p>
      * @return Quit messeage
      */
-    public String makeQuitMesseage()
+    public String getQuitMesseage()
     {
         return "Thank you for using the Einhoerner Editor.";
     }
+
+    /**
+     * TODO
+     * @param index
+     * @param text
+     */
     public void add(int index, String text) {
         if(illegalIndex(index))
             throw new IllegalArgumentException ("No text to create a wordindex. Please add text.");
         else
             paragraphs.add(index, text);
-        printUnformatted();
+        //printUnformatted();
     }
+
+    /**
+     * TODO
+     * @param text
+     */
     public void add(String text) {
         //add text in the end of paragraph list
         paragraphs.add(text);
-        printUnformatted();
+        //printUnformatted();
     }
+
+    /**
+     * TODO
+     * @param index
+     */
     public void delete(int index) {
         //in list index deleten
         if(illegalIndex(index))
             throw new IllegalArgumentException ("No text to create a wordindex. Please add text.");
         else
             paragraphs.remove(index);
-        printUnformatted();
+        //printUnformatted();
     }
+
+    /**
+     * TODO
+     * @param index
+     * @param wordToReplace
+     * @param replacement
+     */
     public void searchAndReplace(int index, String wordToReplace, String replacement) {
         if(illegalIndex(index))
             throw new IllegalArgumentException ("No text to create a wordindex. Please add text.");
@@ -153,14 +181,12 @@ public class Processor {
             searchedParagraph = searchedParagraph.replace(wordToReplace, replacement);
             paragraphs.set(index, searchedParagraph);
         }
-        printUnformatted();
+        //printUnformatted();
     }
 
     private Boolean illegalIndex(int index){
         return (index < 0  || index >= paragraphs.size());
     }
-
-
 
     /**
      * Print out an unformatted version of all the paragraphs
@@ -168,7 +194,6 @@ public class Processor {
     private void printUnformatted() {
         printWholeParagraphs();
     }
-
 
     /**
      * Print out a formatted version of all the paragraphs
@@ -186,15 +211,19 @@ public class Processor {
      * new Paragraphs no matter which operating system is used.
      *<p>
      * @param text a given String to look out for new Paragraphs
+     * @return
      */
-    public void detectNewParagraphs(String text)
-    {
-        String[] lines = text.split(System.getProperty("line.separator"));
-        for(int i = 0; i < lines.length; i++)
-        {
-            System.out.println(i + ":" + lines[i]);
-        }
+    public List<String> detectNewParagraphs(String text) {
+        List<String> absatz = new ArrayList<>();
+        String[] lines = text.split(System.lineSeparator());
+        for (String line : lines) {
+            if (!line.isEmpty()) {
+                absatz.add(line);
+            }
+
+        } return absatz;
     }
+
 
     /**
      * With the "lineSeparator()", a new line can be detected on every System

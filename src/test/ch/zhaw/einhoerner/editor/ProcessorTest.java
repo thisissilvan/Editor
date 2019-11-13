@@ -8,13 +8,9 @@ import java.io.PrintStream;
 
 import static java.lang.System.lineSeparator;
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.Test;
-import static org.junit.Assert.*;
-
 
 
 class ProcessorTest {
-    @Test
 
     private String helpMesseage = "Type in " + Command.HELP + " at any time for a short manual. " +
             lineSeparator() + lineSeparator() + "You can choose from the following commands:" + lineSeparator() +
@@ -29,10 +25,12 @@ class ProcessorTest {
     private String wrongText = "this is not the right messeage";
 
     private Processor processor;
-
     private ByteArrayOutputStream consoleContent = new ByteArrayOutputStream();
 
-
+    /**
+     * ByteArrayOutputStream is a concept which we not discussed yet, however to test the actual console outcome, we need
+     * this.
+     */
     @BeforeEach
     public void setUp()
     {
@@ -40,7 +38,9 @@ class ProcessorTest {
         System.setOut(new PrintStream(this.consoleContent));
     }
 
-
+    /**
+     * Print the help messeage to the cosole and test the actual outcome.
+     */
     @Test
     public void printHelpMesseage()
     {
@@ -49,6 +49,9 @@ class ProcessorTest {
         assertEquals(helpMesseage + lineSeparator(), this.consoleContent.toString());
     }
 
+    /**
+     * Print the welcome messeage to the cosole and test the actual outcome.
+     */
     @Test
     public void printWelcomeMesseage()
     {
@@ -57,6 +60,9 @@ class ProcessorTest {
         assertEquals(welcomeMesseage + lineSeparator(), this.consoleContent.toString());
     }
 
+    /**
+     * Print the quit messeage to the cosole and test the actual outcome.
+     */
     @Test
     public void printQuitMesseage()
     {
@@ -65,18 +71,21 @@ class ProcessorTest {
         assertEquals(quitMesseage + lineSeparator(), this.consoleContent.toString());
     }
 
+    /**
+     * Prints an empty String to the cosole and test the actual outcome.
+     */
     @Test
     public void printNothing()
     {
-        processor.printText(null);
+        processor.printText("");
         assertNotEquals(wrongText + lineSeparator(), this.consoleContent.toString());
-        assertEquals(null + lineSeparator(), this.consoleContent.toString());
+        assertEquals("" + lineSeparator(), this.consoleContent.toString());
     }
 
     @Test
     public void makeWelcomeMesseage()
     {
-        String welcomeText = processor.makeWelcomeMesseage();
+        String welcomeText = processor.getWelcomeMesseage();
 
         assertEquals(welcomeMesseage, welcomeText);
         assertNotEquals(welcomeMesseage, wrongText);
@@ -85,7 +94,7 @@ class ProcessorTest {
     @Test
     public void makeHelpMesseage()
     {
-        String helpText = processor.makeHelpMesseage();
+        String helpText = processor.getHelpMesseage();
 
         assertEquals(helpMesseage, helpText);
         assertNotEquals(helpMesseage, wrongText);
@@ -94,7 +103,7 @@ class ProcessorTest {
     @Test
     public void makeQuitMesseage()
     {
-        String quitText = processor.makeQuitMesseage();
+        String quitText = processor.getQuitMesseage();
 
         assertEquals(quitMesseage, quitText);
         assertNotEquals(quitMesseage, wrongText);
