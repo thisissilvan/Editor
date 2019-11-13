@@ -16,11 +16,13 @@ import static java.lang.System.lineSeparator;
 public class Processor {
 
     private Parser parser = new Parser();
-    private List<String> paragraphs = new ArrayList<>();
+    private List<String> paragraphs;
     /**
      * Constructor of the class Processor.
      */
-    public Processor() {}
+    public Processor() {
+        paragraphs = new ArrayList<>();
+    }
 
     /**
      * Public method used by the main method to start the editor.
@@ -174,6 +176,10 @@ public class Processor {
     }
     private Boolean illegalIndex(int index){
         return (index < 0  || index >= paragraphs.size());
+    }
+
+    public String get(int index) {
+        return paragraphs.get(index);
     }
 
     /**

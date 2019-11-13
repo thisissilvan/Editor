@@ -107,13 +107,8 @@ class ProcessorTest {
         assertNotEquals(quitMesseage, wrongText);
     }
 
-    @Test
-    void addTextWithIndex() {
-        List<String> list = new ArrayList<>();
-        list.add("hallo0");
-        list.add("hallo1");
-        list.add(1, "ugztzt");
-        assertEquals("ugztzt", list.get(1));
-        assertEquals("hallo1", list.get(list.size()-1));
-    }
+
+
+
+
 }
