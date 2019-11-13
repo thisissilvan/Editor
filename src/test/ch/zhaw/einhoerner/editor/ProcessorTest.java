@@ -115,6 +115,13 @@ class ProcessorTest {
         assertEquals("hallo", processor.get(1));
         assertEquals("1", processor.get(2));
     }
+    @Test
+    public void addTest(){
+        processor.add("joking");
+        assertEquals("joking", processor.get(0));
+        processor.add("joking1");
+        assertEquals("joking1", processor.get(1));
+    }
 
 
 
