@@ -132,7 +132,7 @@ public class Processor {
             paragraphs.add(index, text);
         printUnformatted();
     }
-    private void add(String text) {
+    public void add(String text) {
         //add text in the end of paragraph list
         paragraphs.add(text);
         printUnformatted();
