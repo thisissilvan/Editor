@@ -75,8 +75,6 @@ public class Processor {
                     break;
                 default:
                     break;
-                case ADD:
-                    add(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getParameters().get(1));
             }
         }
 
