@@ -14,17 +14,17 @@ import static org.junit.Assert.assertThat;
 
 
 class ProcessorTest {
-    private String helpMesseage = "Type in " + Command.HELP + " at any time for a short manual. " +
+    private String helpMessage = "Type in " + Command.HELP + " at any time for a short manual. " +
             lineSeparator() + lineSeparator() + "You can choose from the following commands:" + lineSeparator() +
             "add (with or without paragraph number), print, quit, help, searchAndReplace" +
             "(followed by the old and the new word" + lineSeparator() + lineSeparator() +
             "For a manual in detail, please use the Wiki in the Github repository.";
 
-    private String welcomeMesseage = "Welcome to the Editor Application from the team Einhoerner, please use one of the " +
+    private String welcomeMessage = "Welcome to the Editor Application from the team Einhoerner, please use one of the " +
             "following comands to proceed:";
 
-    private String quitMesseage = "Thank you for using the Einhoerner Editor.";
-    private String wrongText = "this is not the right messeage";
+    private String quitMessage = "Thank you for using the Einhoerner Editor.";
+    private String wrongText = "this is not the right message";
 
     private Processor processor;
 
@@ -40,27 +40,27 @@ class ProcessorTest {
 
 
     @Test
-    public void printHelpMesseage()
+    public void printHelpMessage()
     {
-        processor.printText(helpMesseage);
+        processor.printText(helpMessage);
         assertNotEquals(wrongText + lineSeparator(), this.consoleContent.toString());
-        assertEquals(helpMesseage + lineSeparator(), this.consoleContent.toString());
+        assertEquals(helpMessage + lineSeparator(), this.consoleContent.toString());
     }
 
     @Test
-    public void printWelcomeMesseage()
+    public void printWelcomeMessage()
     {
-        processor.printText(welcomeMesseage);
+        processor.printText(welcomeMessage);
         assertNotEquals(wrongText + lineSeparator(), this.consoleContent.toString());
-        assertEquals(welcomeMesseage + lineSeparator(), this.consoleContent.toString());
+        assertEquals(welcomeMessage + lineSeparator(), this.consoleContent.toString());
     }
 
     @Test
-    public void printQuitMesseage()
+    public void printQuitMessage()
     {
-        processor.printText(quitMesseage);
+        processor.printText(quitMessage);
         assertNotEquals(wrongText + lineSeparator(), this.consoleContent.toString());
-        assertEquals(quitMesseage + lineSeparator(), this.consoleContent.toString());
+        assertEquals(quitMessage + lineSeparator(), this.consoleContent.toString());
     }
 
     @Test
@@ -72,30 +72,30 @@ class ProcessorTest {
     }
 
     @Test
-    public void makeWelcomeMesseage()
+    public void makeWelcomeMessage()
     {
-        String welcomeText = processor.getWelcomeMesseage();
+        String welcomeText = processor.getWelcomeMessage();
 
-        assertEquals(welcomeMesseage, welcomeText);
-        assertNotEquals(welcomeMesseage, wrongText);
+        assertEquals(welcomeMessage, welcomeText);
+        assertNotEquals(welcomeMessage, wrongText);
     }
 
     @Test
-    public void makeHelpMesseage()
+    public void makeHelpMessage()
     {
-        String helpText = processor.getHelpMesseage();
+        String helpText = processor.getHelpMessage();
 
-        assertEquals(helpMesseage, helpText);
-        assertNotEquals(helpMesseage, wrongText);
+        assertEquals(helpMessage, helpText);
+        assertNotEquals(helpMessage, wrongText);
     }
 
     @Test
-    public void makeQuitMesseage()
+    public void makeQuitMessage()
     {
-        String quitText = processor.getQuitMesseage();
+        String quitText = processor.getQuitMessage();
 
-        assertEquals(quitMesseage, quitText);
-        assertNotEquals(quitMesseage, wrongText);
+        assertEquals(quitMessage, quitText);
+        assertNotEquals(quitMessage, wrongText);
     }
 
     @Test

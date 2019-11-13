@@ -28,8 +28,8 @@ public class Processor {
      * Public method used by the main method to start the editor.
      */
     public void startApplication() {
-        printText(getWelcomeMesseage());
-        printText(getHelpMesseage());
+        printText(getWelcomeMessage());
+        printText(getHelpMessage());
 
         String nextCommand = "";
         while (!Command.QUIT.getCommand().equals(nextCommand)) {
@@ -71,10 +71,10 @@ public class Processor {
                 printFormatted(Integer.parseInt(parsedInput.getParameters().get(0)));
                 break;
             case HELP:
-                System.out.println(getHelpMesseage());
+                System.out.println(getHelpMessage());
                 break;
             case QUIT:
-                System.out.println(getQuitMesseage());
+                System.out.println(getQuitMessage());
                 break;
             case UNKNOWN:
                 break;
@@ -121,9 +121,9 @@ public class Processor {
      * Creates a welcome message which is used from the method startApplication.
      * <p>
      *
-     * @return the welcome messeage which is getting printed out to the user.
+     * @return the welcome message which is getting printed out to the user.
      */
-    public String getWelcomeMesseage() {
+    public String getWelcomeMessage() {
         return "Welcome to the Editor Application from the team Einhoerner, please use one of the " +
                 "following comands to proceed:";
     }
@@ -136,7 +136,7 @@ public class Processor {
      *
      * @return a short manual-text on how to use the editor
      */
-    public String getHelpMesseage() {
+    public String getHelpMessage() {
         return "Type in " + Command.HELP + " at any time for a short manual. " +
                 lineSeparator() + lineSeparator() + "You can choose from the following commands:" + lineSeparator() +
                 "add (with or without paragraph number) <text>, add_exampletext, print, " +
@@ -146,12 +146,12 @@ public class Processor {
     }
 
     /**
-     * Creates a messeage which is getting printed out after exiting the Editor.
+     * Creates a message which is getting printed out after exiting the Editor.
      * <p>
      *
-     * @return Quit messeage
+     * @return Quit message
      */
-    public String getQuitMesseage() {
+    public String getQuitMessage() {
         return "Thank you for using the Einhoerner Editor.";
     }
 
