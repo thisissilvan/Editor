@@ -48,10 +48,10 @@ public class Processor {
                     // TODO this text has to be saved somehow somewhere
                     break;
                 case ADD_INDEX:
-                    add(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getParameters().get(1));
+                    add(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getText());
                     break;
                 case ADD:
-                    add(parsedInput.getParameters().get(0));
+                    add(parsedInput.getText());
                     break;
                 case DELETE:
                     delete(Integer.parseInt(parsedInput.getParameters().get(0)));
@@ -60,16 +60,16 @@ public class Processor {
                     printUnformatted();
                     break;
                 case SEARCH_AND_REPLACE:
-                    searchAndReplace(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getParameters().get(1), parsedInput.getParameters().get(2));
+                    searchAndReplace(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getText(), parsedInput.getText());
                     break;
                 case PRINT_WIDTH:
                     printFormatted(Integer.parseInt(parsedInput.getParameters().get(0)));
                     break;
                 case HELP:
-                    //todo
+                    getHelpMesseage();
                     break;
                 case QUIT:
-                    //todo
+                    getQuitMesseage();
                     break;
                 case UNKNOWN:
                     //todo
@@ -78,22 +78,20 @@ public class Processor {
                     break;
             }
         }
-
         System.out.println(getQuitMesseage());
-    }
-
-    private void addExampleText() {
-        ExampleText exampletext = new ExampleText();
-        List<String> text = detectNewParagraphs(exampletext.getExampleText());
-        for (String line : text){
-            add(line);
-        }
     }
 
     private String getUserInput() {
         Scanner s = new Scanner(System.in);
         String input = s.nextLine();
         return input;
+    }
+
+    private void addExampleText() {
+        ExampleText exampletext = new ExampleText();
+        List<String> text = detectNewParagraphs(exampletext.getExampleText());
+        for (String line : text)
+            add(line);
     }
 
     /**
