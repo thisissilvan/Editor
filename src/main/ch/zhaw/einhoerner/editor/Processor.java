@@ -137,7 +137,7 @@ public class Processor {
         paragraphs.add(text);
         printUnformatted();
     }
-    private void delete(int index) {
+    public void delete(int index) {
         //in list index deleten
         if(illegalIndex(index))
             throw new IllegalArgumentException ("No text to create a wordindex. Please add text.");
