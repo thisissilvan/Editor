@@ -107,6 +107,7 @@ class ProcessorTest {
 
     @Test
     void addTextWithIndex() {
+        processor.add(1, "ugztzt");
        // ParsedInput parsedInput = new ParsedInput("Hallo Tomate", "add", "2");
 
     }

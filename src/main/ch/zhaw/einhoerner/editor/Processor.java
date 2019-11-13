@@ -147,23 +147,23 @@ public class Processor {
         return "Thank you for using the Einhoerner Editor.";
     }
 
-    private void add(int index, String text) {
+    public void add(int index, String text) {
         if(illegalIndex(index))
             System.out.println("Invalid Index.");
         else
             paragraphs.add(index, text);
     }
-    private void add(String text) {
+    public void add(String text) {
         //add text in the end of paragraph list
         paragraphs.add(text);
     }
-    private void delete(int index) {
+    public void delete(int index) {
         if(illegalIndex(index))
             System.out.println("Invalid Index.");
         else
             paragraphs.remove(index);
     }
-    private void searchAndReplace(int index, String wordToReplace, String replacement) {
+    public void searchAndReplace(int index, String wordToReplace, String replacement) {
         if(illegalIndex(index))
             System.out.println("Invalid Index.");
         else {
