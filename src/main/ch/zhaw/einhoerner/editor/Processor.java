@@ -71,7 +71,7 @@ public class Processor {
                 case QUIT:
                     getQuitMesseage();
                     break;
-                case UNKNOWN;
+                case UNKNOWN:
                     break;
                 default:
                     break;

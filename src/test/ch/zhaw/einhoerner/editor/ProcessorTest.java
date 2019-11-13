@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import static java.lang.System.lineSeparator;
 import static org.junit.jupiter.api.Assertions.*;
@@ -107,8 +109,11 @@ class ProcessorTest {
 
     @Test
     void addTextWithIndex() {
-        processor.add(1, "ugztzt");
-       // ParsedInput parsedInput = new ParsedInput("Hallo Tomate", "add", "2");
-
+        List<String> list = new ArrayList<>();
+        list.add("hallo0");
+        list.add("hallo1");
+        list.add(1, "ugztzt");
+        assertEquals("ugztzt", list.get(1));
+        assertEquals("hallo1", list.get(list.size()-1));
     }
 }
