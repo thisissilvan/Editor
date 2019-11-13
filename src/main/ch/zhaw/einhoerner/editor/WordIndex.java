@@ -5,16 +5,28 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * TODO
+ */
 public class WordIndex {
     private Map<String, List<String>> woerterHaeufigkeit = new HashMap<>();
     private static final int AMOUNT = 0;
     private static final int PLACE = 1;
 
+    /**
+     * TODO
+     * @param text
+     */
     public void WordIndex(List<String> text) {
         makeWordIndex(text);
         printWordIndex();
     }
 
+    /**
+     * TODO
+     * @param text
+     * @throws IllegalArgumentException
+     */
     public void makeWordIndex(List<String> text) throws IllegalArgumentException{
         if (text.size()<=0){
             throw new IllegalArgumentException ("No text to create a wordindex. Please add text.");
@@ -70,6 +82,9 @@ public class WordIndex {
 
     }
 
+    /**
+     * TODO
+     */
     public void printWordIndex() {
         for (Map.Entry<String, List<String>> wortHaeufigkeit : woerterHaeufigkeit.entrySet()) {
             System.out.print(wortHaeufigkeit.getValue().get(AMOUNT));

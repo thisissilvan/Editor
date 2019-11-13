@@ -11,8 +11,8 @@ package ch.zhaw.einhoerner.editor;
  *
  * If the command only exists one word, the second word is <null>.
  *
- * @author  Silvan,
- * @version 2019_11_09
+ * @author  Silvan
+ * @version 2019-11-09
  */
 public enum Command {
     ADD_EXAMPLETEXT("add exampletext", 0),
@@ -30,7 +30,7 @@ public enum Command {
 
     /**
      * Initialise constructor with a given command.
-     *
+     * <p>
      * @param command The command as String value
      */
     Command(String command, int parameterCount) {
@@ -40,13 +40,17 @@ public enum Command {
 
     /**
      * Gives back the command.
-     *
+     * <p>
      * @return The command as String value.
      */
     public String getCommand() {
         return command;
     }
 
+    /**
+     * Gives back the parameter count.
+     * @return The parameter count from the given command.
+     */
     public int getParameterCount() {
         return parameterCount;
     }
