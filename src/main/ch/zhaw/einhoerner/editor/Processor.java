@@ -130,11 +130,12 @@ public class Processor {
             throw new IllegalArgumentException ("No text to create a wordindex. Please add text.");
         else
             paragraphs.add(index, text);
-        printWholeText();
+        printUnformatted();
     }
     private void add(String text) {
         //add text in the end of paragraph list
         paragraphs.add(text);
+        printUnformatted();
     }
     private void delete(int index) {
         //in list index deleten
@@ -142,7 +143,7 @@ public class Processor {
             throw new IllegalArgumentException ("No text to create a wordindex. Please add text.");
         else
             paragraphs.remove(index);
-        printWholeText();
+        printUnformatted();
     }
     private void searchAndReplace(int index, String wordToReplace, String replacement) {
         if(illegalIndex(index))
@@ -152,13 +153,13 @@ public class Processor {
             searchedParagraph = searchedParagraph.replace(wordToReplace, replacement);
             paragraphs.set(index, searchedParagraph);
         }
-        printWholeText();
+        printUnformatted();
     }
 
     private Boolean illegalIndex(int index){
         return (index < 0  || index >= paragraphs.size());
     }
-}
+
 
 
     /**
