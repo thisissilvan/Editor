@@ -8,13 +8,10 @@ import java.io.PrintStream;
 
 import static java.lang.System.lineSeparator;
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.Test;
-import static org.junit.Assert.*;
-
 
 
 class ProcessorTest {
-    @Test
+
 
     private String helpMesseage = "Type in " + Command.HELP + " at any time for a short manual. " +
             lineSeparator() + lineSeparator() + "You can choose from the following commands:" + lineSeparator() +
