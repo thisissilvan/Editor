@@ -57,4 +57,13 @@ class WordIndexTest {    private List<String> paragraphs = new ArrayList<>();
         assertEquals("3", wordIndex.getAmount("Die"));
         assertEquals("0, 1, 2", wordIndex.getPlace("Die"));
     }
+
+    @Test
+    public void deleteSpecialCharactersAlone() {
+        paragraphs.add("die,die,die");
+        paragraphs.add("+++");
+        WordIndex wordIndex = new WordIndex(paragraphs);
+        assertEquals("", wordIndex.getAmount("+"));
+        assertEquals("", wordIndex.getPlace("+"));
+    }
 }
