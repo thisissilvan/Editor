@@ -22,8 +22,14 @@ public enum Command {
     PRINT_WIDTH("print width", 1),
     PRINT("print", 0),
     SEARCH_AND_REPLACE("search and replace", 3),
+    ADD_INDEX("add at index", 2),
+    ADD("add", 1),
+    PRINT_WIDTH("print width", 1),
+    PRINT("print", 0),
+    SEARCH_AND_REPLACE("search and replace", 2),
     HELP("help", 0),
     QUIT("quit", 0),
+    DELETE("delete", 1),
     UNKNOWN("?", 0);
 
 

@@ -10,7 +10,6 @@ import static java.lang.System.lineSeparator;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-
 class ProcessorTest {
 
     private String helpMesseage = "Type in " + Command.HELP + " at any time for a short manual. " +
@@ -26,17 +25,21 @@ class ProcessorTest {
     private String wrongText = "this is not the right messeage";
 
     private Processor processor;
-
     private ByteArrayOutputStream consoleContent = new ByteArrayOutputStream();
 
-
+    /**
+     * ByteArrayOutputStream is a concept which we not discussed yet, however to test the actual console outcome, we need
+     * this.
+     */
     @BeforeEach
     public void setUp() {
         processor = new Processor();
         System.setOut(new PrintStream(this.consoleContent));
     }
 
-
+    /**
+     * Print the help messeage to the cosole and test the actual outcome.
+     */
     @Test
     public void printHelpMesseage() {
         processor.printText(helpMesseage);
@@ -44,6 +47,9 @@ class ProcessorTest {
         assertEquals(helpMesseage + lineSeparator(), this.consoleContent.toString());
     }
 
+    /**
+     * Print the welcome messeage to the cosole and test the actual outcome.
+     */
     @Test
     public void printWelcomeMesseage() {
         processor.printText(welcomeMesseage);
@@ -51,6 +57,9 @@ class ProcessorTest {
         assertEquals(welcomeMesseage + lineSeparator(), this.consoleContent.toString());
     }
 
+    /**
+     * Print the quit messeage to the cosole and test the actual outcome.
+     */
     @Test
     public void printQuitMesseage() {
         processor.printText(quitMesseage);
@@ -58,33 +67,40 @@ class ProcessorTest {
         assertEquals(quitMesseage + lineSeparator(), this.consoleContent.toString());
     }
 
+    /**
+     * Prints an empty String to the cosole and test the actual outcome.
+     */
     @Test
-    public void printNothing() {
-        processor.printText(null);
+
+    public void printNothing()
+    {
+        processor.printText("");
+
         assertNotEquals(wrongText + lineSeparator(), this.consoleContent.toString());
-        assertEquals(null + lineSeparator(), this.consoleContent.toString());
+        assertEquals("" + lineSeparator(), this.consoleContent.toString());
     }
 
     @Test
-    public void makeWelcomeMesseage() {
-        String welcomeText = processor.makeWelcomeMesseage();
 
+    public void makeWelcomeMesseage()
+    {
+        String welcomeText = processor.getWelcomeMesseage();
         assertEquals(welcomeMesseage, welcomeText);
         assertNotEquals(welcomeMesseage, wrongText);
     }
 
     @Test
-    public void makeHelpMesseage() {
-        String helpText = processor.makeHelpMesseage();
-
+    public void makeHelpMesseage()
+    {
+        String helpText = processor.getHelpMesseage();
         assertEquals(helpMesseage, helpText);
         assertNotEquals(helpMesseage, wrongText);
     }
 
     @Test
-    public void makeQuitMesseage() {
-        String quitText = processor.makeQuitMesseage();
-
+    public void makeQuitMesseage()
+    {
+        String quitText = processor.getQuitMesseage();
         assertEquals(quitMesseage, quitText);
         assertNotEquals(quitMesseage, wrongText);
     }
