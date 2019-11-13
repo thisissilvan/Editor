@@ -12,6 +12,8 @@ import java.util.List;
 public class Parser {
 
     /**
+     * TODO
+     *
      * @param input Enthält den Text, der auf Commands untersucht werden soll
      * @return Command Liefert den erkannten Command zurück oder Command.UNKNOWN,
      * falls kein gültiger Befehl gefunden werden konnte
@@ -70,7 +72,7 @@ public class Parser {
      *
      * @param input The user's input in which the command is to be found
      * @return Command  The Command which was found in the user's input
-     *  or Command.UNKNOWN if no command could be found
+     *                  or Command.UNKNOWN if no command could be found
      */
     private Command extractCommand(String input) {
         if (input == null || input.isEmpty()) {

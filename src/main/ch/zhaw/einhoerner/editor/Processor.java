@@ -11,7 +11,7 @@ import static java.lang.System.lineSeparator;
  * The class Processor.
  * <p>
  * <p>
- * //todo Javadoc
+ * This class contains all the logic from the Editor Application.
  */
 public class Processor {
 
@@ -20,9 +20,7 @@ public class Processor {
     /**
      * Constructor of the class Processor.
      */
-    public Processor() {
-        //todo Empty yet
-    }
+    public Processor() {}
 
     /**
      * Public method used by the main method to start the editor.
@@ -77,6 +75,7 @@ public class Processor {
 
     /**
      * Prints out a text to the console.
+     * <p>
      * @param text A text as String value
      */
     public void printText(String text)
@@ -86,8 +85,9 @@ public class Processor {
 
     /**
      * Creates a welcome message which is used from the method startApplication.
+     * <p>
+     * @return the welcome messeage which is getting printed out to the user.
      */
-
     public String makeWelcomeMesseage() {
         return "Welcome to the Editor Application from the team Einhoerner, please use one of the " +
                 "following comands to proceed:";
@@ -102,7 +102,10 @@ public class Processor {
 
     /**
      * Creates a help message to give the user some advice to use the application.
-     * Further information and a manual on how to use the application is on the Wiki-Page of the Github repository
+     * Further information and a manual on how to use the application is on the
+     * Wiki-Page of the Github repository
+     * <p>
+     * @return a short manual-text on how to use the editor
      */
     public String makeHelpMesseage()
     {
@@ -113,6 +116,11 @@ public class Processor {
                 "For a manual in detail, please use the Wiki in the Github repository.";
     }
 
+    /**
+     * Creates a messeage which is getting printed out after exiting the Editor.
+     * <p>
+     * @return Quit messeage
+     */
     public String makeQuitMesseage()
     {
         return "Thank you for using the Einhoerner Editor.";
@@ -121,30 +129,45 @@ public class Processor {
     /**
      * Print out an unformatted version of all the paragraphs
      */
-    public void printUnformatted() {
+    private void printUnformatted() {
         printWholeParagraphs();
     }
 
 
     /**
      * Print out a formatted version of all the paragraphs
+     * <p>
      * @param width - The maximum width of these paragraphs
      */
-
-    public void printFormatted(int width) {
+    private void printFormatted(int width) {
         formatParagraphWidth(width);
         printWholeParagraphs();
     }
 
     /**
+     * In a given String, this method looks out for a line separator (new Paragraphs), this can be different
+     * depending on the operating system. With the lineSeparator from the System-library, it can detect
+     * new Paragraphs no matter which operating system is used.
+     *<p>
+     * @param text a given String to look out for new Paragraphs
+     */
+    public void detectNewParagraphs(String text)
+    {
+        String[] lines = text.split(System.getProperty("line.separator"));
+        for(int i = 0; i < lines.length; i++)
+        {
+            System.out.println(i + ":" + lines[i]);
+        }
+    }
+
+    /**
      * With the "lineSeparator()", a new line can be detected on every System
      * (e.g. in Windows it would be \r\n, in MacOS \n)
-     * <p>
      * This method returns a single paragraph with a line break (lineSeparator()) at the given width.
-     *
+     * <p>
      * @param width position at which a line break is added
      */
-    public void formatParagraphWidth (int width)throws IllegalArgumentException{
+    private void formatParagraphWidth (int width)throws IllegalArgumentException{
         if (width <=0) {
             throw new IllegalArgumentException ("Please enter a positive number.");
         }else{

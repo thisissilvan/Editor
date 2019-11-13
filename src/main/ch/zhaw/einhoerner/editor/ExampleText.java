@@ -4,7 +4,7 @@ package ch.zhaw.einhoerner.editor;
  * This class contains an example text taken from https://www.lipsum.com/. This example text will be used whenever
  * the user types the command "add exampletext" into the console.
  *
- * @author Ala Hadi
+ * @author Ala
  * @version 2019-11-11
  */
 public class ExampleText {
