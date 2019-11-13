@@ -125,7 +125,7 @@ public class Processor {
     {
         return "Thank you for using the Einhoerner Editor.";
     }
-    private void add(int index, String text) {
+    public void add(int index, String text) {
         if(illegalIndex(index))
             throw new IllegalArgumentException ("No text to create a wordindex. Please add text.");
         else
