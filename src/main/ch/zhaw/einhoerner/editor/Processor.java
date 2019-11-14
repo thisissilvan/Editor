@@ -50,6 +50,8 @@ public class Processor {
 
     void executeCommand(ParsedInput parsedInput) {
         switch (parsedInput.getCommand()) {
+            case MAKE_WORD_INDEX:
+                WordIndex wordIndex = new WordIndex(paragraphs);
             case ADD_EXAMPLETEXT:
                 addExampleText();
                 System.out.println("Exampletext added");
