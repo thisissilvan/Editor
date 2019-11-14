@@ -222,7 +222,10 @@ public class Processor {
      * @return entry of the paragraphs list
      */
     public String get(int index){
-        return paragraphs.get(index);
+        if(illegalIndex(index))
+            return "Invalid Index.";
+        else
+            return paragraphs.get(index);
     }
 
     /**
