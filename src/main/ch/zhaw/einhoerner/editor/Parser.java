@@ -54,13 +54,20 @@ public class Parser {
      */
     private List<String> extractParameter(String input, Command command) {
         List<String> result = new ArrayList<>();
+        String text = input.substring(command.getCommand().length() + 1);
         int count = command.getParameterCount();
+        int nextSpace = text.indexOf(" ");
 
-        String [] chunks = input.split(" ");
-        for( int i = 1; i <= count; i++ ) {
-            result.add(chunks[i]);
+        if (count >1){
+            for (int i = 0; i < count-1; i++) {
+                result.add(text.substring(0, nextSpace));
+                text = text.substring(nextSpace + 1);
+                nextSpace = text.indexOf(" ");
+            }
+            result.add(text);
+        }else{
+            result.add(text);
         }
-
         return result;
     }
     /**
