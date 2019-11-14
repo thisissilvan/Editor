@@ -106,6 +106,15 @@ class ParserTest {
     }
 
     @Test
+    void testCommandWithTwoParameters() {
+        String input = "add index 3 beispiel text";
+        List<String> actual = new Parser().parseInput(input).getParameters();
+        List<String> expected = Arrays.asList("3", "beispiel text");
+
+        assertThat("unexpected input", actual, is(expected));
+    }
+    
+    @Test
     void testCommandWithOneParameter() {
         String input = "add beispiel text";
         List<String> actual = new Parser().parseInput(input).getParameters();
