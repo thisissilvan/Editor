@@ -1,8 +1,7 @@
 package ch.zhaw.einhoerner.editor;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CommandTest {
@@ -11,13 +10,11 @@ class CommandTest {
     @Test
     public void testHelp()
     {
-        Command command = Command.HELP;
-        String helpCommand = command.HELP.getCommand();
-        int parameterCountHelp = command.HELP.getParameterCount();
+        String helpCommand = Command.HELP.getCommand();
+        int parameterCountHelp = Command.HELP.getParameterCount();
 
-        assertNotNull(command);
-        assertNotEquals(Command.valueOf("UNKNOWN"), command);
-        assertEquals(Command.valueOf("HELP"), command);
+        assertNotEquals(Command.valueOf("UNKNOWN"), Command.HELP);
+        assertEquals(Command.valueOf("HELP"), Command.HELP);
         assertEquals("help", helpCommand);
         assertEquals(0, parameterCountHelp);
     }
@@ -25,13 +22,11 @@ class CommandTest {
     @Test
     public void testAdd()
     {
-        Command command = Command.ADD;
-        String addCommand = command.ADD.getCommand();
-        int parameterCountAdd = command.ADD.getParameterCount();
+        String addCommand = Command.ADD.getCommand();
+        int parameterCountAdd = Command.ADD.getParameterCount();
 
-        assertNotNull(command);
-        assertNotEquals(Command.valueOf("UNKNOWN"), command);
-        assertEquals(Command.valueOf("ADD"), command);
+        assertNotEquals(Command.valueOf("UNKNOWN"), Command.ADD);
+        assertEquals(Command.valueOf("ADD"), Command.ADD);
         assertEquals("add", addCommand);
         assertEquals(1, parameterCountAdd);
     }
@@ -39,27 +34,23 @@ class CommandTest {
     @Test
     public void testExampletext()
     {
-        Command command = Command.ADD_EXAMPLETEXT;
-        String addExampletextCommand = command.ADD_EXAMPLETEXT.getCommand();
+        String addExampletextCommand = Command.ADD_EXAMPLETEXT.getCommand();
         int parameterCountAddExampletext = Command.ADD_EXAMPLETEXT.getParameterCount();
 
-        assertNotNull(command);
-        assertNotEquals(Command.valueOf("UNKNOWN"), command);
-        assertEquals(Command.valueOf("ADD_EXAMPLETEXT"), command);
-        assertEquals("add exampletext", addExampletextCommand);
+        assertNotEquals(Command.valueOf("UNKNOWN"), Command.ADD_EXAMPLETEXT);
+        assertEquals(Command.valueOf("ADD_EXAMPLETEXT"), Command.ADD_EXAMPLETEXT);
+        assertEquals("add_exampletext", addExampletextCommand);
         assertEquals(0, parameterCountAddExampletext);
     }
 
     @Test
     public void testPrint()
     {
-        Command command = Command.PRINT;
-        String printCommand = command.PRINT.getCommand();
-        int parameterCountPrint = command.PRINT.getParameterCount();
+        String printCommand = Command.PRINT.getCommand();
+        int parameterCountPrint = Command.PRINT.getParameterCount();
 
-        assertNotNull(command);
-        assertNotEquals(Command.valueOf("UNKNOWN"), command);
-        assertEquals(Command.valueOf("PRINT"), command);
+        assertNotEquals(Command.valueOf("UNKNOWN"), Command.PRINT);
+        assertEquals(Command.valueOf("PRINT"), Command.PRINT);
         assertEquals("print", printCommand);
         assertEquals(0, parameterCountPrint);
     }
@@ -67,41 +58,35 @@ class CommandTest {
     @Test
     public void testSearchAndReplace()
     {
-        Command command = Command.SEARCH_AND_REPLACE;
-        String searchAndReplaceCommand = command.SEARCH_AND_REPLACE.getCommand();
-        int parameterCountSearchAndReplace = command.SEARCH_AND_REPLACE.getParameterCount();
+        String searchAndReplaceCommand = Command.SEARCH_AND_REPLACE.getCommand();
+        int parameterCountSearchAndReplace = Command.SEARCH_AND_REPLACE.getParameterCount();
 
-        assertNotNull(command);
-        assertNotEquals(Command.valueOf("UNKNOWN"), command);
-        assertEquals(Command.valueOf("SEARCH_AND_REPLACE"), command);
-        assertEquals("search and replace", searchAndReplaceCommand);
+        assertNotEquals(Command.valueOf("UNKNOWN"), Command.SEARCH_AND_REPLACE);
+        assertEquals(Command.valueOf("SEARCH_AND_REPLACE"), Command.SEARCH_AND_REPLACE);
+        assertEquals("search_and_replace", searchAndReplaceCommand);
         assertEquals(3, parameterCountSearchAndReplace);
     }
 
     @Test
     public void testPrintWidth()
     {
-        Command command = Command.PRINT_WIDTH;
-        String printWidthCommand = command.PRINT_WIDTH.getCommand();
-        int parameterCountPrintWidth = command.PRINT_WIDTH.getParameterCount();
+        String printWidthCommand = Command.PRINT_WIDTH.getCommand();
+        int parameterCountPrintWidth = Command.PRINT_WIDTH.getParameterCount();
 
-        assertNotNull(command);
-        assertNotEquals(Command.valueOf("UNKNOWN"), command);
-        assertEquals(Command.valueOf("PRINT_WIDTH"), command);
-        assertEquals("print width", printWidthCommand);
+        assertNotEquals(Command.valueOf("UNKNOWN"), Command.PRINT_WIDTH);
+        assertEquals(Command.valueOf("PRINT_WIDTH"), Command.PRINT_WIDTH);
+        assertEquals("print_width", printWidthCommand);
         assertEquals(1, parameterCountPrintWidth);
     }
 
     @Test
     public void testQuit()
     {
-        Command command = Command.QUIT;
-        String quitCommand = command.QUIT.getCommand();
-        int parameterCountQuit = command.QUIT.getParameterCount();
+        String quitCommand = Command.QUIT.getCommand();
+        int parameterCountQuit = Command.QUIT.getParameterCount();
 
-        assertNotNull(command);
-        assertNotEquals(Command.valueOf("UNKNOWN"), command);
-        assertEquals(Command.valueOf("QUIT"), command);
+        assertNotEquals(Command.valueOf("UNKNOWN"), Command.QUIT);
+        assertEquals(Command.valueOf("QUIT"), Command.QUIT);
         assertEquals("quit", quitCommand);
         assertEquals(0, parameterCountQuit);
     }
@@ -109,15 +94,12 @@ class CommandTest {
     @Test
     public void testUnknown()
     {
-        Command command = Command.UNKNOWN;
-        String unknownCommand = command.UNKNOWN.getCommand();
-        int parameterCountUnknown = command.UNKNOWN.getParameterCount();
+        String unknownCommand = Command.UNKNOWN.getCommand();
+        int parameterCountUnknown = Command.UNKNOWN.getParameterCount();
 
-        assertNotNull(command);
-        assertNotEquals(Command.valueOf("ADD"), command);
-        assertEquals(Command.valueOf("UNKNOWN"), command);
+        assertNotEquals(Command.valueOf("ADD"), Command.UNKNOWN);
+        assertEquals(Command.valueOf("UNKNOWN"), Command.UNKNOWN);
         assertEquals("?", unknownCommand);
         assertEquals(0, parameterCountUnknown);
     }
-
 }

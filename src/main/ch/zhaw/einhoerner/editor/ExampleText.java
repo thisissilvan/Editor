@@ -19,9 +19,4 @@ public class ExampleText {
             "Nam eu tortor dictum, tincidunt lacus sit amet, rhoncus enim. Sed sodales mi nec tellus sodales tincidunt et nec urna. Sed vehicula augue vitae nunc eleifend, a pulvinar ipsum dictum. Proin nibh ligula, vulputate vitae enim ut, iaculis ullamcorper justo. Vestibulum orci risus, tristique nec libero ut, finibus bibendum massa. Cras condimentum enim vitae nibh finibus aliquam. Sed semper tellus ligula, vitae condimentum risus viverra sit amet. Quisque ante ex, maximus sit amet felis a, scelerisque consequat libero. Sed vitae lacus purus. Pellentesque sagittis, erat sed accumsan dapibus, libero turpis ultrices nibh, ut egestas justo nibh id nibh. Fusce quis nulla metus. Praesent pellentesque, ipsum eget placerat laoreet, felis tortor ultricies ipsum, at faucibus quam neque nec magna. Nulla tellus tellus, varius sit amet consequat quis, mattis eu felis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla tincidunt, arcu et posuere vestibulum, diam lacus aliquam quam, aliquet blandit turpis ex a odio." +
             lineSeparator() +
             "Donec lorem lorem, aliquam nec tincidunt vitae, vestibulum vitae erat. In vel dui at libero tincidunt venenatis. Maecenas ac nibh ut leo pellentesque viverra vitae et nisl. Praesent non nunc sit amet purus tincidunt commodo et sed libero. Nullam tincidunt vehicula tortor. Mauris egestas tortor lacus, id tristique quam posuere eget. Praesent pretium accumsan quam, eget sodales ipsum bibendum vel. Donec ac tortor in velit tempor elementum. Phasellus eget posuere eros. Pellentesque rutrum tellus at nibh vulputate mollis. Aliquam lacinia arcu justo, vel scelerisque magna congue ac. Morbi gravida elit quam. Nulla sollicitudin, nunc ut elementum rhoncus, urna quam feugiat metus, a tincidunt ante ipsum at enim.";
-
-    public String getExampleText()
-    {
-        return EXAMPLE_TEXT;
-    }
 }
