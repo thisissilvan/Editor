@@ -88,8 +88,6 @@ public class Processor {
             case QUIT:
                 System.out.println(QUIT_MESSAGE);
                 break;
-            case UNKNOWN:
-                break;
             default:
                 break;
 
