@@ -156,6 +156,13 @@ public class Processor {
         return "Thank you for using the Einhoerner Editor.";
     }
 
+    /**
+     * Adds a String text to a chosen index location into the paragraphs list
+     * <p>
+     *
+     * @param index An Integer as int value
+     * @param text A text as String value
+     */
     public void add(int index, String text) {
         if (illegalIndex(index))
             System.out.println("Invalid Index.");
@@ -163,18 +170,37 @@ public class Processor {
             paragraphs.addAll(index, detectNewParagraphs(text));
     }
 
+    /**
+     * Adds a String text at the end of the paragraphs list
+     * <p>
+     *
+     * @param text A text as String value
+     */
     public void add(String text) {
         //add text in the end of paragraph list
         paragraphs.addAll(detectNewParagraphs(text));
     }
 
+    /**
+     * Deletes an entry of the paragraphs list to a chosen index
+     * <p>
+     *
+     * @param index An Integer as int value
+     */
     public void delete(int index) {
         if (illegalIndex(index))
             System.out.println("Invalid Index.");
         else
             paragraphs.remove(index);
     }
-
+    /**
+     * Replaces a chosen word by a chosesn replacement in a chosen entry of the paragraphs list
+     * <p>
+     *
+     * @param index An Integer as int value
+     * @param wordToReplace A word that is to be replaced as String value
+     * @param replacement A word that serves as replacement as String value
+     */
     public void searchAndReplace(int index, String wordToReplace, String replacement) {
         if (illegalIndex(index))
             System.out.println("Invalid Index.");
@@ -189,6 +215,12 @@ public class Processor {
         return (index < 0 || index >= paragraphs.size());
     }
 
+    /**
+     * Gets a chosen entry of the praragraphs list
+     * <p>
+     *
+     * @return entry of the paragraphs list
+     */
     public String get(int index){
         return paragraphs.get(index);
     }
