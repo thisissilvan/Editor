@@ -28,18 +28,21 @@ class ProcessorTest {
     private String wrongText = "this is not the right message";
 
     private Processor processor;
-
     private ByteArrayOutputStream consoleContent = new ByteArrayOutputStream();
 
-
+    /**
+     * ByteArrayOutputStream is a concept which we not discussed yet, however to test the actual console outcome, we need
+     * this.
+     */
     @BeforeEach
-    public void setUp()
-    {
+    public void setUp() {
         processor = new Processor();
         System.setOut(new PrintStream(this.consoleContent));
     }
 
-
+    /**
+     * Print the help messeage to the cosole and test the actual outcome.
+     */
     @Test
     public void printHelpMessage()
     {
@@ -100,6 +103,36 @@ class ProcessorTest {
     }
 
     @Test
+    public void addTextWithIndex() {
+        processor.add("0");
+        processor.add("1");
+        processor.add(1, "hallo");
+        assertEquals("hallo", processor.get(1));
+        assertEquals("1", processor.get(2));
+    }
+    @Test
+    public void addTest(){
+        processor.add("joking");
+        assertEquals("joking", processor.get(0));
+        processor.add("joking1");
+        assertEquals("joking1", processor.get(1));
+    }
+    @Test
+    public void deleteTest(){
+        processor.add("0");
+        processor.add("1");
+        processor.delete(0);
+        assertEquals("1", processor.get(0));
+    }
+    @Test
+    public void searchAndReplaceTest(){
+        processor.add(0, "a b a b a b a b");
+        processor.add("1");
+        processor.searchAndReplace(0, "a", "c");
+        assertEquals("c b c b c b c b", processor.get(0));
+    }
+
+    @Test
     void testExampleText() {
         Processor p = new Processor();
         String input = "add_exampletext";
@@ -109,5 +142,8 @@ class ProcessorTest {
         p.executeCommand(parsedInput);
         assertThat("Processor should have 5 paragraphs after adding the example text.", 5, is(p.getParagraphs().size()));
     }
+
+
+
 
 }
