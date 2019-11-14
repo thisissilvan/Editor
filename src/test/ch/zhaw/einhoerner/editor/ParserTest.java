@@ -98,7 +98,7 @@ class ParserTest {
 
     @Test
     void testCommandWithThreeParameters() {
-        String input = "search_and_replace 1 kartoffel tomate";
+        String input = "search and replace 1 kartoffel tomate";
         List<String> actual = new Parser().parseInput(input).getParameters();
         List<String> expected = Arrays.asList("1", "kartoffel", "tomate");
 
