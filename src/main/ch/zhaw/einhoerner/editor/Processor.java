@@ -295,19 +295,19 @@ public class Processor {
                 System.out.println("Please enter a number lower than " + line.length() + ".");
                 return;
             }
-            String text="";
+            StringBuilder text= new StringBuilder();
             String [] worter = line.split(" ");
             int zeichenAnzahl=0;
             for (String wort : worter){
                 zeichenAnzahl+=wort.length()+1;
                 if (zeichenAnzahl<=width){
-                    text+=wort + " ";
+                    text.append(wort).append(" ");
                 }else {
                     zeichenAnzahl=wort.length()+1;
-                    text += System.lineSeparator()+wort+" ";
+                    text.append(System.lineSeparator()).append(wort).append(" ");
                 }
             }
-            formatted.add(text);
+            formatted.add(text.toString());
         }
         printWholeParagraphs(formatted);
     }
