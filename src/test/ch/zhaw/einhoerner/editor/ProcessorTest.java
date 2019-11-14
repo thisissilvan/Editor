@@ -75,6 +75,13 @@ class ProcessorTest {
         assertEquals("joking1", processor.get(1));
     }
     @Test
+    public void addParagraphs(){
+        processor.add("hello" + lineSeparator()  + " next Line ");
+        assertEquals("hello", processor.get(0));
+        assertEquals(" next Line ", processor.get(1));
+
+    }
+    @Test
     public void deleteTest(){
         processor.add("0");
         processor.add("1");
@@ -92,6 +99,7 @@ class ProcessorTest {
         assertEquals("c b c b c b c b", processor.get(0));
         assertEquals("no action", processor.get(1));
     }
+    @Test
     void testExampleText() {
         Processor p = new Processor();
         String input = "add exampletext";
