@@ -129,6 +129,14 @@ class ProcessorTest {
         processor.delete(0);
         assertEquals("1", processor.get(0));
     }
+    @Test
+    public void searchAndReplaceTest(){
+        processor.add(0, "a b a b a b a b");
+        processor.add("1");
+        processor.searchAndReplace(0, "a", "c");
+        assertEquals("c b c b c b c b", processor.get(0));
+    }
+
 
 
 
