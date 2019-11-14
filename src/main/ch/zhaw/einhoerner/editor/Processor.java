@@ -141,7 +141,7 @@ public class Processor {
      */
     public String getWelcomeMessage() {
         return "Welcome to the Editor Application from the team Einhoerner, please use one of the " +
-                "following comands to proceed:";
+                "following comands to proceed Type in " + Command.HELP + " at any time for a short manual.";
     }
 
     /**
@@ -154,8 +154,7 @@ public class Processor {
      */
 
     public String getHelpMessage() {
-        return "Type in " + Command.HELP + " at any time for a short manual. " +
-                lineSeparator() + lineSeparator() + "You can choose from the following commands:" + lineSeparator() +
+        return  "You can choose from the following commands:" + lineSeparator() +
                 "add (with or without paragraph number) <text>, add_exampletext, print, " +
                 "print_width (with width in character count), delete, quit, help, search_and_replace" +
                 "(followed by the old and the new word)" + lineSeparator() + lineSeparator() +
