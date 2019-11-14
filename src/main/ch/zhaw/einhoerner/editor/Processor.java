@@ -1,9 +1,7 @@
 
 package ch.zhaw.einhoerner.editor;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 import static java.lang.System.lineSeparator;
 
@@ -16,13 +14,17 @@ import static java.lang.System.lineSeparator;
 public class Processor {
 
     private Parser parser = new Parser();
+
     private List<String> paragraphs;
+
 
     /**
      * Constructor of the class Processor.
      */
     public Processor() {
+
         paragraphs = new ArrayList<>();
+
     }
 
     /**
@@ -47,6 +49,7 @@ public class Processor {
             executeCommand(parsedInput);
         }
     }
+
 
     void executeCommand(ParsedInput parsedInput) {
         switch (parsedInput.getCommand()) {
@@ -91,6 +94,7 @@ public class Processor {
                 break;
             default:
                 break;
+
         }
     }
 
@@ -120,10 +124,11 @@ public class Processor {
         System.out.println(text);
     }
 
-    private void printWholeParagraphs() {
-        for (int i = 0; i < paragraphs.size(); i++) {
-            System.out.println(i+1);
-            System.out.println(paragraphs.get(i));
+
+    private void printWholeParagraphs(List<String> toPrint) {
+        for (int i = 0; i < toPrint.size(); i++) {
+            System.out.println(i);
+            System.out.println(toPrint.get(i));
             System.out.println();
         }
     }
@@ -147,6 +152,7 @@ public class Processor {
      *
      * @return a short manual-text on how to use the editor
      */
+
     public String getHelpMessage() {
         return "Type in " + Command.HELP + " at any time for a short manual. " +
                 lineSeparator() + lineSeparator() + "You can choose from the following commands:" + lineSeparator() +
@@ -192,6 +198,7 @@ public class Processor {
         paragraphs.addAll(detectNewParagraphs(text));
     }
 
+
     /**
      * Deletes an entry of the paragraphs list to a chosen index
      * <p>
@@ -205,6 +212,7 @@ public class Processor {
         else
             paragraphs.remove(input);
     }
+
     /**
      * Replaces a chosen word by a chosesn replacement in a chosen entry of the paragraphs list
      * <p>
@@ -226,6 +234,7 @@ public class Processor {
 
     private Boolean illegalIndex(int index) {
         return (index < 0 || index >= paragraphs.size());
+
     }
 
     /**
@@ -245,7 +254,7 @@ public class Processor {
      * Print out an unformatted version of all the paragraphs
      */
     private void printUnformatted() {
-        printWholeParagraphs();
+        printWholeParagraphs(paragraphs);
     }
 
     /**
@@ -256,7 +265,6 @@ public class Processor {
      */
     private void printFormatted(int width) {
         formatParagraphWidth(width);
-        printWholeParagraphs();
     }
 
     /**
@@ -289,14 +297,16 @@ public class Processor {
      *
      * @param width position at which a line break is added
      */
-    private void formatParagraphWidth(int width) throws IllegalArgumentException {
+    public void formatParagraphWidth(int width) {
+        List<String> tempParagraphs = new ArrayList<>();
+        tempParagraphs.addAll(paragraphs);
         if (width <= 0) {
-            throw new IllegalArgumentException("Please enter a positive number.");
+            System.out.println("Please enter a positive number.");
         } else {
-            for (int paragraphIndex = 0; paragraphIndex < paragraphs.size(); paragraphIndex++) {
-                String text = paragraphs.get(paragraphIndex);
+            for (int paragraphIndex = 0; paragraphIndex < tempParagraphs.size(); paragraphIndex++) {
+                String text = tempParagraphs.get(paragraphIndex);
                 if (width >= text.length()) {
-                    throw new IllegalArgumentException("Please enter a number lower than " + text.length() + ".");
+                    System.out.println(("Please enter a number lower than " + text.length() + "."));
                 }
                 {
                     int anzahlZeilen = text.length() / width;
@@ -304,24 +314,49 @@ public class Processor {
                     int seperatorPlace = width;
                     int beginningPlace = 0;
                     for (int zeilenIndex = 0; zeilenIndex < anzahlZeilen; zeilenIndex++) {
+                        int difference =0;
                         if (Character.isWhitespace(text.charAt(seperatorPlace))) {
                             platzhalter.append(text.substring(beginningPlace, seperatorPlace)).append(System.lineSeparator());
                             seperatorPlace += width + 1;
                             beginningPlace += width + 1;
                         } else if (!Character.isWhitespace(text.charAt(seperatorPlace - 1))) {
-                            platzhalter.append(text.substring(beginningPlace, seperatorPlace)).append("-").append(System.lineSeparator());
+                            while (!Character.isWhitespace(text.charAt(seperatorPlace - 1))&&(seperatorPlace - 1)<=0) {
+                                seperatorPlace -= 1;
+                                difference += 1;
+                            }platzhalter.append(text.substring(beginningPlace, seperatorPlace)).append(System.lineSeparator());
                             seperatorPlace += width;
-                            beginningPlace += width;
+                            beginningPlace += width-difference;
                         } else {
                             platzhalter.append(text.substring(beginningPlace, seperatorPlace)).append(System.lineSeparator());
                             seperatorPlace += width;
                             beginningPlace += width;
                         }
                     }
-                    if (!(text.length() % width == 0)) platzhalter.append(text.substring(beginningPlace));
-                    paragraphs.set(paragraphIndex, platzhalter.toString());
+                    if ((!(text.length() % width == 0)&&text.substring(beginningPlace).length()<=width)){
+                        platzhalter.append(text.substring(beginningPlace));
+                    }else if (text.substring(beginningPlace).length()>width){
+                        int difference = 0;
+                        if (!Character.isWhitespace(text.charAt(seperatorPlace - 1))) {
+                            while (!Character.isWhitespace(text.charAt(seperatorPlace - 1))) {
+                                seperatorPlace -= 1;
+                                difference += 1;
+                            }
+                            platzhalter.append(text.substring(beginningPlace, seperatorPlace)).append(System.lineSeparator());
+                            seperatorPlace += width;
+                            beginningPlace += width - difference;
+                        }
+                        platzhalter.append(text.substring(beginningPlace));
+                    }
+
+                    tempParagraphs.set(paragraphIndex, platzhalter.toString());
                 }
+                printWholeParagraphs(tempParagraphs);
             }
         }
     }
-}
+
+private int anzahlZeilenBerechnen(String text,int width){
+        int anzahlZeilen=text.length()/width;
+        return anzahlZeilen;
+        }
+ }
