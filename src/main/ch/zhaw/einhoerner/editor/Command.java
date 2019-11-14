@@ -24,7 +24,8 @@ public enum Command {
     HELP("help", 0),
     QUIT("quit", 0),
     DELETE("delete", 1),
-    UNKNOWN("?", 0);
+    UNKNOWN("?", 0),
+    MAKE_WORD_INDEX("make word index", 0);
 
 
     private String command;
