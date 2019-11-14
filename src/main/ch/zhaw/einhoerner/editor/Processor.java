@@ -189,6 +189,10 @@ public class Processor {
         return (index < 0 || index >= paragraphs.size());
     }
 
+    public String get(int index){
+        return paragraphs.get(index);
+    }
+
     /**
      * Print out an unformatted version of all the paragraphs
      */
