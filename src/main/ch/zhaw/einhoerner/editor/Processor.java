@@ -52,21 +52,29 @@ public class Processor {
         switch (parsedInput.getCommand()) {
             case ADD_EXAMPLETEXT:
                 addExampleText();
+                System.out.println("Exampletext added");
                 break;
             case ADD_INDEX:
                 add(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getText());
+                // TODO Exception occured
+                System.out.println("Paragraph added at Index");
                 break;
             case ADD:
                 add(parsedInput.getText());
+                System.out.println("Paragraph added at the end of the list");
                 break;
             case DELETE:
                 delete(Integer.parseInt(parsedInput.getParameters().get(0)));
+                // TODO, does nothing
+                System.out.println("Paragraph " + Integer.parseInt(parsedInput.getParameters().get(0)) + " deleted");
                 break;
             case PRINT:
                 printUnformatted();
                 break;
             case SEARCH_AND_REPLACE:
                 searchAndReplace(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getText(), parsedInput.getText());
+                // TODO Exception occured
+                System.out.println("Word: " + parsedInput.getText() + "replaced in Paragraph" + Integer.parseInt(parsedInput.getParameters().get(0)));
                 break;
             case PRINT_WIDTH:
                 printFormatted(Integer.parseInt(parsedInput.getParameters().get(0)));
@@ -112,7 +120,7 @@ public class Processor {
 
     private void printWholeParagraphs() {
         for (int i = 0; i < paragraphs.size(); i++) {
-            System.out.println(i);
+            System.out.println(i+1);
             System.out.println(paragraphs.get(i));
             System.out.println();
         }
@@ -172,7 +180,7 @@ public class Processor {
         if (illegalIndex(index))
             System.out.println("Invalid Index.");
         else
-            paragraphs.remove(index);
+            paragraphs.remove(index-1);
     }
 
     public void searchAndReplace(int index, String wordToReplace, String replacement) {
