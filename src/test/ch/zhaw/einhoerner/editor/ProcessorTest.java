@@ -63,7 +63,7 @@ class ProcessorTest {
     public void addTextWithIndex() {
         processor.add("0");
         processor.add("1");
-        processor.add(1, "hallo");
+        processor.add(2, "hallo");
         assertEquals("hallo", processor.get(1));
         assertEquals("1", processor.get(2));
     }
@@ -78,15 +78,19 @@ class ProcessorTest {
     public void deleteTest(){
         processor.add("0");
         processor.add("1");
-        processor.delete(0);
+        processor.add("2");
+        processor.delete(1);
         assertEquals("1", processor.get(0));
+        assertEquals("Invalid Index.", processor.get(2));
     }
     @Test
     public void searchAndReplaceTest(){
-        processor.add(0, "a b a b a b a b");
-        processor.add("1");
-        processor.searchAndReplace(0, "a", "c");
+        processor.add("a b a b a b a b");
+        processor.add("no action");
+        processor.searchAndReplace(1, "a", "c");
+        processor.searchAndReplace(2, "x", "c");
         assertEquals("c b c b c b c b", processor.get(0));
+        assertEquals("no action", processor.get(1));
     }
     void testExampleText() {
         Processor p = new Processor();
