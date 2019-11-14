@@ -131,8 +131,6 @@ class ProcessorTest {
         processor.searchAndReplace(0, "a", "c");
         assertEquals("c b c b c b c b", processor.get(0));
     }
-
-    @Test
     void testExampleText() {
         Processor p = new Processor();
         String input = "add_exampletext";
