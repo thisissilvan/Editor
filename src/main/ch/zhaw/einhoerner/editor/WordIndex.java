@@ -74,7 +74,7 @@ public class WordIndex {
 
     private void printWordIndex() {
         for (Map.Entry<String, List<String>> wortHaeufigkeit : woerterHaeufigkeit.entrySet()) {
-            String toPrint = wortHaeufigkeit.getKey() + ": found " + wortHaeufigkeit.getValue().get(AMOUNT) + " times in the paragraph(s): " + wortHaeufigkeit.getValue().get(PLACE);
+            String toPrint = wortHaeufigkeit.getValue().get(AMOUNT) + ": "+ wortHaeufigkeit.getKey()  + " in: " + wortHaeufigkeit.getValue().get(PLACE);
             System.out.println(toPrint);
             System.out.println();
         }
