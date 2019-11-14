@@ -103,8 +103,7 @@ public class Processor {
 
     private String getUserInput() {
         Scanner s = new Scanner(System.in);
-        String input = s.nextLine();
-        return input;
+        return s.nextLine();
     }
 
     private void addExampleText() {
@@ -326,7 +325,6 @@ public class Processor {
 
 
 private int anzahlZeilenBerechnen(String text,int width){
-        int anzahlZeilen=text.length()/width;
-        return anzahlZeilen;
+    return text.length()/width;
         }
  }

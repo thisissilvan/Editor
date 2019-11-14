@@ -101,7 +101,6 @@ public class Parser {
      * empty String will be returned
      */
     public String extractText(String input, Command command, List<String> parameters) {
-        String text = input.substring(command.getCommand().length() + 1);
-        return text;
+        return input.substring(command.getCommand().length() + 1);
     }
 }
