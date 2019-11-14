@@ -99,6 +99,7 @@ class ProcessorTest {
         assertEquals("c b c b c b c b", processor.get(0));
         assertEquals("no action", processor.get(1));
     }
+    @Test
     void testExampleText() {
         Processor p = new Processor();
         String input = "add exampletext";

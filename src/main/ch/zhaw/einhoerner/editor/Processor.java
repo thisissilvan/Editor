@@ -16,7 +16,7 @@ import static java.lang.System.lineSeparator;
 public class Processor {
 
     private Parser parser = new Parser();
-    private List<String> paragraphs;
+    private static List<String> paragraphs;
 
     /**
      * Constructor of the class Processor.
@@ -72,9 +72,9 @@ public class Processor {
                 printUnformatted();
                 break;
             case SEARCH_AND_REPLACE:
-                searchAndReplace(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getText(), parsedInput.getText());
+                searchAndReplace(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getParameters().get(1), parsedInput.getParameters().get(2));
                 // TODO Exception occured
-                System.out.println("Word: " + parsedInput.getText() + "replaced in Paragraph" + Integer.parseInt(parsedInput.getParameters().get(0)));
+                System.out.println("Word: " + parsedInput.getText() + " replaced in Paragraph " + Integer.parseInt(parsedInput.getParameters().get(0)));
                 break;
             case PRINT_WIDTH:
                 printFormatted(Integer.parseInt(parsedInput.getParameters().get(0)));
@@ -211,7 +211,7 @@ public class Processor {
      * @param wordToReplace A word that is to be replaced as String value
      * @param replacement A word that serves as replacement as String value
      */
-    public void searchAndReplace(int index, String wordToReplace, String replacement) {
+    public static void searchAndReplace(int index, String wordToReplace, String replacement) {
         int input = index - 1;
         if (illegalIndex(input))
             System.out.println("Invalid Index.");
@@ -222,7 +222,7 @@ public class Processor {
         }
     }
 
-    private Boolean illegalIndex(int index) {
+    private static Boolean illegalIndex(int index) {
         return (index < 0 || index >= paragraphs.size());
     }
 
