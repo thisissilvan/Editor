@@ -107,9 +107,9 @@ class ParserTest {
 
     @Test
     void testCommandWithOneParameter() {
-        String input = "add 1 beispiel text";
+        String input = "add beispiel text";
         List<String> actual = new Parser().parseInput(input).getParameters();
-        List<String> expected = Arrays.asList("1");
+        List<String> expected = Arrays.asList("beispiel text");
 
         assertThat("unexpected input", actual, is(expected));
     }
