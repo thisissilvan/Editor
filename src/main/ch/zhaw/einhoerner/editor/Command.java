@@ -15,16 +15,17 @@ package ch.zhaw.einhoerner.editor;
  * @version 2019-11-09
  */
 public enum Command {
-    ADD_EXAMPLETEXT("add_exampletext", 0),
-    ADD_INDEX("add_index", 2),
+    ADD_EXAMPLETEXT("add exampletext", 0),
+    ADD_INDEX("add index", 2),
     ADD("add", 1),
-    PRINT_WIDTH("print_width", 1),
+    PRINT_WIDTH("print width", 1),
     PRINT("print", 0),
-    SEARCH_AND_REPLACE("search_and_replace", 3),
+    SEARCH_AND_REPLACE("search and replace", 3),
     HELP("help", 0),
     QUIT("quit", 0),
     DELETE("delete", 1),
-    UNKNOWN("?", 0);
+    UNKNOWN("?", 0),
+    MAKE_WORD_INDEX("make word index", 0);
 
 
     private String command;
