@@ -78,6 +78,7 @@ class ProcessorTest {
     public void deleteTest(){
         processor.add("0");
         processor.add("1");
+        processor.add("2");
         processor.delete(1);
         assertEquals("1", processor.get(0));
         assertEquals("Invalid Index.", processor.get(2));
