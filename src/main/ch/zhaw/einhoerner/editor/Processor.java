@@ -98,7 +98,7 @@ public class Processor {
     }
 
     List<String> getParagraphs() {
-        return this.paragraphs;
+        return paragraphs;
     }
 
     private String getUserInput() {

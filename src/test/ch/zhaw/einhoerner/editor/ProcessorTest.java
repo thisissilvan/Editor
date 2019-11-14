@@ -56,8 +56,8 @@ class ProcessorTest {
     public void searchAndReplaceTest(){
         processor.add("a b a b a b a b");
         processor.add("no action");
-        processor.searchAndReplace(1, "a", "c");
-        processor.searchAndReplace(2, "x", "c");
+        Processor.searchAndReplace(1, "a", "c");
+        Processor.searchAndReplace(2, "x", "c");
         assertEquals("c b c b c b c b", processor.get(0));
         assertEquals("no action", processor.get(1));
     }
