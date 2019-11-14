@@ -16,12 +16,13 @@ import static java.lang.System.lineSeparator;
 public class Processor {
 
     private Parser parser = new Parser();
-    private List<String> paragraphs = new ArrayList<>();
+    private List<String> paragraphs;
 
     /**
      * Constructor of the class Processor.
      */
     public Processor() {
+        paragraphs = new ArrayList<>();
     }
 
     /**
