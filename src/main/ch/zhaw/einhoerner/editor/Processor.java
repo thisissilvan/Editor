@@ -297,62 +297,33 @@ public class Processor {
      * @param width position at which a line break is added
      */
     public void formatParagraphWidth(int width) {
-        List<String> tempParagraphs = new ArrayList<>();
-        tempParagraphs.addAll(paragraphs);
         if (width <= 0) {
             System.out.println("Please enter a positive number.");
-        } else {
-            for (int paragraphIndex = 0; paragraphIndex < tempParagraphs.size(); paragraphIndex++) {
-                String text = tempParagraphs.get(paragraphIndex);
-                if (width >= text.length()) {
-                    System.out.println(("Please enter a number lower than " + text.length() + "."));
-                }
-                {
-                    int anzahlZeilen = anzahlZeilenBerechnen(text,width);
-                    StringBuilder platzhalter = new StringBuilder();
-                    int seperatorPlace = width;
-                    int beginningPlace = 0;
-                    for (int zeilenIndex = 0; zeilenIndex < anzahlZeilen; zeilenIndex++) {
-                        int difference =0;
-                        if (Character.isWhitespace(text.charAt(seperatorPlace))) {
-                            platzhalter.append(text.substring(beginningPlace, seperatorPlace)).append(System.lineSeparator());
-                            seperatorPlace += width + 1;
-                            beginningPlace += width + 1;
-                        } else if (!Character.isWhitespace(text.charAt(seperatorPlace - 1))) {
-                            while (!Character.isWhitespace(text.charAt(seperatorPlace - 1))&&(seperatorPlace - 1)<=0) {
-                                seperatorPlace -= 1;
-                                difference += 1;
-                            }platzhalter.append(text.substring(beginningPlace, seperatorPlace)).append(System.lineSeparator());
-                            seperatorPlace += width;
-                            beginningPlace += width-difference;
-                        } else {
-                            platzhalter.append(text.substring(beginningPlace, seperatorPlace)).append(System.lineSeparator());
-                            seperatorPlace += width;
-                            beginningPlace += width;
-                        }
-                    }
-                    if ((!(text.length() % width == 0)&&text.substring(beginningPlace).length()<=width)){
-                        platzhalter.append(text.substring(beginningPlace));
-                    }else if (text.substring(beginningPlace).length()>width){
-                        int difference = 0;
-                        if (!Character.isWhitespace(text.charAt(seperatorPlace - 1))) {
-                            while (!Character.isWhitespace(text.charAt(seperatorPlace - 1))) {
-                                seperatorPlace -= 1;
-                                difference += 1;
-                            }
-                            platzhalter.append(text.substring(beginningPlace, seperatorPlace)).append(System.lineSeparator());
-                            seperatorPlace += width;
-                            beginningPlace += width - difference;
-                        }
-                        platzhalter.append(text.substring(beginningPlace));
-                    }
-
-                    tempParagraphs.set(paragraphIndex, platzhalter.toString());
-                }
-                printWholeParagraphs(tempParagraphs);
-            }
+            return;
         }
+        List <String> formatted= new ArrayList<>();
+        for(String line : paragraphs){
+            if(line.length()<width) {
+                System.out.println("Please enter a number lower than " + line.length() + ".");
+                return;
+            }
+            String text="";
+            String [] worter = line.split(" ");
+            int zeichenAnzahl=0;
+            for (String wort : worter){
+                zeichenAnzahl+=wort.length()+1;
+                if (zeichenAnzahl<=width){
+                    text+=wort + " ";
+                }else {
+                    zeichenAnzahl=wort.length()+1;
+                    text += System.lineSeparator()+wort+" ";
+                }
+            }
+            formatted.add(text);
+        }
+        printWholeParagraphs(formatted);
     }
+
 
 private int anzahlZeilenBerechnen(String text,int width){
         int anzahlZeilen=text.length()/width;
