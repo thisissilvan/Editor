@@ -25,14 +25,13 @@ class ProcessorTest {
     private String wrongText = "this is not the right message";
 
     private Processor processor;
-
-
+  
     @BeforeEach
     public void setUp()
     {
         processor = new Processor();
     }
-
+  
     @Test
     public void getWelcomeMessage()
     {
@@ -61,6 +60,34 @@ class ProcessorTest {
     }
 
     @Test
+    public void addTextWithIndex() {
+        processor.add("0");
+        processor.add("1");
+        processor.add(1, "hallo");
+        assertEquals("hallo", processor.get(1));
+        assertEquals("1", processor.get(2));
+    }
+    @Test
+    public void addTest(){
+        processor.add("joking");
+        assertEquals("joking", processor.get(0));
+        processor.add("joking1");
+        assertEquals("joking1", processor.get(1));
+    }
+    @Test
+    public void deleteTest(){
+        processor.add("0");
+        processor.add("1");
+        processor.delete(0);
+        assertEquals("1", processor.get(0));
+    }
+    @Test
+    public void searchAndReplaceTest(){
+        processor.add(0, "a b a b a b a b");
+        processor.add("1");
+        processor.searchAndReplace(0, "a", "c");
+        assertEquals("c b c b c b c b", processor.get(0));
+    }
     void testExampleText() {
         Processor p = new Processor();
         String input = "add exampletext";
@@ -70,5 +97,8 @@ class ProcessorTest {
         p.executeCommand(parsedInput);
         assertThat("Processor should have 5 paragraphs after adding the example text.", 5, is(p.getParagraphs().size()));
     }
+
+
+
 
 }
