@@ -3,9 +3,6 @@ package ch.zhaw.einhoerner.editor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-
 import static java.lang.System.lineSeparator;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -29,51 +26,15 @@ class ProcessorTest {
 
     private Processor processor;
 
-    private ByteArrayOutputStream consoleContent = new ByteArrayOutputStream();
-
 
     @BeforeEach
     public void setUp()
     {
         processor = new Processor();
-        System.setOut(new PrintStream(this.consoleContent));
-    }
-
-
-    @Test
-    public void printHelpMessage()
-    {
-        processor.printText(helpMessage);
-        assertNotEquals(wrongText + lineSeparator(), this.consoleContent.toString());
-        assertEquals(helpMessage + lineSeparator(), this.consoleContent.toString());
     }
 
     @Test
-    public void printWelcomeMessage()
-    {
-        processor.printText(welcomeMessage);
-        assertNotEquals(wrongText + lineSeparator(), this.consoleContent.toString());
-        assertEquals(welcomeMessage + lineSeparator(), this.consoleContent.toString());
-    }
-
-    @Test
-    public void printQuitMessage()
-    {
-        processor.printText(quitMessage);
-        assertNotEquals(wrongText + lineSeparator(), this.consoleContent.toString());
-        assertEquals(quitMessage + lineSeparator(), this.consoleContent.toString());
-    }
-
-    @Test
-    public void printNothing()
-    {
-        processor.printText(null);
-        assertNotEquals(wrongText + lineSeparator(), this.consoleContent.toString());
-        assertEquals(null + lineSeparator(), this.consoleContent.toString());
-    }
-
-    @Test
-    public void makeWelcomeMessage()
+    public void getWelcomeMessage()
     {
         String welcomeText = processor.getWelcomeMessage();
 
@@ -82,7 +43,7 @@ class ProcessorTest {
     }
 
     @Test
-    public void makeHelpMessage()
+    public void getHelpMessage()
     {
         String helpText = processor.getHelpMessage();
 
@@ -91,7 +52,7 @@ class ProcessorTest {
     }
 
     @Test
-    public void makeQuitMessage()
+    public void getQuitMessage()
     {
         String quitText = processor.getQuitMessage();
 
@@ -102,7 +63,7 @@ class ProcessorTest {
     @Test
     void testExampleText() {
         Processor p = new Processor();
-        String input = "add_exampletext";
+        String input = "add exampletext";
 
         ParsedInput parsedInput = new Parser().parseInput(input);
         assertThat("Processor should not have any paragraphs", 0, is(p.getParagraphs().size()));
