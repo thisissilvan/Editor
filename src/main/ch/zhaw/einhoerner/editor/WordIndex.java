@@ -20,7 +20,7 @@ public class WordIndex {
         if (text.size() > 0) {
             for (int index = 0; index < text.size(); index++) {
                 String platzhalter = text.get(index);
-                String[] paragraph = platzhalter.toLowerCase().replaceAll("[ +.,?!\":; ]", " ").split(" +");
+                String[] paragraph = platzhalter.toLowerCase().replaceAll("[ +.,?!\":;]", " ").split(" +");
 
                 for (String word : paragraph) {
                     List<String> values = new ArrayList<>();

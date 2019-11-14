@@ -13,9 +13,9 @@ import static java.lang.System.lineSeparator;
  */
 public class Processor {
 
+    private final static String QUIT_MESSAGE = "Thank you for using the Einhoerner Editor.";
     private Parser parser = new Parser();
     private static List<String> paragraphs;
-
 
 
     /**
@@ -77,7 +77,6 @@ public class Processor {
                 break;
             case SEARCH_AND_REPLACE:
                 searchAndReplace(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getParameters().get(1), parsedInput.getParameters().get(2));
-                // TODO Exception occured
                 System.out.println("Word: " + parsedInput.getText() + " replaced in Paragraph " + Integer.parseInt(parsedInput.getParameters().get(0)));
                 break;
             case PRINT_WIDTH:
@@ -87,9 +86,7 @@ public class Processor {
                 System.out.println(getHelpMessage());
                 break;
             case QUIT:
-                System.out.println(getQuitMessage());
-                break;
-            case UNKNOWN:
+                System.out.println(QUIT_MESSAGE);
                 break;
             default:
                 break;
@@ -98,13 +95,12 @@ public class Processor {
     }
 
     List<String> getParagraphs() {
-        return this.paragraphs;
+        return paragraphs;
     }
 
     private String getUserInput() {
         Scanner s = new Scanner(System.in);
-        String input = s.nextLine();
-        return input;
+        return s.nextLine();
     }
 
     private void addExampleText() {
@@ -154,21 +150,11 @@ public class Processor {
      */
 
     public String getHelpMessage() {
-        return  "You can choose from the following commands:" + lineSeparator() +
-                "add (with or without paragraph number) <text>, add_exampletext, print, " +
-                "print_width (with width in character count), delete, quit, help, search_and_replace" +
-                "(followed by the old and the new word)" + lineSeparator() + lineSeparator() +
+        return "You can choose from the following commands:" + lineSeparator() +
+                "add (with or without paragraph number) <text>, add exampletext, print, " +
+                "print width (with width in character count), delete, quit, help, search and replace" +
+                "(followed by the old and the new word), make word index." + lineSeparator() + lineSeparator() +
                 "For a manual in detail, please use the Wiki in the Github repository.";
-    }
-
-    /**
-     * Creates a message which is getting printed out after exiting the Editor.
-     * <p>
-     *
-     * @return Quit message
-     */
-    public String getQuitMessage() {
-        return "Thank you for using the Einhoerner Editor.";
     }
 
     /**
@@ -307,26 +293,22 @@ public class Processor {
                 System.out.println("Please enter a number lower than " + line.length() + ".");
                 return;
             }
-            String text="";
+            StringBuilder text= new StringBuilder();
             String [] worter = line.split(" ");
             int zeichenAnzahl=0;
             for (String wort : worter){
                 zeichenAnzahl+=wort.length()+1;
                 if (zeichenAnzahl<=width){
-                    text+=wort + " ";
+                    text.append(wort).append(" ");
                 }else {
                     zeichenAnzahl=wort.length()+1;
-                    text += System.lineSeparator()+wort+" ";
+                    text.append(System.lineSeparator()).append(wort).append(" ");
                 }
             }
-            formatted.add(text);
+            formatted.add(text.toString());
         }
         printWholeParagraphs(formatted);
     }
 
 
-private int anzahlZeilenBerechnen(String text,int width){
-        int anzahlZeilen=text.length()/width;
-        return anzahlZeilen;
-        }
- }
+}

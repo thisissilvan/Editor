@@ -34,7 +34,7 @@ public class Parser {
         List<String> parameters = extractParameter(input, command);
 
         // extract text
-        String text = extractText(input, command, parameters);
+        String text = extractText(input, command);
 
         // create ParsedInput and return
         return new ParsedInput(text, command, parameters);
@@ -96,12 +96,10 @@ public class Parser {
      * Extracts the text content without the command
      *
      * @param input      User input with command and text
-     * @param parameters List of parameters for the command
      * @return String Only the text without command will be returned, if no command can  be found,
      * empty String will be returned
      */
-    public String extractText(String input, Command command, List<String> parameters) {
-        String text = input.substring(command.getCommand().length() + 1);
-        return text;
+    public String extractText(String input, Command command) {
+        return input.substring(command.getCommand().length() + 1);
     }
 }

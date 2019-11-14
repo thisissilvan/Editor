@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -118,7 +119,7 @@ class ParserTest {
     void testCommandWithOneParameter() {
         String input = "add beispiel text";
         List<String> actual = new Parser().parseInput(input).getParameters();
-        List<String> expected = Arrays.asList("beispiel text");
+        List<String> expected = Collections.singletonList("beispiel text");
 
         assertThat("unexpected input", actual, is(expected));
     }

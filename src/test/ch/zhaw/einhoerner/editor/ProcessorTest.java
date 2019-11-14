@@ -11,19 +11,6 @@ import static org.hamcrest.CoreMatchers.is;
 
 
 class ProcessorTest {
-    private String helpMessage = "Type in " + Command.HELP + " at any time for a short manual. " +
-            lineSeparator() + lineSeparator() + "You can choose from the following commands:" + lineSeparator() +
-            "add (with or without paragraph number) <text>, add_exampletext, print, " +
-            "print_width (with width in character count), delete, quit, help, search_and_replace" +
-            "(followed by the old and the new word)" + lineSeparator() + lineSeparator() +
-            "For a manual in detail, please use the Wiki in the Github repository.";
-
-    private String welcomeMessage = "Welcome to the Editor Application from the team Einhoerner, please use one of the " +
-            "following comands to proceed:";
-
-    private String quitMessage = "Thank you for using the Einhoerner Editor.";
-    private String wrongText = "this is not the right message";
-
     private Processor processor;
   
     @BeforeEach
@@ -69,8 +56,8 @@ class ProcessorTest {
     public void searchAndReplaceTest(){
         processor.add("a b a b a b a b");
         processor.add("no action");
-        processor.searchAndReplace(1, "a", "c");
-        processor.searchAndReplace(2, "x", "c");
+        Processor.searchAndReplace(1, "a", "c");
+        Processor.searchAndReplace(2, "x", "c");
         assertEquals("c b c b c b c b", processor.get(0));
         assertEquals("no action", processor.get(1));
     }
