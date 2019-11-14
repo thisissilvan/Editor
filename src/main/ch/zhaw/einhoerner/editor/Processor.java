@@ -313,7 +313,7 @@ public class Processor {
                 for (int zeilenIndex = 0; zeilenIndex < anzahlZeilen; zeilenIndex++) {
                     int difference = 0;
                     if (Character.isWhitespace(text.charAt(seperatorPlace))) {
-                        platzhalter.append(text.substring(beginningPlace, seperatorPlace)).append(System.lineSeparator());
+                        platzhalter.append(text, beginningPlace, seperatorPlace).append(System.lineSeparator());
                         seperatorPlace += width + 1;
                         beginningPlace += width + 1;
                     } else if (!Character.isWhitespace(text.charAt(seperatorPlace - 1))) {
@@ -321,11 +321,11 @@ public class Processor {
                             seperatorPlace -= 1;
                             difference += 1;
                         }
-                        platzhalter.append(text.substring(beginningPlace, seperatorPlace)).append(System.lineSeparator());
+                        platzhalter.append(text, beginningPlace, seperatorPlace).append(System.lineSeparator());
                         seperatorPlace += width;
                         beginningPlace += width - difference;
                     } else {
-                        platzhalter.append(text.substring(beginningPlace, seperatorPlace)).append(System.lineSeparator());
+                        platzhalter.append(text, beginningPlace, seperatorPlace).append(System.lineSeparator());
                         seperatorPlace += width;
                         beginningPlace += width;
                     }
