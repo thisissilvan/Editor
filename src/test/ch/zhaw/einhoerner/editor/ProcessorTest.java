@@ -32,32 +32,7 @@ class ProcessorTest {
         processor = new Processor();
     }
   
-    @Test
-    public void getWelcomeMessage()
-    {
-        String welcomeText = processor.getWelcomeMessage();
-
-        assertEquals(welcomeMessage, welcomeText);
-        assertNotEquals(welcomeMessage, wrongText);
-    }
-
-    @Test
-    public void getHelpMessage()
-    {
-        String helpText = processor.getHelpMessage();
-
-        assertEquals(helpMessage, helpText);
-        assertNotEquals(helpMessage, wrongText);
-    }
-
-    @Test
-    public void getQuitMessage()
-    {
-        String quitText = processor.getQuitMessage();
-
-        assertEquals(quitMessage, quitText);
-        assertNotEquals(quitMessage, wrongText);
-    }
+   
 
     @Test
     public void addTextWithIndex() {
@@ -73,6 +48,13 @@ class ProcessorTest {
         assertEquals("joking", processor.get(0));
         processor.add("joking1");
         assertEquals("joking1", processor.get(1));
+    }
+    @Test
+    public void addParagraphs(){
+        processor.add("hello" + lineSeparator()  + " next Line ");
+        assertEquals("hello", processor.get(0));
+        assertEquals(" next Line ", processor.get(1));
+
     }
     @Test
     public void deleteTest(){
@@ -92,6 +74,7 @@ class ProcessorTest {
         assertEquals("c b c b c b c b", processor.get(0));
         assertEquals("no action", processor.get(1));
     }
+    @Test
     void testExampleText() {
         Processor p = new Processor();
         String input = "add exampletext";
