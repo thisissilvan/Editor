@@ -17,23 +17,24 @@ public class Processor {
 
     private Parser parser = new Parser();
     private List<String> paragraphs = new ArrayList<>();
+
     /**
      * Constructor of the class Processor.
      */
-    public Processor() {}
+    public Processor() {
+    }
 
     /**
      * Public method used by the main method to start the editor.
      */
     public void startApplication() {
-        printText(getWelcomeMesseage());
-        printText(getHelpMesseage());
-        System.out.print("> ");
+        printText(getWelcomeMessage());
+        printText(getHelpMessage());
 
         String nextCommand = "";
         while (!Command.QUIT.getCommand().equals(nextCommand)) {
-
             // retrieve next user input
+            System.out.print("> ");
             String userInput = getUserInput();
 
             // parse user input
@@ -42,42 +43,48 @@ public class Processor {
             System.out.println("Detected command: " + nextCommand);
 
             // execute command
-            switch (parsedInput.getCommand()) {
-                case ADD_EXAMPLETEXT:
-                    addExampleText();
-                    // TODO this text has to be saved somehow somewhere
-                    break;
-                case ADD_INDEX:
-                    add(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getText());
-                    break;
-                case ADD:
-                    add(parsedInput.getText());
-                    break;
-                case DELETE:
-                    delete(Integer.parseInt(parsedInput.getParameters().get(0)));
-                    break;
-                case PRINT:
-                    printUnformatted();
-                    break;
-                case SEARCH_AND_REPLACE:
-                    searchAndReplace(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getText(), parsedInput.getText());
-                    break;
-                case PRINT_WIDTH:
-                    printFormatted(Integer.parseInt(parsedInput.getParameters().get(0)));
-                    break;
-                case HELP:
-                    getHelpMesseage();
-                    break;
-                case QUIT:
-                    getQuitMesseage();
-                    break;
-                case UNKNOWN;
-                    break;
-                default:
-                    break;
-            }
+            executeCommand(parsedInput);
         }
-        System.out.println(getQuitMesseage());
+    }
+
+    void executeCommand(ParsedInput parsedInput) {
+        switch (parsedInput.getCommand()) {
+            case ADD_EXAMPLETEXT:
+                addExampleText();
+                break;
+            case ADD_INDEX:
+                add(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getText());
+                break;
+            case ADD:
+                add(parsedInput.getText());
+                break;
+            case DELETE:
+                delete(Integer.parseInt(parsedInput.getParameters().get(0)));
+                break;
+            case PRINT:
+                printUnformatted();
+                break;
+            case SEARCH_AND_REPLACE:
+                searchAndReplace(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getText(), parsedInput.getText());
+                break;
+            case PRINT_WIDTH:
+                printFormatted(Integer.parseInt(parsedInput.getParameters().get(0)));
+                break;
+            case HELP:
+                System.out.println(getHelpMessage());
+                break;
+            case QUIT:
+                System.out.println(getQuitMessage());
+                break;
+            case UNKNOWN:
+                break;
+            default:
+                break;
+        }
+    }
+
+    List<String> getParagraphs() {
+        return this.paragraphs;
     }
 
     private String getUserInput() {
@@ -87,8 +94,7 @@ public class Processor {
     }
 
     private void addExampleText() {
-        ExampleText exampletext = new ExampleText();
-        List<String> text = detectNewParagraphs(exampletext.getExampleText());
+        List<String> text = detectNewParagraphs(ExampleText.EXAMPLE_TEXT);
         for (String line : text)
             add(line);
     }
@@ -96,10 +102,10 @@ public class Processor {
     /**
      * Prints out a text to the console.
      * <p>
+     *
      * @param text A text as String value
      */
-    public void printText(String text)
-    {
+    public void printText(String text) {
         System.out.println(text);
     }
 
@@ -114,9 +120,10 @@ public class Processor {
     /**
      * Creates a welcome message which is used from the method startApplication.
      * <p>
-     * @return the welcome messeage which is getting printed out to the user.
+     *
+     * @return the welcome message which is getting printed out to the user.
      */
-    public String getWelcomeMesseage() {
+    public String getWelcomeMessage() {
         return "Welcome to the Editor Application from the team Einhoerner, please use one of the " +
                 "following comands to proceed:";
     }
@@ -126,45 +133,49 @@ public class Processor {
      * Further information and a manual on how to use the application is on the
      * Wiki-Page of the Github repository
      * <p>
+     *
      * @return a short manual-text on how to use the editor
      */
-    public String getHelpMesseage()
-    {
+    public String getHelpMessage() {
         return "Type in " + Command.HELP + " at any time for a short manual. " +
                 lineSeparator() + lineSeparator() + "You can choose from the following commands:" + lineSeparator() +
-                "add (with or without paragraph number), print, quit, help, searchAndReplace" +
-                "(followed by the old and the new word" + lineSeparator() + lineSeparator() +
+                "add (with or without paragraph number) <text>, add_exampletext, print, " +
+                "print_width (with width in character count), delete, quit, help, search_and_replace" +
+                "(followed by the old and the new word)" + lineSeparator() + lineSeparator() +
                 "For a manual in detail, please use the Wiki in the Github repository.";
     }
 
     /**
-     * Creates a messeage which is getting printed out after exiting the Editor.
+     * Creates a message which is getting printed out after exiting the Editor.
      * <p>
-     * @return Quit messeage
+     *
+     * @return Quit message
      */
-    public String getQuitMesseage()
-    {
+    public String getQuitMessage() {
         return "Thank you for using the Einhoerner Editor.";
     }
 
     public void add(int index, String text) {
-        if(illegalIndex(index))
+        if (illegalIndex(index))
             System.out.println("Invalid Index.");
         else
-            paragraphs.add(index, text);
+            paragraphs.addAll(index, detectNewParagraphs(text));
     }
+
     public void add(String text) {
         //add text in the end of paragraph list
-        paragraphs.add(text);
+        paragraphs.addAll(detectNewParagraphs(text));
     }
+
     public void delete(int index) {
-        if(illegalIndex(index))
+        if (illegalIndex(index))
             System.out.println("Invalid Index.");
         else
             paragraphs.remove(index);
     }
+
     public void searchAndReplace(int index, String wordToReplace, String replacement) {
-        if(illegalIndex(index))
+        if (illegalIndex(index))
             System.out.println("Invalid Index.");
         else {
             String searchedParagraph = paragraphs.get(index);
@@ -172,8 +183,9 @@ public class Processor {
             paragraphs.set(index, searchedParagraph);
         }
     }
-    private Boolean illegalIndex(int index){
-        return (index < 0  || index >= paragraphs.size());
+
+    private Boolean illegalIndex(int index) {
+        return (index < 0 || index >= paragraphs.size());
     }
 
     /**
@@ -186,6 +198,7 @@ public class Processor {
     /**
      * Print out a formatted version of all the paragraphs
      * <p>
+     *
      * @param width - The maximum width of these paragraphs
      */
     private void printFormatted(int width) {
@@ -197,19 +210,21 @@ public class Processor {
      * In a given String, this method looks out for a line separator (new Paragraphs), this can be different
      * depending on the operating system. With the lineSeparator from the System-library, it can detect
      * new Paragraphs no matter which operating system is used.
-     *<p>
+     * <p>
+     *
      * @param text a given String to look out for new Paragraphs
      * @return
      */
     public List<String> detectNewParagraphs(String text) {
-        List<String> absatz = new ArrayList<>();
+        List<String> paragraph = new ArrayList<>();
         String[] lines = text.split(System.lineSeparator());
         for (String line : lines) {
             if (!line.isEmpty()) {
-                absatz.add(line);
+                paragraph.add(line);
             }
 
-        } return absatz;
+        }
+        return paragraph;
     }
 
 
@@ -218,16 +233,18 @@ public class Processor {
      * (e.g. in Windows it would be \r\n, in MacOS \n)
      * This method returns a single paragraph with a line break (lineSeparator()) at the given width.
      * <p>
+     *
      * @param width position at which a line break is added
      */
-    private void formatParagraphWidth (int width)throws IllegalArgumentException{
-        if (width <=0) {
-            throw new IllegalArgumentException ("Please enter a positive number.");
-        }else{
+    private void formatParagraphWidth(int width) throws IllegalArgumentException {
+        if (width <= 0) {
+            throw new IllegalArgumentException("Please enter a positive number.");
+        } else {
             for (int paragraphIndex = 0; paragraphIndex < paragraphs.size(); paragraphIndex++) {
                 String text = paragraphs.get(paragraphIndex);
-                if (width>=text.length()) {
-                    throw new IllegalArgumentException ("Please enter a number lower than "+text.length()+".");}
+                if (width >= text.length()) {
+                    throw new IllegalArgumentException("Please enter a number lower than " + text.length() + ".");
+                }
                 {
                     int anzahlZeilen = text.length() / width;
                     StringBuilder platzhalter = new StringBuilder();
