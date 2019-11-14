@@ -11,12 +11,6 @@ import static org.hamcrest.CoreMatchers.is;
 
 
 class ProcessorTest {
-    private String welcomeMessage = "Welcome to the Editor Application from the team Einhoerner, please use one of the " +
-            "following comands to proceed:";
-
-    private String quitMessage = "Thank you for using the Einhoerner Editor.";
-    private String wrongText = "this is not the right message";
-
     private Processor processor;
   
     @BeforeEach
