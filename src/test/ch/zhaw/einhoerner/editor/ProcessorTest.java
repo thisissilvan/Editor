@@ -3,9 +3,6 @@ package ch.zhaw.einhoerner.editor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-
 import static java.lang.System.lineSeparator;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -28,55 +25,15 @@ class ProcessorTest {
     private String wrongText = "this is not the right message";
 
     private Processor processor;
-    private ByteArrayOutputStream consoleContent = new ByteArrayOutputStream();
-
-    /**
-     * ByteArrayOutputStream is a concept which we not discussed yet, however to test the actual console outcome, we need
-     * this.
-     */
+  
     @BeforeEach
-    public void setUp() {
+    public void setUp()
+    {
         processor = new Processor();
-        System.setOut(new PrintStream(this.consoleContent));
     }
-
-    /**
-     * Print the help messeage to the cosole and test the actual outcome.
-     */
+  
     @Test
-    public void printHelpMessage()
-    {
-        processor.printText(helpMessage);
-        assertNotEquals(wrongText + lineSeparator(), this.consoleContent.toString());
-        assertEquals(helpMessage + lineSeparator(), this.consoleContent.toString());
-    }
-
-    @Test
-    public void printWelcomeMessage()
-    {
-        processor.printText(welcomeMessage);
-        assertNotEquals(wrongText + lineSeparator(), this.consoleContent.toString());
-        assertEquals(welcomeMessage + lineSeparator(), this.consoleContent.toString());
-    }
-
-    @Test
-    public void printQuitMessage()
-    {
-        processor.printText(quitMessage);
-        assertNotEquals(wrongText + lineSeparator(), this.consoleContent.toString());
-        assertEquals(quitMessage + lineSeparator(), this.consoleContent.toString());
-    }
-
-    @Test
-    public void printNothing()
-    {
-        processor.printText(null);
-        assertNotEquals(wrongText + lineSeparator(), this.consoleContent.toString());
-        assertEquals(null + lineSeparator(), this.consoleContent.toString());
-    }
-
-    @Test
-    public void makeWelcomeMessage()
+    public void getWelcomeMessage()
     {
         String welcomeText = processor.getWelcomeMessage();
 
@@ -85,7 +42,7 @@ class ProcessorTest {
     }
 
     @Test
-    public void makeHelpMessage()
+    public void getHelpMessage()
     {
         String helpText = processor.getHelpMessage();
 
@@ -94,7 +51,7 @@ class ProcessorTest {
     }
 
     @Test
-    public void makeQuitMessage()
+    public void getQuitMessage()
     {
         String quitText = processor.getQuitMessage();
 
@@ -106,7 +63,7 @@ class ProcessorTest {
     public void addTextWithIndex() {
         processor.add("0");
         processor.add("1");
-        processor.add(1, "hallo");
+        processor.add(2, "hallo");
         assertEquals("hallo", processor.get(1));
         assertEquals("1", processor.get(2));
     }
@@ -121,19 +78,23 @@ class ProcessorTest {
     public void deleteTest(){
         processor.add("0");
         processor.add("1");
-        processor.delete(0);
+        processor.add("2");
+        processor.delete(1);
         assertEquals("1", processor.get(0));
+        assertEquals("Invalid Index.", processor.get(2));
     }
     @Test
     public void searchAndReplaceTest(){
-        processor.add(0, "a b a b a b a b");
-        processor.add("1");
-        processor.searchAndReplace(0, "a", "c");
+        processor.add("a b a b a b a b");
+        processor.add("no action");
+        processor.searchAndReplace(1, "a", "c");
+        processor.searchAndReplace(2, "x", "c");
         assertEquals("c b c b c b c b", processor.get(0));
+        assertEquals("no action", processor.get(1));
     }
     void testExampleText() {
         Processor p = new Processor();
-        String input = "add_exampletext";
+        String input = "add exampletext";
 
         ParsedInput parsedInput = new Parser().parseInput(input);
         assertThat("Processor should not have any paragraphs", 0, is(p.getParagraphs().size()));
