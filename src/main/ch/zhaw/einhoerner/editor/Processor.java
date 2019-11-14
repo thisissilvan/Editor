@@ -55,9 +55,9 @@ public class Processor {
         switch (parsedInput.getCommand()) {
             case MAKE_WORD_INDEX:
                 WordIndex wordIndex = new WordIndex(paragraphs);
+                break;
             case ADD_EXAMPLETEXT:
                 addExampleText();
-                System.out.println("Exampletext added");
                 break;
             case ADD_INDEX:
                 add(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getText());
@@ -70,7 +70,6 @@ public class Processor {
                 break;
             case DELETE:
                 delete(Integer.parseInt(parsedInput.getParameters().get(0)));
-                // TODO, does nothing
                 System.out.println("Paragraph " + Integer.parseInt(parsedInput.getParameters().get(0)) + " deleted");
                 break;
             case PRINT:
@@ -112,6 +111,7 @@ public class Processor {
         List<String> text = detectNewParagraphs(ExampleText.EXAMPLE_TEXT);
         for (String line : text)
             add(line);
+        System.out.println("Exampletext added");
     }
 
     /**
@@ -127,7 +127,7 @@ public class Processor {
 
     private void printWholeParagraphs(List<String> toPrint) {
         for (int i = 0; i < toPrint.size(); i++) {
-            System.out.println(i);
+            System.out.println(i+1);
             System.out.println(toPrint.get(i));
             System.out.println();
         }
@@ -141,7 +141,7 @@ public class Processor {
      */
     public String getWelcomeMessage() {
         return "Welcome to the Editor Application from the team Einhoerner, please use one of the " +
-                "following comands to proceed:";
+                "following comands to proceed Type in " + Command.HELP + " at any time for a short manual.";
     }
 
     /**
@@ -154,8 +154,7 @@ public class Processor {
      */
 
     public String getHelpMessage() {
-        return "Type in " + Command.HELP + " at any time for a short manual. " +
-                lineSeparator() + lineSeparator() + "You can choose from the following commands:" + lineSeparator() +
+        return  "You can choose from the following commands:" + lineSeparator() +
                 "add (with or without paragraph number) <text>, add_exampletext, print, " +
                 "print_width (with width in character count), delete, quit, help, search_and_replace" +
                 "(followed by the old and the new word)" + lineSeparator() + lineSeparator() +
@@ -309,7 +308,7 @@ public class Processor {
                     System.out.println(("Please enter a number lower than " + text.length() + "."));
                 }
                 {
-                    int anzahlZeilen = text.length() / width;
+                    int anzahlZeilen = anzahlZeilenBerechnen(text,width);
                     StringBuilder platzhalter = new StringBuilder();
                     int seperatorPlace = width;
                     int beginningPlace = 0;
