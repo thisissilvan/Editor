@@ -172,10 +172,11 @@ public class Processor {
      * @param text A text as String value
      */
     public void add(int index, String text) {
-        if (illegalIndex(index))
+        int input = index - 1;
+        if (illegalIndex(input))
             System.out.println("Invalid Index.");
         else
-            paragraphs.addAll(index, detectNewParagraphs(text));
+            paragraphs.addAll(input, detectNewParagraphs(text));
     }
 
     /**
@@ -196,10 +197,11 @@ public class Processor {
      * @param index An Integer as int value
      */
     public void delete(int index) {
-        if (illegalIndex(index))
+        int input = index - 1;
+        if (illegalIndex(input))
             System.out.println("Invalid Index.");
         else
-            paragraphs.remove(index-1);
+            paragraphs.remove(input);
     }
     /**
      * Replaces a chosen word by a chosesn replacement in a chosen entry of the paragraphs list
@@ -210,12 +212,13 @@ public class Processor {
      * @param replacement A word that serves as replacement as String value
      */
     public void searchAndReplace(int index, String wordToReplace, String replacement) {
-        if (illegalIndex(index))
+        int input = index - 1;
+        if (illegalIndex(input))
             System.out.println("Invalid Index.");
         else {
-            String searchedParagraph = paragraphs.get(index);
+            String searchedParagraph = paragraphs.get(input);
             searchedParagraph = searchedParagraph.replace(wordToReplace, replacement);
-            paragraphs.set(index, searchedParagraph);
+            paragraphs.set(input, searchedParagraph);
         }
     }
 
