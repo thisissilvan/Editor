@@ -155,9 +155,9 @@ public class Processor {
 
     public String getHelpMessage() {
         return  "You can choose from the following commands:" + lineSeparator() +
-                "add (with or without paragraph number) <text>, add_exampletext, print, " +
-                "print_width (with width in character count), delete, quit, help, search_and_replace" +
-                "(followed by the old and the new word)" + lineSeparator() + lineSeparator() +
+                "add (with or without paragraph number) <text>, add exampletext, print, " +
+                "print width (with width in character count), delete, quit, help, search and replace" +
+                "(followed by the old and the new word), make word index." + lineSeparator() + lineSeparator() +
                 "For a manual in detail, please use the Wiki in the Github repository.";
     }
 
