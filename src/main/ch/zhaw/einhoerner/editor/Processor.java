@@ -13,9 +13,9 @@ import static java.lang.System.lineSeparator;
  */
 public class Processor {
 
+    private final static String QUIT_MESSAGE = "Thank you for using the Einhoerner Editor.";
     private Parser parser = new Parser();
     private static List<String> paragraphs;
-
 
 
     /**
@@ -77,7 +77,6 @@ public class Processor {
                 break;
             case SEARCH_AND_REPLACE:
                 searchAndReplace(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getParameters().get(1), parsedInput.getParameters().get(2));
-                // TODO Exception occured
                 System.out.println("Word: " + parsedInput.getText() + " replaced in Paragraph " + Integer.parseInt(parsedInput.getParameters().get(0)));
                 break;
             case PRINT_WIDTH:
@@ -87,7 +86,7 @@ public class Processor {
                 System.out.println(getHelpMessage());
                 break;
             case QUIT:
-                System.out.println(getQuitMessage());
+                System.out.println(QUIT_MESSAGE);
                 break;
             case UNKNOWN:
                 break;
@@ -158,16 +157,6 @@ public class Processor {
                 "print width (with width in character count), delete, quit, help, search and replace" +
                 "(followed by the old and the new word), make word index." + lineSeparator() + lineSeparator() +
                 "For a manual in detail, please use the Wiki in the Github repository.";
-    }
-
-    /**
-     * Creates a message which is getting printed out after exiting the Editor.
-     * <p>
-     *
-     * @return Quit message
-     */
-    public String getQuitMessage() {
-        return "Thank you for using the Einhoerner Editor.";
     }
 
     /**
