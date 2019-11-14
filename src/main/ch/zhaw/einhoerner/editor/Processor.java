@@ -313,7 +313,4 @@ public class Processor {
     }
 
 
-private int anzahlZeilenBerechnen(String text,int width){
-    return text.length()/width;
-        }
- }
+}
