@@ -32,32 +32,7 @@ class ProcessorTest {
         processor = new Processor();
     }
   
-    @Test
-    public void getWelcomeMessage()
-    {
-        String welcomeText = processor.getWelcomeMessage();
-
-        assertEquals(welcomeMessage, welcomeText);
-        assertNotEquals(welcomeMessage, wrongText);
-    }
-
-    @Test
-    public void getHelpMessage()
-    {
-        String helpText = processor.getHelpMessage();
-
-        assertEquals(helpMessage, helpText);
-        assertNotEquals(helpMessage, wrongText);
-    }
-
-    @Test
-    public void getQuitMessage()
-    {
-        String quitText = processor.getQuitMessage();
-
-        assertEquals(quitMessage, quitText);
-        assertNotEquals(quitMessage, wrongText);
-    }
+   
 
     @Test
     public void addTextWithIndex() {
