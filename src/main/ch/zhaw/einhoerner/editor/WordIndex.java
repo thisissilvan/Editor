@@ -1,6 +1,18 @@
 package ch.zhaw.einhoerner.editor;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.ArrayList;
+
+
+/**
+ * The Parser class is responsible for parsing user input into Commands and text components
+ *
+ * @author Ala
+ * @version 2019-11-09
+ */
 
 public class WordIndex {
 
