@@ -21,8 +21,6 @@ class ProcessorTest {
     {
         processor = new Processor();
     }
-  
-
 
     @Test
     public void addTextWithIndexPositive() {
@@ -30,13 +28,6 @@ class ProcessorTest {
         processor.add("1");
         processor.add(2, "hallo");
         assertEquals("1", processor.get(2));
-    }
-
-    @Test
-    public void addTextWrongIndex()
-    {
-        processor.add(2, "should not be possible");
-        assertEquals("Invalid Index", processor.get(2));
     }
 
     @Test
@@ -56,7 +47,7 @@ class ProcessorTest {
     }
 
     @Test
-    public void addParagraphsNoLineSeparator()
+    public void addTextWithSeveralWords()
     {
         processor.add("line with no lineSeparator");
         assertEquals("line with no lineSeparator", processor.get(0));
@@ -71,13 +62,6 @@ class ProcessorTest {
         assertEquals("line three", processor.get(2));
         assertEquals("line four", processor.get(3));
         assertEquals("line five", processor.get(4));
-    }
-
-    @Test
-    public void addParagraphs(){
-        processor.add("hello" + lineSeparator()  + " next Line ");
-        assertEquals("hello", processor.get(0));
-        assertEquals(" next Line ", processor.get(1));
     }
 
     @Test
@@ -137,27 +121,27 @@ class ProcessorTest {
         processor.add("a b c d e f g, h i");
         List<String> test = new ArrayList<>();
         test.add("a b c d e f g, "+System.lineSeparator()+ "h i ");
-        assertLinesMatch(test,processor.formatParagraphWidth(15));
+        assertLinesMatch(test, processor.formatParagraphWidth(15));
     }
 
     @Test
     public void formatParagraphWidthWithoutItem(){
         List<String> test = new ArrayList<>();
-        assertLinesMatch(test,processor.formatParagraphWidth(15));
+        assertLinesMatch(test, processor.formatParagraphWidth(15));
     }
 
     @Test
     public void formatParagraphWidthNegativeWidth(){
         processor.add("a b c d e f g, h i");
         List<String> test = new ArrayList<>();
-        assertLinesMatch(test,processor.formatParagraphWidth(-15));
+        assertLinesMatch(test, processor.formatParagraphWidth(-15));
     }
 
     @Test
     public void formatParagraphWidthTooLongWidth(){
         processor.add("a b c d e f g, h i");
         List<String> test = new ArrayList<>();
-        assertLinesMatch(test,processor.formatParagraphWidth(100));
+        assertLinesMatch(test, processor.formatParagraphWidth(100));
     }
 
 
