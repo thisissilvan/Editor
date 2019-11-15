@@ -92,6 +92,11 @@ public class WordIndex {
         return toDelete;
     }
 
+    /**
+     * All the words that aren't mentioned often enough are deleted from the wordindex.
+     *
+     * @param toDelete a list of words to be deleted
+     */
     private void entrysToDelete(List<String> toDelete) {
         for (String keyToDelete : toDelete) {
             woerterHaeufigkeit.remove(keyToDelete);
