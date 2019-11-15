@@ -110,17 +110,16 @@ class ProcessorTest {
   
     @Test
     public void testExampleTextPositive() {
-        Processor p = new Processor();
         String input = "add exampletext";
 
         ParsedInput parsedInput = new Parser().parseInput(input);
-        p.executeCommand(parsedInput);
+        processor.executeCommand(parsedInput);
         assertThat("Processor should have 5 paragraphs after adding the example text.", 5, is(p.getParagraphs().size()));
     }
 
     @Test
     void testExampleTextNegative() {
-        assertThat("Processor should not have any paragraphs", 0, is(p.getParagraphs().size()));
+        assertThat("Processor should not have any paragraphs", 0, is(processor.getParagraphs().size()));
     }
 
     @Test
