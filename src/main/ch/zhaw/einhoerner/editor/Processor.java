@@ -70,7 +70,7 @@ public class Processor {
                 addExampleText();
                 break;
             case ADD_INDEX:
-                add(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getText());
+                add(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getParameters().get(1));
                 break;
             case ADD:
                 add(parsedInput.getText());
