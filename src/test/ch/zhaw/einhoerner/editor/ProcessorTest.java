@@ -106,14 +106,22 @@ class ProcessorTest {
         assertEquals( "Invalid Index", processor.get(2));
     }
     @Test
-    void testExampleText() {
+    void testExampleTextPositive() {
+        Processor p = new Processor();
+        String input = "add exampletext";
+
+        ParsedInput parsedInput = new Parser().parseInput(input);
+        p.executeCommand(parsedInput);
+        assertThat("Processor should have 5 paragraphs after adding the example text.", 5, is(p.getParagraphs().size()));
+    }
+
+    @Test
+    void testExampleTextNegative() {
         Processor p = new Processor();
         String input = "add exampletext";
 
         ParsedInput parsedInput = new Parser().parseInput(input);
         assertThat("Processor should not have any paragraphs", 0, is(p.getParagraphs().size()));
-        p.executeCommand(parsedInput);
-        assertThat("Processor should have 5 paragraphs after adding the example text.", 5, is(p.getParagraphs().size()));
     }
 
     @Test
