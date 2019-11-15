@@ -74,6 +74,11 @@ public class WordIndex {
         printWordIndex();
     }
 
+    /**
+     * This method saves the words that aren't mentioned often enough.
+     *
+     * @return toDelete a list of words that are mentioned less than thrice
+     */
     private List<String> controlMinimumAmount() {
         List<String> values;
         List<String> toDelete = new ArrayList<>();
