@@ -105,7 +105,6 @@ public class Processor {
         List<String> text = detectNewParagraphs(ExampleText.EXAMPLE_TEXT);
         for (String line : text)
             add(line);
-        System.out.println("Exampletext added");
     }
 
     /**
