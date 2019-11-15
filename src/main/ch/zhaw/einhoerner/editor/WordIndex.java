@@ -16,8 +16,6 @@ import java.util.Map;
  * @author Gruppe_Einhoerner
  * @version 2019-11-15
  */
-
-
 public class WordIndex {
 
     private Map<String, List<String>> wordCount = new HashMap<>();
@@ -29,13 +27,6 @@ public class WordIndex {
      *
      * @param text a list of paragraphs to be processed
      */
-
-    /**
-     * When calling this method, it is required to hand over a list of Strings.
-     *
-     * @param text a list of paragraphs to be processed
-     */
-
     public void makeWordIndex(List<String> text) {
         //Ensure that if the passed on list is empty, no wordindex can be created
         if (text.size() <= 0) {
