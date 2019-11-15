@@ -1,7 +1,11 @@
 
 package ch.zhaw.einhoerner.editor;
 
-import java.util.*;
+
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 import static java.lang.System.lineSeparator;
 
@@ -52,7 +56,8 @@ public class Processor {
     void executeCommand(ParsedInput parsedInput) {
         switch (parsedInput.getCommand()) {
             case MAKE_WORD_INDEX:
-                WordIndex wordIndex = new WordIndex(paragraphs);
+                WordIndex wordIndex = new WordIndex();
+                wordIndex.makeWordIndex(paragraphs);
                 break;
             case ADD_EXAMPLETEXT:
                 addExampleText();
