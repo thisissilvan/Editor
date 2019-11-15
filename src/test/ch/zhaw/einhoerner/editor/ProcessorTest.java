@@ -21,8 +21,6 @@ class ProcessorTest {
     {
         processor = new Processor();
     }
-  
-
 
     @Test
     public void addTextWithIndexPositive() {
@@ -30,13 +28,6 @@ class ProcessorTest {
         processor.add("1");
         processor.add(2, "hallo");
         assertEquals("1", processor.get(2));
-    }
-
-    @Test
-    public void addTextWrongIndex()
-    {
-        processor.add(2, "should not be possible");
-        assertEquals("Invalid Index", processor.get(2));
     }
 
     @Test
@@ -56,7 +47,7 @@ class ProcessorTest {
     }
 
     @Test
-    public void addParagraphsNoLineSeparator()
+    public void addTextWithSeveralWords()
     {
         processor.add("line with no lineSeparator");
         assertEquals("line with no lineSeparator", processor.get(0));
@@ -71,13 +62,6 @@ class ProcessorTest {
         assertEquals("line three", processor.get(2));
         assertEquals("line four", processor.get(3));
         assertEquals("line five", processor.get(4));
-    }
-
-    @Test
-    public void addParagraphs(){
-        processor.add("hello" + lineSeparator()  + " next Line ");
-        assertEquals("hello", processor.get(0));
-        assertEquals(" next Line ", processor.get(1));
     }
 
     @Test
@@ -104,6 +88,7 @@ class ProcessorTest {
         processor.delete(1);
         assertEquals("Invalid Index", processor.get(2));
     }
+  
     @Test
     public void searchAndReplaceTestPositive(){
         processor.add("a b a b a b a b");
@@ -112,6 +97,7 @@ class ProcessorTest {
         Processor.searchAndReplace(2, "x", "c");
         assertEquals("c b c b c b c b", processor.get(0));
         }
+  
     @Test
     public void searchAndReplaceTestNegative(){
         processor.add("a b a b a b a b");
@@ -121,15 +107,20 @@ class ProcessorTest {
         assertEquals("no action", processor.get(1));
         assertEquals( "Invalid Index", processor.get(2));
     }
+  
     @Test
-    public void testExampleText() {
-        Processor p = new Processor();
-        String input = "add exampletext";
+    public void testExampleTextPositive() {
+        String input = "add exampletexts";
 
         ParsedInput parsedInput = new Parser().parseInput(input);
-        assertThat("Processor should not have any paragraphs", 0, is(p.getParagraphs().size()));
-        p.executeCommand(parsedInput);
-        assertThat("Processor should have 5 paragraphs after adding the example text.", 5, is(p.getParagraphs().size()));
+        processor.executeCommand(parsedInput);
+        //assertThat("Processor should have 5 paragraphs after adding the example text.", 5, is(processor.getParagraphs().size()));
+        assertEquals(5, processor.getParagraphs().size());
+    }
+
+    @Test
+    void testExampleTextNegative() {
+        assertThat("Processor should not have any paragraphs", 0, is(processor.getParagraphs().size()));
     }
 
     @Test
@@ -137,27 +128,27 @@ class ProcessorTest {
         processor.add("a b c d e f g, h i");
         List<String> test = new ArrayList<>();
         test.add("a b c d e f g, "+System.lineSeparator()+ "h i ");
-        assertLinesMatch(test,processor.formatParagraphWidth(15));
+        assertLinesMatch(test, processor.formatParagraphWidth(15));
     }
 
     @Test
     public void formatParagraphWidthWithoutItem(){
         List<String> test = new ArrayList<>();
-        assertLinesMatch(test,processor.formatParagraphWidth(15));
+        assertLinesMatch(test, processor.formatParagraphWidth(15));
     }
 
     @Test
     public void formatParagraphWidthNegativeWidth(){
         processor.add("a b c d e f g, h i");
         List<String> test = new ArrayList<>();
-        assertLinesMatch(test,processor.formatParagraphWidth(-15));
+        assertLinesMatch(test, processor.formatParagraphWidth(-15));
     }
 
     @Test
     public void formatParagraphWidthTooLongWidth(){
         processor.add("a b c d e f g, h i");
         List<String> test = new ArrayList<>();
-        assertLinesMatch(test,processor.formatParagraphWidth(100));
+        assertLinesMatch(test, processor.formatParagraphWidth(100));
     }
 
 
