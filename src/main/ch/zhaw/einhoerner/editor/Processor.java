@@ -249,7 +249,7 @@ public class Processor {
      * @param width - The maximum width of these paragraphs
      */
     private void printFormatted(int width) {
-        formatParagraphWidth(width);
+        printWholeParagraphs(formatParagraphWidth(width));
     }
 
     /**
@@ -281,17 +281,18 @@ public class Processor {
      * <p>
      *
      * @param width position at which a line break is added
+     * @return formatted list with the formatted paragraphs
      */
-    public void formatParagraphWidth(int width) {
+    public List<String> formatParagraphWidth(int width) {
+        List <String> formatted= new ArrayList<>();
         if (width <= 0) {
             System.out.println("Please enter a positive number.");
-            return;
+            return formatted;
         }
-        List <String> formatted= new ArrayList<>();
         for(String line : paragraphs){
             if(line.length()<width) {
                 System.out.println("Please enter a number lower than " + line.length() + ".");
-                return;
+                return formatted;
             }
             StringBuilder text= new StringBuilder();
             String [] worter = line.split(" ");
@@ -307,8 +308,6 @@ public class Processor {
             }
             formatted.add(text.toString());
         }
-        printWholeParagraphs(formatted);
+        return formatted;
     }
-
-
 }
