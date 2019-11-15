@@ -25,13 +25,20 @@ class ProcessorTest {
    
 
     @Test
-    public void addTextWithIndex() {
+    public void addTextWithIndexPositive() {
         processor.add("0");
         processor.add("1");
         processor.add(2, "hallo");
-        assertEquals("hallo", processor.get(1));
         assertEquals("1", processor.get(2));
     }
+    @Test
+    public void addTextWithIndexNegative() {
+        processor.add("0");
+        processor.add("1");
+        processor.add(2, "hallo");
+        assertEquals("Invalid Index", processor.get(3));
+    }
+
     @Test
     public void addTest(){
         processor.add("joking");
@@ -44,7 +51,6 @@ class ProcessorTest {
         processor.add("hello" + lineSeparator()  + " next Line ");
         assertEquals("hello", processor.get(0));
         assertEquals(" next Line ", processor.get(1));
-
     }
     @Test
     public void deleteTestPositive(){
@@ -60,7 +66,7 @@ class ProcessorTest {
         processor.add("1");
         processor.add("2");
         processor.delete(1);
-        assertEquals("Invalid Index.", processor.get(2));
+        assertEquals("Invalid Index", processor.get(2));
     }
     @Test
     public void searchAndReplaceTestPositive(){
