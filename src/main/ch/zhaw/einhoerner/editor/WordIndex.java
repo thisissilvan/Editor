@@ -115,6 +115,13 @@ public class WordIndex {
         }
     }
 
+    /**
+     * This method returns the amount a word is mentioned.
+     *
+     * @param key the word in question
+     * @return amount a String which saves the occurrence of the word
+     */
+
     public String getAmount(String key) {
         String amount;
         if (!woerterHaeufigkeit.containsKey(key.toLowerCase()))
