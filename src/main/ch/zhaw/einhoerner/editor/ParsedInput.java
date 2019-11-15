@@ -8,21 +8,12 @@ import java.util.List;
  *  - the command's parameter list (can be empty)
  *  - an (optional) text which follows the last parameter
  *
- * Examples:
- *  - add 1 Hello world one two three   will be parsed into
- *          - the command "add"
- *          - a list of parameters containing one parameter "1"
- *          - the text "Hello world one two three"
- *  - help                              will be parsed into
- *          - the command "help"
- *          - an empty list of parameters
- *          - an empty String for the text body
+ * For an exact manual, please consult the Wiki-Page on our GitHub Repository.
  *
  *
- * @author  Ala, Silvan
- * @version 2019_11_09
+ * @author  Gruppe_Einhoerner
+ * @version 2019-11-15
  */
-
 public class ParsedInput {
     private final String text;
     private Command command;
