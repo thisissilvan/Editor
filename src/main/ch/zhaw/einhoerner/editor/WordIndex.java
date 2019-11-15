@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * The WordIndex class is responsible for making and printing a wordindex for the currently saved paragraphs.
  *
- * @author Kusnang Kündetsang
+ * @author Gruppe_Einhoerner
  * @version 2019-11-15
  */
 
@@ -109,7 +109,7 @@ public class WordIndex {
 
     private void printWordIndex() {
         for (Map.Entry<String, List<String>> wortHaeufigkeit : woerterHaeufigkeit.entrySet()) {
-            String toPrint = wortHaeufigkeit.getValue().get(AMOUNT) + ": "+ wortHaeufigkeit.getKey()  + " in: " + wortHaeufigkeit.getValue().get(PLACE);
+            String toPrint = wortHaeufigkeit.getValue().get(AMOUNT) + ": " + wortHaeufigkeit.getKey() + " in: " + wortHaeufigkeit.getValue().get(PLACE);
             System.out.println(toPrint);
             System.out.println();
         }
@@ -138,6 +138,7 @@ public class WordIndex {
      * @param key the word in question
      * @return place a String which saves where the word occurs
      */
+
     public String getPlace(String key) {
         String place;
         if (!woerterHaeufigkeit.containsKey(key.toLowerCase()))
