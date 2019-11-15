@@ -15,7 +15,7 @@ package ch.zhaw.einhoerner.editor;
  * @version 2019-11-15
  */
 public enum Command {
-    ADD_EXAMPLETEXT("add exampletext", 0),
+    ADD_EXAMPLETEXT("add exampletexts", 0),
     ADD_INDEX("add index", 2),
     ADD("add", 1),
     PRINT_WIDTH("print width", 1),

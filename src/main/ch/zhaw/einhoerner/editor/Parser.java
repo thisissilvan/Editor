@@ -12,11 +12,11 @@ import java.util.List;
 public class Parser {
 
     /**
-     * TODO
+     * The method parsedInput checks if a given command is known by the application and returns
+     * it.
      *
-     * @param input Enthält den Text, der auf Commands untersucht werden soll
-     * @return Command Liefert den erkannten Command zurück oder Command.UNKNOWN,
-     * falls kein gültiger Befehl gefunden werden konnte
+     * @param input the command to check for
+     * @return Command gives back the actual command or command.UNKNOWN for a unknown command
      */
     public ParsedInput parseInput(String input) {
         // extract command
@@ -42,10 +42,11 @@ public class Parser {
 
     /**
      * This method extracts a command's parameters from the user's input, if there are any.
+     *
      * - The algorithm first removes the detected command within the user's input (e.g. PRINT)
      * - Next the algorithm detects the command's expected parameter count N (e.g. N=1) and
-     *      removes N words from the beginning of the user's input. Each word will be added to
-     *      list of parameters for the detected command
+     *   removes N words from the beginning of the user's input. Each word will be added to
+     *   list of parameters for the detected command
      * - the list of commands will now be returned
      *
      * @param input   The user's input consisting of a command, potential parameters of this command and an optional text body

@@ -16,8 +16,6 @@ import java.util.Map;
  * @author Gruppe_Einhoerner
  * @version 2019-11-15
  */
-
-
 public class WordIndex {
 
     private Map<String, List<String>> wordCount = new HashMap<>();

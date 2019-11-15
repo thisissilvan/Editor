@@ -61,66 +61,66 @@ class ParserTest {
     }
 
     @Test
-    void testExtractionPrint() {
+    public void testExtractionPrint() {
         String input = "print something something example";
         String actual = new Parser().parseInput(input).getText();
         String expected = "something something example";
 
-        assertThat("unexpected input", actual, is(expected));
+        assertThat("text should be: something something example", actual, is(expected));
     }
 
     @Test
-    void testExtractionAdd() {
-        String input = "add 1 something something example";
+    public void testExtractionAdd() {
+        String input = "add something something example";
         String actual = new Parser().parseInput(input).getText();
-        String expected = "1 something something example";
+        String expected = "something something example";
 
-        assertThat("unexpected input", actual, is(expected));
+        assertThat("text should be: something something example", actual, is(expected));
     }
 
 
     @Test
-    void testExtractionEmptyInput() {
+    public void testExtractionEmptyInput() {
         String input = "";
         String actual = new Parser().parseInput(input).getText();
         String expected = "";
 
-        assertThat("unexpected input", actual, is(expected));
+        assertThat("text should be empty", actual, is(expected));
     }
 
     @Test
-    void testCommandWithoutParameter() {
+    public void testCommandWithoutParameter() {
         String input = "help";
         List<String> actual = new Parser().parseInput(input).getParameters();
         List<String> expected = new ArrayList<>();
 
-        assertThat("unexpected input", actual, is(expected));
+        assertThat("there should be no parameters", actual, is(expected));
     }
 
     @Test
-    void testCommandWithThreeParameters() {
+    public void testCommandWithThreeParameters() {
         String input = "search and replace 1 kartoffel tomate";
         List<String> actual = new Parser().parseInput(input).getParameters();
         List<String> expected = Arrays.asList("1", "kartoffel", "tomate");
 
-        assertThat("unexpected input", actual, is(expected));
+        assertThat("there should be 3 parameters", actual, is(expected));
     }
 
     @Test
-    void testCommandWithTwoParameters() {
+    public void testCommandWithTwoParameters() {
         String input = "add index 3 beispiel text";
         List<String> actual = new Parser().parseInput(input).getParameters();
         List<String> expected = Arrays.asList("3", "beispiel text");
 
-        assertThat("unexpected input", actual, is(expected));
+        assertThat("there should be 2 parameters", actual, is(expected));
     }
     
     @Test
-    void testCommandWithOneParameter() {
+    public void testCommandWithOneParameter() {
         String input = "add beispiel text";
         List<String> actual = new Parser().parseInput(input).getParameters();
         List<String> expected = Collections.singletonList("beispiel text");
 
-        assertThat("unexpected input", actual, is(expected));
+        assertThat("there should be just one parameter", actual, is(expected));
     }
 }
