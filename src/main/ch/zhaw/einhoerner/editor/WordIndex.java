@@ -20,10 +20,6 @@ public class WordIndex {
     private static final int AMOUNT = 0;
     private static final int PLACE = 1;
 
-    public WordIndex(List<String> text) {
-        makeWordIndex(text);
-    }
-
     public void makeWordIndex(List<String> text) {
         if (text.size() <= 0) {
             System.out.println("No text to create a wordindex. Please add text.");
