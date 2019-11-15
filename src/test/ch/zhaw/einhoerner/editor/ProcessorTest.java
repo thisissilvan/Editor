@@ -109,7 +109,7 @@ class ProcessorTest {
     }
   
     @Test
-    public void testExampleText() {
+    public void testExampleTextPositive() {
         Processor p = new Processor();
         String input = "add exampletext";
 
