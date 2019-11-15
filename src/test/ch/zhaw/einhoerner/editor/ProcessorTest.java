@@ -122,7 +122,7 @@ class ProcessorTest {
         assertEquals( "Invalid Index", processor.get(2));
     }
     @Test
-    void testExampleText() {
+    public void testExampleText() {
         Processor p = new Processor();
         String input = "add exampletext";
 
