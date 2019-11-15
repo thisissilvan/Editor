@@ -41,6 +41,7 @@ public class WordIndex {
         if (text.size() <= 0) {
             System.out.println("No text to create a wordindex. Please add text.");
             wordCount.put("", Arrays.asList("", ""));
+            return;
         }
         for (int index = 0; index < text.size(); index++) {
             String platzhalter = text.get(index);
