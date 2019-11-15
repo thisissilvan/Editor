@@ -110,11 +110,12 @@ class ProcessorTest {
   
     @Test
     public void testExampleTextPositive() {
-        String input = "add exampletext";
+        String input = "add exampletexts";
 
         ParsedInput parsedInput = new Parser().parseInput(input);
         processor.executeCommand(parsedInput);
-        assertThat("Processor should have 5 paragraphs after adding the example text.", 5, is(processor.getParagraphs().size()));
+        //assertThat("Processor should have 5 paragraphs after adding the example text.", 5, is(processor.getParagraphs().size()));
+        assertEquals(5, processor.getParagraphs().size());
     }
 
     @Test
