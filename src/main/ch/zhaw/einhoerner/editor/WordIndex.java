@@ -20,6 +20,12 @@ public class WordIndex {
     private static final int AMOUNT = 0;
     private static final int PLACE = 1;
 
+    /**
+     * When calling this method, it is required to hand over a list of Strings.
+     *
+     * @param text a list of paragraphs to be processed
+     */
+
     public void makeWordIndex(List<String> text) {
         if (text.size() <= 0) {
             System.out.println("No text to create a wordindex. Please add text.");
