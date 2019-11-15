@@ -25,11 +25,10 @@ class ProcessorTest {
 
 
     @Test
-    public void addTextWithIndex() {
+    public void addTextWithIndexPositive() {
         processor.add("0");
         processor.add("1");
         processor.add(2, "hallo");
-        assertEquals("hallo", processor.get(1));
         assertEquals("1", processor.get(2));
     }
 
@@ -38,6 +37,14 @@ class ProcessorTest {
     {
         processor.add(2, "should not be possible");
         assertEquals("Invalid Index", processor.get(2));
+    }
+
+    @Test
+    public void addTextWithIndexNegative() {
+        processor.add("0");
+        processor.add("1");
+        processor.add(2, "hallo");
+        assertEquals("Invalid Index", processor.get(3));
     }
 
     @Test
@@ -71,7 +78,6 @@ class ProcessorTest {
         processor.add("hello" + lineSeparator()  + " next Line ");
         assertEquals("hello", processor.get(0));
         assertEquals(" next Line ", processor.get(1));
-
     }
 
     @Test
@@ -82,23 +88,38 @@ class ProcessorTest {
     }
 
     @Test
-    public void deleteTest(){
+    public void deleteTestPositive(){
         processor.add("0");
         processor.add("1");
         processor.add("2");
         processor.delete(1);
         assertEquals("1", processor.get(0));
-        assertEquals("Invalid Index.", processor.get(2));
     }
 
     @Test
-    public void searchAndReplaceTest(){
+    public void deleteTestNegative(){
+        processor.add("0");
+        processor.add("1");
+        processor.add("2");
+        processor.delete(1);
+        assertEquals("Invalid Index", processor.get(2));
+    }
+    @Test
+    public void searchAndReplaceTestPositive(){
         processor.add("a b a b a b a b");
         processor.add("no action");
         Processor.searchAndReplace(1, "a", "c");
         Processor.searchAndReplace(2, "x", "c");
         assertEquals("c b c b c b c b", processor.get(0));
+        }
+    @Test
+    public void searchAndReplaceTestNegative(){
+        processor.add("a b a b a b a b");
+        processor.add("no action");
+        Processor.searchAndReplace(1, "a", "c");
+        Processor.searchAndReplace(2, "x", "c");
         assertEquals("no action", processor.get(1));
+        assertEquals( "Invalid Index", processor.get(2));
     }
     @Test
     void testExampleText() {

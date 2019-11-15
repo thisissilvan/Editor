@@ -23,7 +23,6 @@ public class Processor {
     private Parser parser = new Parser();
     private static List<String> paragraphs;
 
-
     /**
      * Constructor of the class Processor.
      * All the paragraphs are stored in initialised the ArrayList.
@@ -69,27 +68,21 @@ public class Processor {
                 break;
             case ADD_EXAMPLETEXT:
                 addExampleText();
-                System.out.println("Exampletext added");
                 break;
             case ADD_INDEX:
                 add(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getText());
-                // TODO Exception occured
-                System.out.println("Paragraph added at Index");
                 break;
             case ADD:
                 add(parsedInput.getText());
-                System.out.println("Paragraph added at the end of the list");
                 break;
             case DELETE:
                 delete(Integer.parseInt(parsedInput.getParameters().get(0)));
-                System.out.println("Paragraph " + Integer.parseInt(parsedInput.getParameters().get(0)) + " deleted");
                 break;
             case PRINT:
                 printUnformatted();
                 break;
             case SEARCH_AND_REPLACE:
                 searchAndReplace(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getParameters().get(1), parsedInput.getParameters().get(2));
-                System.out.println("Word: " + parsedInput.getText() + " replaced in Paragraph " + Integer.parseInt(parsedInput.getParameters().get(0)));
                 break;
             case PRINT_WIDTH:
                 printFormatted(Integer.parseInt(parsedInput.getParameters().get(0)));
@@ -118,6 +111,7 @@ public class Processor {
         List<String> text = detectNewParagraphs(ExampleText.EXAMPLE_TEXT);
         for (String line : text)
             add(line);
+        System.out.println("Example text added");
     }
 
     /**
@@ -171,10 +165,13 @@ public class Processor {
      */
     public void add(int index, String text) {
         int input = index - 1;
-        if (illegalIndex(input))
+
+        if (illegalIndex(input)) {
             System.out.println("Invalid Index");
-        else
+        }else {
             paragraphs.addAll(input, detectNewParagraphs(text));
+            System.out.println("Paragraph added at Index");
+        }
     }
 
     /**
@@ -184,7 +181,12 @@ public class Processor {
      */
     public void add(String text) {
         //add text in the end of paragraph list
-        paragraphs.addAll(detectNewParagraphs(text));
+        if(text.length() < 1)
+            System.out.println("Empty text could not be added");
+        else {
+            paragraphs.addAll(detectNewParagraphs(text));
+            System.out.println("Paragraph added at the end of the list");
+        }
     }
 
     /**
@@ -194,10 +196,12 @@ public class Processor {
      */
     public void delete(int index) {
         int input = index - 1;
-        if (illegalIndex(input))
+        if (illegalIndex(input)) {
             System.out.println("Invalid Index");
-        else
+        } else {
             paragraphs.remove(input);
+            System.out.println("Paragraph " + index + " deleted");
+        }
     }
 
     /**
@@ -215,6 +219,7 @@ public class Processor {
             String searchedParagraph = paragraphs.get(input);
             searchedParagraph = searchedParagraph.replace(wordToReplace, replacement);
             paragraphs.set(input, searchedParagraph);
+            System.out.println("Word: " + wordToReplace + " replaced in Paragraph " + index + " by replacement word: " + replacement);
         }
     }
 
