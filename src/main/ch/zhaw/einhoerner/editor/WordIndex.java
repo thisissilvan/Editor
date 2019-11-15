@@ -132,6 +132,12 @@ public class WordIndex {
         return amount;
     }
 
+    /**
+     * This method returns the location/s where a word is mentioned.
+     *
+     * @param key the word in question
+     * @return place a String which saves where the word occurs
+     */
     public String getPlace(String key) {
         String place;
         if (!woerterHaeufigkeit.containsKey(key.toLowerCase()))
