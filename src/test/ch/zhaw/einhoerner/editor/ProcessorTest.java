@@ -22,7 +22,7 @@ class ProcessorTest {
         processor = new Processor();
     }
   
-   
+
 
     @Test
     public void addTextWithIndex() {
@@ -32,6 +32,14 @@ class ProcessorTest {
         assertEquals("hallo", processor.get(1));
         assertEquals("1", processor.get(2));
     }
+
+    @Test
+    public void addTextWrongIndex()
+    {
+        processor.add(2, "should not be possible");
+        assertEquals("Invalid Index", processor.get(2));
+    }
+
     @Test
     public void addTest(){
         processor.add("joking");
@@ -39,6 +47,25 @@ class ProcessorTest {
         processor.add("joking1");
         assertEquals("joking1", processor.get(1));
     }
+
+    @Test
+    public void addParagraphsNoLineSeparator()
+    {
+        processor.add("line with no lineSeparator");
+        assertEquals("line with no lineSeparator", processor.get(0));
+    }
+
+    @Test
+    public void addFiveParagraphs()
+    {
+        processor.add("line one" + lineSeparator() + "line two" + lineSeparator() + "line three" + lineSeparator() + "line four" + lineSeparator() + "line five");
+        assertEquals("line one", processor.get(0));
+        assertEquals("line two", processor.get(1));
+        assertEquals("line three", processor.get(2));
+        assertEquals("line four", processor.get(3));
+        assertEquals("line five", processor.get(4));
+    }
+
     @Test
     public void addParagraphs(){
         processor.add("hello" + lineSeparator()  + " next Line ");
@@ -46,6 +73,14 @@ class ProcessorTest {
         assertEquals(" next Line ", processor.get(1));
 
     }
+
+    @Test
+    public void tryingToAddNoArguments()
+    {
+        processor.add("");
+        assertEquals("Empty text could not be added", processor.get(0));
+    }
+
     @Test
     public void deleteTest(){
         processor.add("0");
@@ -55,6 +90,7 @@ class ProcessorTest {
         assertEquals("1", processor.get(0));
         assertEquals("Invalid Index.", processor.get(2));
     }
+
     @Test
     public void searchAndReplaceTest(){
         processor.add("a b a b a b a b");
