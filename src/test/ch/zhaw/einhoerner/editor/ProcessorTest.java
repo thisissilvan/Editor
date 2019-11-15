@@ -110,6 +110,7 @@ class ProcessorTest {
         p.executeCommand(parsedInput);
         assertThat("Processor should have 5 paragraphs after adding the example text.", 5, is(p.getParagraphs().size()));
     }
+
     @Test
     public void formatParagraphWidthWithItem(){
         processor.add("a b c d e f g, h i");
