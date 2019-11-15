@@ -57,7 +57,7 @@ public class Parser {
         int count = command.getParameterCount();
 
         String [] chunks = input.split(" ");
-        for( int i = 1; i <= count; i++ ) {
+        for(int i = count; i < chunks.length; i++) { // int i = 1; i <= count; i++
             result.add(chunks[i]);
         }
 

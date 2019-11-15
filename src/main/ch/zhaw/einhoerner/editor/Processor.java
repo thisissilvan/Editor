@@ -1,9 +1,7 @@
 
 package ch.zhaw.einhoerner.editor;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 import static java.lang.System.lineSeparator;
 
@@ -16,7 +14,7 @@ import static java.lang.System.lineSeparator;
 public class Processor {
 
     private Parser parser = new Parser();
-    private List<String> paragraphs;
+    private static List<String> paragraphs;
 
     /**
      * Constructor of the class Processor.
@@ -50,6 +48,9 @@ public class Processor {
 
     void executeCommand(ParsedInput parsedInput) {
         switch (parsedInput.getCommand()) {
+            case MAKE_WORD_INDEX:
+                WordIndex wordIndex = new WordIndex(paragraphs);
+                break;
             case ADD_EXAMPLETEXT:
                 addExampleText();
                 System.out.println("Exampletext added");
@@ -65,16 +66,15 @@ public class Processor {
                 break;
             case DELETE:
                 delete(Integer.parseInt(parsedInput.getParameters().get(0)));
-                // TODO, does nothing
                 System.out.println("Paragraph " + Integer.parseInt(parsedInput.getParameters().get(0)) + " deleted");
                 break;
             case PRINT:
                 printUnformatted();
                 break;
             case SEARCH_AND_REPLACE:
-                searchAndReplace(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getText(), parsedInput.getText());
+                searchAndReplace(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getParameters().get(1), parsedInput.getParameters().get(2));
                 // TODO Exception occured
-                System.out.println("Word: " + parsedInput.getText() + "replaced in Paragraph" + Integer.parseInt(parsedInput.getParameters().get(0)));
+                System.out.println("Word: " + parsedInput.getText() + " replaced in Paragraph " + Integer.parseInt(parsedInput.getParameters().get(0)));
                 break;
             case PRINT_WIDTH:
                 printFormatted(Integer.parseInt(parsedInput.getParameters().get(0)));
@@ -134,7 +134,7 @@ public class Processor {
      */
     public String getWelcomeMessage() {
         return "Welcome to the Editor Application from the team Einhoerner, please use one of the " +
-                "following comands to proceed:";
+                "following commands to proceed:";
     }
 
     /**
@@ -164,41 +164,79 @@ public class Processor {
         return "Thank you for using the Einhoerner Editor.";
     }
 
+    /**
+     * Adds a String text to a chosen index location into the paragraphs list
+     * <p>
+     *
+     * @param index An Integer as int value
+     * @param text A text as String value
+     */
     public void add(int index, String text) {
-        if (illegalIndex(index))
+        int input = index - 1;
+        if (illegalIndex(input))
             System.out.println("Invalid Index.");
         else
-            paragraphs.addAll(index, detectNewParagraphs(text));
+            paragraphs.addAll(input, detectNewParagraphs(text));
     }
 
+    /**
+     * Adds a String text at the end of the paragraphs list
+     * <p>
+     *
+     * @param text A text as String value
+     */
     public void add(String text) {
         //add text in the end of paragraph list
         paragraphs.addAll(detectNewParagraphs(text));
     }
 
+    /**
+     * Deletes an entry of the paragraphs list to a chosen index
+     * <p>
+     *
+     * @param index An Integer as int value
+     */
     public void delete(int index) {
-        if (illegalIndex(index))
+        int input = index - 1;
+        if (illegalIndex(input))
             System.out.println("Invalid Index.");
         else
-            paragraphs.remove(index-1);
+            paragraphs.remove(input);
     }
-
-    public void searchAndReplace(int index, String wordToReplace, String replacement) {
-        if (illegalIndex(index))
+    /**
+     * Replaces a chosen word by a chosesn replacement in a chosen entry of the paragraphs list
+     * <p>
+     *
+     * @param index An Integer as int value
+     * @param wordToReplace A word that is to be replaced as String value
+     * @param replacement A word that serves as replacement as String value
+     */
+    public static void searchAndReplace(int index, String wordToReplace, String replacement) {
+        int input = index - 1;
+        if (illegalIndex(input))
             System.out.println("Invalid Index.");
         else {
-            String searchedParagraph = paragraphs.get(index);
+            String searchedParagraph = paragraphs.get(input);
             searchedParagraph = searchedParagraph.replace(wordToReplace, replacement);
-            paragraphs.set(index, searchedParagraph);
+            paragraphs.set(input, searchedParagraph);
         }
     }
 
-    private Boolean illegalIndex(int index) {
+    private static Boolean illegalIndex(int index) {
         return (index < 0 || index >= paragraphs.size());
     }
 
+    /**
+     * Gets a chosen entry of the praragraphs list
+     * <p>
+     *
+     * @return entry of the paragraphs list
+     */
     public String get(int index){
-        return paragraphs.get(index);
+        if(illegalIndex(index))
+            return "Invalid Index.";
+        else
+            return paragraphs.get(index);
     }
 
     /**
