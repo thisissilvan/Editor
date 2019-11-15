@@ -8,10 +8,10 @@ import java.util.ArrayList;
 
 
 /**
- * The Parser class is responsible for parsing user input into Commands and text components
+ * The WordIndex class is responsible for making and printing a wordindex for the currently saved paragraphs.
  *
- * @author Ala
- * @version 2019-11-09
+ * @author Kusnang Kündetsang
+ * @version 2019-11-15
  */
 
 public class WordIndex {
