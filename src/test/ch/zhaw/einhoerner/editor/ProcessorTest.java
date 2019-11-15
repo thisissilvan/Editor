@@ -63,6 +63,7 @@ class ProcessorTest {
         Processor.searchAndReplace(2, "x", "c");
         assertEquals("c b c b c b c b", processor.get(0));
         assertEquals("no action", processor.get(1));
+        assertEquals( "Invalid Index", processor.get(2));
     }
     @Test
     void testExampleText() {

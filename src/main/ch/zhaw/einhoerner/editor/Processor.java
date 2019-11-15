@@ -157,7 +157,7 @@ public class Processor {
     public void add(int index, String text) {
         int input = index - 1;
         if (illegalIndex(input)) {
-            System.out.println("Invalid Index.");
+            System.out.println("Invalid Index");
         }else {
             paragraphs.addAll(input, detectNewParagraphs(text));
             System.out.println("Paragraph added at Index");
@@ -189,7 +189,7 @@ public class Processor {
     public void delete(int index) {
         int input = index - 1;
         if (illegalIndex(input))
-            System.out.println("Invalid Index.");
+            System.out.println("Invalid Index");
         else {
             paragraphs.remove(input);
             System.out.println("Paragraph " + index + " deleted");
@@ -207,7 +207,7 @@ public class Processor {
     public static void searchAndReplace(int index, String wordToReplace, String replacement) {
         int input = index - 1;
         if (illegalIndex(input))
-            System.out.println("Invalid Index.");
+            System.out.println("Invalid Index");
         else {
             String searchedParagraph = paragraphs.get(input);
             searchedParagraph = searchedParagraph.replace(wordToReplace, replacement);
@@ -228,7 +228,7 @@ public class Processor {
      */
     public String get(int index){
         if(illegalIndex(index))
-            return "Invalid Index.";
+            return "Invalid Index";
         else
             return paragraphs.get(index);
     }
