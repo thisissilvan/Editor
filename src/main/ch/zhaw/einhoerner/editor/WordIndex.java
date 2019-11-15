@@ -20,7 +20,7 @@ import java.util.Map;
 
 public class WordIndex {
 
-    private Map<String, List<String>> woerterHaeufigkeit = new HashMap<>();
+    private Map<String, List<String>> wordCount = new HashMap<>();
     private static final int AMOUNT = 0;
     private static final int PLACE = 1;
 
@@ -40,7 +40,7 @@ public class WordIndex {
         //Ensure that if the passed on list is empty, no wordindex can be created
         if (text.size() <= 0) {
             System.out.println("No text to create a wordindex. Please add text.");
-            woerterHaeufigkeit.put("", Arrays.asList("", ""));
+            wordCount.put("", Arrays.asList("", ""));
         }
         for (int index = 0; index < text.size(); index++) {
             String platzhalter = text.get(index);
@@ -49,15 +49,15 @@ public class WordIndex {
                 List<String> values = new ArrayList<>();
 
                 //If the wordindex doesn't contain the word yet, it gets added
-                if (!woerterHaeufigkeit.containsKey(word)) {
+                if (!wordCount.containsKey(word)) {
                     values.add(AMOUNT, "1");
                     values.add(PLACE, String.valueOf(index));
-                    woerterHaeufigkeit.put(word, values);
+                    wordCount.put(word, values);
                 } else
 
                 //If the word already exists, then raise the amount and save the location
                 {
-                    values = woerterHaeufigkeit.get(word);
+                    values = wordCount.get(word);
                     int raiseCount = Integer.parseInt(values.get(AMOUNT));
                     raiseCount++;
                     values.set(AMOUNT, String.valueOf(raiseCount));
@@ -69,7 +69,7 @@ public class WordIndex {
                         addPlace = addPlace + ", " + newIndex;
                         values.set(PLACE, addPlace);
                     }
-                    woerterHaeufigkeit.replace(word, values);
+                    wordCount.replace(word, values);
                 }
 
             }
@@ -86,12 +86,11 @@ public class WordIndex {
     private List<String> controlMinimumAmount() {
         List<String> values;
         List<String> toDelete = new ArrayList<>();
-        for (Map.Entry<String, List<String>> wortHaeufigkeit : woerterHaeufigkeit.entrySet()) {
+        for (Map.Entry<String, List<String>> wortHaeufigkeit : wordCount.entrySet()) {
             values = wortHaeufigkeit.getValue();
             int wordCount = Integer.parseInt(values.get(AMOUNT));
-            if (wordCount < 3) {
+            if (wordCount < 3)
                 toDelete.add(wortHaeufigkeit.getKey());
-            }
         }
         return toDelete;
     }
@@ -102,17 +101,17 @@ public class WordIndex {
      * @param toDelete a list of words to be deleted
      */
     private void entrysToDelete(List<String> toDelete) {
-        for (String keyToDelete : toDelete) {
-            woerterHaeufigkeit.remove(keyToDelete);
-        }
-        if (woerterHaeufigkeit.isEmpty()) {
-            woerterHaeufigkeit.put("", Arrays.asList("", ""));
-        }
+        for (String keyToDelete : toDelete)
+            wordCount.remove(keyToDelete);
+
+        if (wordCount.isEmpty())
+            wordCount.put("", Arrays.asList("", ""));
+
 
     }
 
     private void printWordIndex() {
-        for (Map.Entry<String, List<String>> wortHaeufigkeit : woerterHaeufigkeit.entrySet()) {
+        for (Map.Entry<String, List<String>> wortHaeufigkeit : wordCount.entrySet()) {
             String toPrint = wortHaeufigkeit.getValue().get(AMOUNT) + ": " + wortHaeufigkeit.getKey() + " in: " + wortHaeufigkeit.getValue().get(PLACE);
             System.out.println(toPrint);
             System.out.println();
@@ -128,11 +127,10 @@ public class WordIndex {
 
     public String getAmount(String key) {
         String amount;
-        if (!woerterHaeufigkeit.containsKey(key.toLowerCase()))
+        if (!wordCount.containsKey(key.toLowerCase()))
             amount = "";
-        else {
-            amount = woerterHaeufigkeit.get(key.toLowerCase()).get(AMOUNT);
-        }
+        else
+            amount = wordCount.get(key.toLowerCase()).get(AMOUNT);
         return amount;
     }
 
@@ -145,10 +143,10 @@ public class WordIndex {
 
     public String getPlace(String key) {
         String place;
-        if (!woerterHaeufigkeit.containsKey(key.toLowerCase()))
+        if (!wordCount.containsKey(key.toLowerCase()))
             place = "";
         else
-            place = woerterHaeufigkeit.get(key.toLowerCase()).get(PLACE);
+            place = wordCount.get(key.toLowerCase()).get(PLACE);
         return place;
     }
 

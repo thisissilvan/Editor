@@ -84,7 +84,7 @@ class ProcessorTest {
     public void tryingToAddNoArguments()
     {
         processor.add("");
-        assertEquals("Empty text could not be added", processor.get(0));
+        assertEquals("Invalid Index", processor.get(0));
     }
 
     @Test
