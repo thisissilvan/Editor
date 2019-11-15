@@ -173,7 +173,7 @@ public class Processor {
     public void add(String text) {
         //add text in the end of paragraph list
         if(text.length() < 1)
-            System.out.println("Empty text could not be added.");
+            System.out.println("Empty text could not be added");
         else {
             paragraphs.addAll(detectNewParagraphs(text));
             System.out.println("Paragraph added at the end of the list");
