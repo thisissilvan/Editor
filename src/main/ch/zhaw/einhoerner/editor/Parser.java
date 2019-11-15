@@ -34,7 +34,7 @@ public class Parser {
         List<String> parameters = extractParameter(input, command);
 
         // extract text
-        String text = extractText(input, command, parameters);
+        String text = extractText(input, command);
 
         // create ParsedInput and return
         return new ParsedInput(text, command, parameters);
@@ -54,13 +54,20 @@ public class Parser {
      */
     private List<String> extractParameter(String input, Command command) {
         List<String> result = new ArrayList<>();
+        String text = input.substring(command.getCommand().length() + 1);
         int count = command.getParameterCount();
+        int nextSpace = text.indexOf(" ");
 
-        String [] chunks = input.split(" ");
-        for(int i = count; i < chunks.length; i++) { // int i = 1; i <= count; i++
-            result.add(chunks[i]);
+        if (count >1){
+            for (int i = 0; i < count-1; i++) {
+                result.add(text.substring(0, nextSpace));
+                text = text.substring(nextSpace + 1);
+                nextSpace = text.indexOf(" ");
+            }
+            result.add(text);
+        }else{
+            result.add(text);
         }
-
         return result;
     }
     /**
@@ -89,12 +96,10 @@ public class Parser {
      * Extracts the text content without the command
      *
      * @param input      User input with command and text
-     * @param parameters List of parameters for the command
      * @return String Only the text without command will be returned, if no command can  be found,
      * empty String will be returned
      */
-    public String extractText(String input, Command command, List<String> parameters) {
-        String text = input.substring(command.getCommand().length() + 1);
-        return text;
+    public String extractText(String input, Command command) {
+        return input.substring(command.getCommand().length() + 1);
     }
 }

@@ -20,7 +20,7 @@ public class WordIndex {
         if (text.size() > 0) {
             for (int index = 0; index < text.size(); index++) {
                 String platzhalter = text.get(index);
-                String[] paragraph = platzhalter.toLowerCase().replaceAll("[ +.,?!\":; ]", " ").split(" +");
+                String[] paragraph = platzhalter.toLowerCase().replaceAll("[ +.,?!\":;]", " ").split(" +");
 
                 for (String word : paragraph) {
                     List<String> values = new ArrayList<>();
@@ -74,7 +74,7 @@ public class WordIndex {
 
     private void printWordIndex() {
         for (Map.Entry<String, List<String>> wortHaeufigkeit : woerterHaeufigkeit.entrySet()) {
-            String toPrint = wortHaeufigkeit.getKey() + ": found " + wortHaeufigkeit.getValue().get(AMOUNT) + " times in the paragraph(s): " + wortHaeufigkeit.getValue().get(PLACE);
+            String toPrint = wortHaeufigkeit.getValue().get(AMOUNT) + ": "+ wortHaeufigkeit.getKey()  + " in: " + wortHaeufigkeit.getValue().get(PLACE);
             System.out.println(toPrint);
             System.out.println();
         }

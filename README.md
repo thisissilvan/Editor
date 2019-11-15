@@ -17,3 +17,6 @@ You can clone the application while running this command on your console/shell:
 git clone https://github.zhaw.ch/pm1-it19azh-ehri-fame-muon/gruppe102-einhoerner-projekt2-editor.git
 ```
 Congratulations! You can now use the Editor on your computer.
+
+## Test Cases
+Look at our [Wiki-Page](https://github.zhaw.ch/pm1-it19azh-ehri-fame-muon/gruppe102-einhoerner-projekt2-editor/wiki/Test-Cases) for more information.
