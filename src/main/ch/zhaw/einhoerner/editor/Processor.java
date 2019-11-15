@@ -26,9 +26,7 @@ public class Processor {
      * Constructor of the class Processor.
      */
     public Processor() {
-
         paragraphs = new ArrayList<>();
-
     }
 
     /**
@@ -63,6 +61,7 @@ public class Processor {
                 break;
             case ADD_EXAMPLETEXT:
                 addExampleText();
+                System.out.println("Exampletext added");
                 break;
             case ADD_INDEX:
                 add(Integer.parseInt(parsedInput.getParameters().get(0)), parsedInput.getText());
@@ -95,7 +94,6 @@ public class Processor {
                 break;
             default:
                 break;
-
         }
     }
 
@@ -112,7 +110,6 @@ public class Processor {
         List<String> text = detectNewParagraphs(ExampleText.EXAMPLE_TEXT);
         for (String line : text)
             add(line);
-        System.out.println("Exampletext added");
     }
 
     /**
@@ -125,9 +122,8 @@ public class Processor {
         System.out.println(text);
     }
 
-
     private void printWholeParagraphs(List<String> toPrint) {
-        for (int i = 0; i < toPrint.size(); i++) {
+        for (int i = 0; i < paragraphs.size(); i++) {
             System.out.println(i+1);
             System.out.println(toPrint.get(i));
             System.out.println();
@@ -142,7 +138,7 @@ public class Processor {
      */
     public String getWelcomeMessage() {
         return "Welcome to the Editor Application from the team Einhoerner, please use one of the " +
-                "following comands to proceed Type in " + Command.HELP + " at any time for a short manual.";
+                "following commands to proceed Type in " + Command.HELP + " at any time for a short manual.";
     }
 
     /**
@@ -188,7 +184,6 @@ public class Processor {
         paragraphs.addAll(detectNewParagraphs(text));
     }
 
-
     /**
      * Deletes an entry of the paragraphs list to a chosen index
      * <p>
@@ -224,7 +219,6 @@ public class Processor {
 
     private static Boolean illegalIndex(int index) {
         return (index < 0 || index >= paragraphs.size());
-
     }
 
     /**
