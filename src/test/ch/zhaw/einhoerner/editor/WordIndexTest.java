@@ -5,17 +5,19 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 
-class WordIndexTest {    private List<String> paragraphs = new ArrayList<>();
+class WordIndexTest {
+
+    private List<String> paragraphs = new ArrayList<>();
 
     @Test
     public void emptyListTest() {
         WordIndex wordIndex = new WordIndex();
         wordIndex.makeWordIndex(paragraphs);
-        assertEquals("", wordIndex.getAmount(""));
-        assertEquals("", wordIndex.getAmount(""));
+
     }
 
     @Test
