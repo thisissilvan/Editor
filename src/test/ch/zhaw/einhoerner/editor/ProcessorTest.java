@@ -88,6 +88,7 @@ class ProcessorTest {
         processor.delete(1);
         assertEquals("Invalid Index", processor.get(2));
     }
+  
     @Test
     public void searchAndReplaceTestPositive(){
         processor.add("a b a b a b a b");
@@ -96,6 +97,7 @@ class ProcessorTest {
         Processor.searchAndReplace(2, "x", "c");
         assertEquals("c b c b c b c b", processor.get(0));
         }
+  
     @Test
     public void searchAndReplaceTestNegative(){
         processor.add("a b a b a b a b");
@@ -105,8 +107,9 @@ class ProcessorTest {
         assertEquals("no action", processor.get(1));
         assertEquals( "Invalid Index", processor.get(2));
     }
+  
     @Test
-    void testExampleTextPositive() {
+    public void testExampleText() {
         Processor p = new Processor();
         String input = "add exampletext";
 
