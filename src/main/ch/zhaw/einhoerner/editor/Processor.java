@@ -2,18 +2,20 @@
 package ch.zhaw.einhoerner.editor;
 
 
+import java.util.Scanner;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+
 
 import static java.lang.System.lineSeparator;
 
 /**
  * The class Processor.
- * <p>
- * <p>
  * This class contains all the logic from the Editor Application.
+ *
+ * @author Gruppe_Einhoerner
+ * @version 2019-11-15
  */
 public class Processor {
 
@@ -24,6 +26,7 @@ public class Processor {
 
     /**
      * Constructor of the class Processor.
+     * All the paragraphs are stored in initialised the ArrayList.
      */
     public Processor() {
         paragraphs = new ArrayList<>();
@@ -52,7 +55,12 @@ public class Processor {
         }
     }
 
-
+    /**
+     * In this method, all the possible commands are stored as switch-statements.
+     * Depending on the user input, the method executes the case with the given command.
+     *
+     * @param parsedInput the user input
+     */
     void executeCommand(ParsedInput parsedInput) {
         switch (parsedInput.getCommand()) {
             case MAKE_WORD_INDEX:
@@ -114,7 +122,6 @@ public class Processor {
 
     /**
      * Prints out a text to the console.
-     * <p>
      *
      * @param text A text as String value
      */
@@ -132,7 +139,6 @@ public class Processor {
 
     /**
      * Creates a welcome message which is used from the method startApplication.
-     * <p>
      *
      * @return the welcome message which is getting printed out to the user.
      */
@@ -145,7 +151,6 @@ public class Processor {
      * Creates a help message to give the user some advice to use the application.
      * Further information and a manual on how to use the application is on the
      * Wiki-Page of the Github repository
-     * <p>
      *
      * @return a short manual-text on how to use the editor
      */
@@ -160,7 +165,6 @@ public class Processor {
 
     /**
      * Adds a String text to a chosen index location into the paragraphs list
-     * <p>
      *
      * @param index An Integer as int value
      * @param text A text as String value
@@ -168,14 +172,13 @@ public class Processor {
     public void add(int index, String text) {
         int input = index - 1;
         if (illegalIndex(input))
-            System.out.println("Invalid Index.");
+            System.out.println("Invalid Index");
         else
             paragraphs.addAll(input, detectNewParagraphs(text));
     }
 
     /**
      * Adds a String text at the end of the paragraphs list
-     * <p>
      *
      * @param text A text as String value
      */
@@ -186,21 +189,19 @@ public class Processor {
 
     /**
      * Deletes an entry of the paragraphs list to a chosen index
-     * <p>
      *
      * @param index An Integer as int value
      */
     public void delete(int index) {
         int input = index - 1;
         if (illegalIndex(input))
-            System.out.println("Invalid Index.");
+            System.out.println("Invalid Index");
         else
             paragraphs.remove(input);
     }
 
     /**
      * Replaces a chosen word by a chosesn replacement in a chosen entry of the paragraphs list
-     * <p>
      *
      * @param index An Integer as int value
      * @param wordToReplace A word that is to be replaced as String value
@@ -209,7 +210,7 @@ public class Processor {
     public static void searchAndReplace(int index, String wordToReplace, String replacement) {
         int input = index - 1;
         if (illegalIndex(input))
-            System.out.println("Invalid Index.");
+            System.out.println("Invalid Index");
         else {
             String searchedParagraph = paragraphs.get(input);
             searchedParagraph = searchedParagraph.replace(wordToReplace, replacement);
@@ -223,13 +224,12 @@ public class Processor {
 
     /**
      * Gets a chosen entry of the praragraphs list
-     * <p>
      *
      * @return entry of the paragraphs list
      */
     public String get(int index){
         if(illegalIndex(index))
-            return "Invalid Index.";
+            return "Invalid Index";
         else
             return paragraphs.get(index);
     }
@@ -243,7 +243,6 @@ public class Processor {
 
     /**
      * Print out a formatted version of all the paragraphs
-     * <p>
      *
      * @param width - The maximum width of these paragraphs
      */
@@ -255,7 +254,6 @@ public class Processor {
      * In a given String, this method looks out for a line separator (new Paragraphs), this can be different
      * depending on the operating system. With the lineSeparator from the System-library, it can detect
      * new Paragraphs no matter which operating system is used.
-     * <p>
      *
      * @param text a given String to look out for new Paragraphs
      * @return
@@ -277,7 +275,6 @@ public class Processor {
      * With the "lineSeparator()", a new line can be detected on every System
      * (e.g. in Windows it would be \r\n, in MacOS \n)
      * This method returns a single paragraph with a line break (lineSeparator()) at the given width.
-     * <p>
      *
      * @param width position at which a line break is added
      * @return formatted list with the formatted paragraphs

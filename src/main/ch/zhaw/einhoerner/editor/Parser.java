@@ -6,8 +6,8 @@ import java.util.List;
 /**
  * The Parser class is responsible for parsing user input into Commands and text components
  *
- * @author Ala
- * @version 2019-11-09
+ * @author Gruppe_Einhoerner
+ * @version 2019-11-15
  */
 public class Parser {
 

@@ -1,7 +1,7 @@
 package ch.zhaw.einhoerner.editor;
 
 /**
- * The class Command is part of the Editor application.
+ * The enum class Command is part of the Editor application.
  *
  * Objects in this class holding the information of the given commands which a user types in the console.
  * A valid command consists of two parts: A command and a String (for example: the command "add 4" consists
@@ -11,8 +11,8 @@ package ch.zhaw.einhoerner.editor;
  *
  * If the command only exists one word, the second word is <null>.
  *
- * @author  Silvan
- * @version 2019-11-09
+ * @author  Gruppe_Einhoerner
+ * @version 2019-11-15
  */
 public enum Command {
     ADD_EXAMPLETEXT("add exampletext", 0),
@@ -33,7 +33,6 @@ public enum Command {
 
     /**
      * Initialise constructor with a given command.
-     * <p>
      * @param command The command as String value
      */
     Command(String command, int parameterCount) {
@@ -43,7 +42,6 @@ public enum Command {
 
     /**
      * Gives back the command.
-     * <p>
      * @return The command as String value.
      */
     public String getCommand() {
