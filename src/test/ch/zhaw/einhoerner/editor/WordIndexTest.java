@@ -17,7 +17,8 @@ class WordIndexTest {
     public void emptyListTest() {
         WordIndex wordIndex = new WordIndex();
         wordIndex.makeWordIndex(paragraphs);
-
+        assertEquals("", wordIndex.getAmount(""));
+        assertEquals("", wordIndex.getAmount(""));
     }
 
     @Test
