@@ -163,7 +163,7 @@ public class Processor {
     public void add(int index, String text) {
         int input = index - 1;
         if (illegalIndex(input))
-            System.out.println("Invalid Index.");
+            System.out.println("Invalid Index");
         else
             paragraphs.addAll(input, detectNewParagraphs(text));
     }
@@ -188,7 +188,7 @@ public class Processor {
     public void delete(int index) {
         int input = index - 1;
         if (illegalIndex(input))
-            System.out.println("Invalid Index.");
+            System.out.println("Invalid Index");
         else
             paragraphs.remove(input);
     }
