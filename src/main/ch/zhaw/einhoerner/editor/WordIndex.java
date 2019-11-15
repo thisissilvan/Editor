@@ -26,40 +26,51 @@ public class WordIndex {
      * @param text a list of paragraphs to be processed
      */
 
+    /**
+     * When calling this method, it is required to hand over a list of Strings.
+     *
+     * @param text a list of paragraphs to be processed
+     */
+
     public void makeWordIndex(List<String> text) {
+        //Ensure that if the passed on list is empty, no wordindex can be created
         if (text.size() <= 0) {
             System.out.println("No text to create a wordindex. Please add text.");
             woerterHaeufigkeit.put("", Arrays.asList("", ""));
         }
-        if (text.size() > 0) {
-            for (int index = 0; index < text.size(); index++) {
-                String platzhalter = text.get(index);
-                String[] paragraph = platzhalter.toLowerCase().replaceAll("[ +.,?!\":;]", " ").split(" +");
+        for (int index = 0; index < text.size(); index++) {
+            String platzhalter = text.get(index);
+            String[] paragraph = platzhalter.toLowerCase().replaceAll("[ +.,?!\":;]", " ").split(" +");
+            for (String word : paragraph) {
+                List<String> values = new ArrayList<>();
 
-                for (String word : paragraph) {
-                    List<String> values = new ArrayList<>();
-                    if (!woerterHaeufigkeit.containsKey(word)) {
-                        values.add(AMOUNT, "1");
-                        values.add(PLACE, String.valueOf(index));
-                        woerterHaeufigkeit.put(word, values);
-                    } else {
-                        values = woerterHaeufigkeit.get(word);
-                        int raiseCount = Integer.parseInt(values.get(AMOUNT));
-                        raiseCount++;
-                        values.set(AMOUNT, String.valueOf(raiseCount));
-                        String newIndex = String.valueOf(index);
-                        if (!values.get(PLACE).contains(newIndex)) {
-                            String addPlace = values.get(PLACE);
-                            addPlace = addPlace + ", " + newIndex;
-                            values.set(PLACE, addPlace);
-                        }
-                        woerterHaeufigkeit.replace(word, values);
+                //If the wordindex doesn't contain the word yet, it gets added
+                if (!woerterHaeufigkeit.containsKey(word)) {
+                    values.add(AMOUNT, "1");
+                    values.add(PLACE, String.valueOf(index));
+                    woerterHaeufigkeit.put(word, values);
+                } else
+
+                //If the word already exists, then raise the amount and save the location
+                {
+                    values = woerterHaeufigkeit.get(word);
+                    int raiseCount = Integer.parseInt(values.get(AMOUNT));
+                    raiseCount++;
+                    values.set(AMOUNT, String.valueOf(raiseCount));
+                    String newIndex = String.valueOf(index);
+
+                    //Control whether the location is already saved or not
+                    if (!values.get(PLACE).contains(newIndex)) {
+                        String addPlace = values.get(PLACE);
+                        addPlace = addPlace + ", " + newIndex;
+                        values.set(PLACE, addPlace);
                     }
-
+                    woerterHaeufigkeit.replace(word, values);
                 }
+
             }
-            entrysToDelete(controlMinimumAmount());
         }
+        entrysToDelete(controlMinimumAmount());
         printWordIndex();
     }
 
